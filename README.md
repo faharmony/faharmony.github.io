@@ -1,5 +1,5 @@
-# Welcome to FA Solutions OPEN
+# Welcome to FA Harmony
 
 ---
 
-Home of FA's open-source projects.
+Home of FA Solutions' design system, component and utility libraries
