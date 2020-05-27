@@ -1,5 +1,0 @@
-# https://www.robotstxt.org/robotstxt.html
-# DO NOT TRACK
-
-User-agent: *
-Disallow: /
