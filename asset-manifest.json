@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.js": "/static/js/main.971ac5d7.chunk.js",
-    "main.js.map": "/static/js/main.971ac5d7.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.769fa18b.js",
-    "runtime-main.js.map": "/static/js/runtime-main.769fa18b.js.map",
-    "static/js/2.d0c466b8.chunk.js": "/static/js/2.d0c466b8.chunk.js",
-    "static/js/2.d0c466b8.chunk.js.map": "/static/js/2.d0c466b8.chunk.js.map",
-    "static/js/3.ac53c8a2.chunk.js": "/static/js/3.ac53c8a2.chunk.js",
-    "static/js/3.ac53c8a2.chunk.js.map": "/static/js/3.ac53c8a2.chunk.js.map",
-    "static/js/4.0252c855.chunk.js": "/static/js/4.0252c855.chunk.js",
-    "static/js/4.0252c855.chunk.js.map": "/static/js/4.0252c855.chunk.js.map",
+    "main.js": "/static/js/main.117c99d1.chunk.js",
+    "main.js.map": "/static/js/main.117c99d1.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.55c90cd0.js",
+    "runtime-main.js.map": "/static/js/runtime-main.55c90cd0.js.map",
+    "static/js/2.8f5d48ff.chunk.js": "/static/js/2.8f5d48ff.chunk.js",
+    "static/js/2.8f5d48ff.chunk.js.map": "/static/js/2.8f5d48ff.chunk.js.map",
+    "static/js/3.492461ea.chunk.js": "/static/js/3.492461ea.chunk.js",
+    "static/js/3.492461ea.chunk.js.map": "/static/js/3.492461ea.chunk.js.map",
+    "static/js/4.cb281eb4.chunk.js": "/static/js/4.cb281eb4.chunk.js",
+    "static/js/4.cb281eb4.chunk.js.map": "/static/js/4.cb281eb4.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.84377353f84a0586731af6146f391c48.js": "/precache-manifest.84377353f84a0586731af6146f391c48.js",
+    "precache-manifest.a6b84ea9ecb8b7e66f47ca4dce0fdaad.js": "/precache-manifest.a6b84ea9ecb8b7e66f47ca4dce0fdaad.js",
     "service-worker.js": "/service-worker.js",
-    "static/js/2.d0c466b8.chunk.js.LICENSE.txt": "/static/js/2.d0c466b8.chunk.js.LICENSE.txt",
+    "static/js/2.8f5d48ff.chunk.js.LICENSE.txt": "/static/js/2.8f5d48ff.chunk.js.LICENSE.txt",
     "static/media/Install.mdx": "/static/media/Install.17fec577.mdx",
     "static/media/Theme.mdx": "/static/media/Theme.e64a8519.mdx",
     "static/media/Welcome.mdx": "/static/media/Welcome.026a96dc.mdx"
   },
   "entrypoints": [
-    "static/js/runtime-main.769fa18b.js",
-    "static/js/2.d0c466b8.chunk.js",
-    "static/js/main.971ac5d7.chunk.js"
+    "static/js/runtime-main.55c90cd0.js",
+    "static/js/2.8f5d48ff.chunk.js",
+    "static/js/main.117c99d1.chunk.js"
   ]
 }
