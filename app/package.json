@@ -46,7 +46,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "module": "plop",
-    "deploy": "yarn build && rm -rf ../favicon ../static ../*.js && cp -r build/. .. && git add . && git commit -m \"Deploy\" && git push"
+    "deploy": "yarn build && rm -rf ../favicon ../static ../*.js && cp -r build/. .. && cd .. && git add . && git commit -m \"Deploy\" && git push"
   },
   "eslintConfig": {
     "extends": "react-app"
