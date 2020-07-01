@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocale } from "@faharmony/locale";
+import { useModule } from "@faharmony/module";
 import { PageView } from "@faharmony/views";
 import { Text } from "@faharmony/components";
 // import { importMDX } from "mdx.macro";
@@ -12,7 +12,7 @@ import { Text } from "@faharmony/components";
  * @author Siddhant Gupta <siddhant@fasolutions.com>
  */
 export const MainPage = () => {
-  const t = useLocale();
+  const t = useModule().t;
 
   return (
     <PageView
@@ -20,7 +20,7 @@ export const MainPage = () => {
       overflow="auto"
       toolbarContent={
         <Text variant="h4">
-          Harmony is FA Solutions' support library for React-app development
+          Harmony is FA Solutions' framework for React-app development
         </Text>
       }
     ></PageView>
