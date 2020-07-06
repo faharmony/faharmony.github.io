@@ -11,6 +11,7 @@
 import * as Components from "./pages";
 import { faCubes } from "@faharmony/icons";
 import { IModuleProps } from "@faharmony/module";
+import { ModuleState } from "./state";
 // import { appRoles } from "../../config";
 
 /**
@@ -43,4 +44,5 @@ export default (): IModuleProps => ({
   icon: ModuleIcon,
   component: Components.MainPage,
   subModules,
+  state: ModuleState,
 });

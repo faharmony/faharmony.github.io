@@ -1,11 +1,32 @@
 import React from "react";
 import { useModule } from "@faharmony/module";
 import { PageView } from "@faharmony/views";
-import { Text } from "@faharmony/components";
-// import { importMDX } from "mdx.macro";
-// import { MSXLoader } from "../components";
+import { Text, Button } from "@faharmony/components";
+import { useDispatch, useSelector } from "@faharmony/state";
+import { ModuleActions } from "../state";
 
-// const Content = lazy(() => importMDX("../docs/Welcome.mdx"));
+const Redux = () => {
+  const dispatch = useDispatch();
+  const state: any = useSelector<any>((state) => state.welcome);
+  console.log(state);
+  return (
+    <>
+      <Text>{JSON.stringify(state)}</Text>
+      <Button
+        value="Start"
+        onClick={() => dispatch(ModuleActions.startLoading())}
+      />
+      <Button
+        value="Stop"
+        onClick={() => dispatch(ModuleActions.stopLoading())}
+      />
+      <Button
+        value="Toggle"
+        onClick={() => dispatch(ModuleActions.setLoading(!state.loading))}
+      />
+    </>
+  );
+};
 
 /**
  * Default page of module
@@ -23,6 +44,8 @@ export const MainPage = () => {
           Harmony is FA Solutions' framework for React-app development
         </Text>
       }
-    ></PageView>
+    >
+      <Redux />
+    </PageView>
   );
 };
