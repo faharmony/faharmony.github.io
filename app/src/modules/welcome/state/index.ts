@@ -1,6 +1,6 @@
 import { createModuleState } from "@faharmony/state";
 import { initialState } from "./store";
-import { reducers } from "./reducers";
+import * as reducers from "./reducers";
 
 const ModuleId = "welcome";
 
