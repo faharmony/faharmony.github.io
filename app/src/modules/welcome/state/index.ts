@@ -13,3 +13,4 @@ const ModuleState = createModuleState({
 const { actions: ModuleActions } = ModuleState;
 
 export { ModuleState, ModuleActions };
+export * from "./store";

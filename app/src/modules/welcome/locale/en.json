@@ -1,3 +1,4 @@
 {
-  "moduleName": "Welcome"
+  "moduleName": "Welcome",
+  "loading": "Redux loader"
 }
