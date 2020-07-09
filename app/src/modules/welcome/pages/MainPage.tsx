@@ -1,8 +1,10 @@
+/** i18n-ally useTranslation("welcome") */
 import React from "react";
 import { useModule } from "@faharmony/module";
 import { PageView } from "@faharmony/views";
 import { Text, Button, Box, Icon } from "@faharmony/components";
 import { useDispatch, useModuleState } from "@faharmony/state";
+import { useQuery, gql } from "@faharmony/service";
 import { faSpinner } from "@faharmony/icons";
 import { ModuleActions, IState } from "../state";
 
@@ -31,6 +33,32 @@ const Redux = () => {
   );
 };
 
+// const ApolloRest = () => {
+//   const query = gql`
+//     query Roles {
+//       groups @rest(type: "Group", path: "groups", endpoint: "keycloak") {
+//         id
+//         name
+//         realmRoles
+//         clientRoles
+//         subGroups
+//         attributes
+//       }
+//     }
+//   `;
+//   const { data, loading, error } = useQuery(query);
+//   console.dir(data);
+//   return (
+//     <div>
+//       {loading
+//         ? "Loading..."
+//         : error
+//         ? "Error"
+//         : JSON.stringify(data.groups, null, 2)}
+//     </div>
+//   );
+// };
+
 /**
  * Default page of module
  * @author Siddhant Gupta <siddhant@fasolutions.com>
@@ -48,6 +76,7 @@ export const MainPage = () => {
       }
     >
       <Redux />
+      {/* <ApolloRest /> */}
     </PageView>
   );
 };
