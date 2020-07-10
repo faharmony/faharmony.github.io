@@ -4,14 +4,12 @@ import { useModule } from "@faharmony/module";
 import { PageView } from "@faharmony/views";
 import { Text, Button, Box, Icon } from "@faharmony/components";
 import { useDispatch, useModuleState } from "@faharmony/state";
-import { useQuery, gql } from "@faharmony/service";
 import { faSpinner } from "@faharmony/icons";
 import { ModuleActions, IState } from "../state";
 
 const Redux = () => {
   const { t } = useModule();
   const dispatch = useDispatch();
-  // const state = useSelector<any>((state) => state.welcome) as IState;
   const state = useModuleState<IState>();
   return (
     <Box>
