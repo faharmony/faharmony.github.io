@@ -16,4 +16,5 @@
  * It should be removed along with its references.
  */
 
-export { Boxes } from "./Boxes";
+export * from "./ConfigDrawer";
+export * from "./Display";

@@ -10,7 +10,7 @@
  * Application. By default, it uses a Harmony Template
  * to render different Modules (imported from 'src/modules').
  */
-import { render } from "@faharmony/core";
+import { render, IAppConfig } from "@faharmony/core";
 import {
   getI18nInitOptions,
   Resource,
@@ -28,17 +28,8 @@ import {
   appRoles,
   keycloakConfig,
   devMode,
+  enableNavigationFilter,
 } from "./config";
-import PKG from "../package.json";
-
-const version = PKG.version.split("-");
-const versionName = " " + version[0] + (version[1] ? "-S" : "");
-
-const appName =
-  process.env.REACT_APP_NAME + versionName || "Harmony" + versionName;
-const appShortName =
-  process.env.REACT_APP_SHORT_NAME + versionName || "Harmony" + versionName;
-const appDescription = process.env.REACT_APP_DESC || "Description";
 
 const Modules = ModulesIdList.map((ModuleId) =>
   require(`./modules/${ModuleId}`).default()
@@ -71,20 +62,24 @@ i18n
   .use(LanguageDetector)
   .init(getI18nInitOptions({ moduleIds, languageCodes, resources }));
 
+const appConfig: IAppConfig = {
+  name: process.env.REACT_APP_NAME || "App",
+  version: process.env.REACT_APP_VERSION || "1.0.0",
+  shortName: process.env.REACT_APP_SHORT_NAME,
+  description: process.env.REACT_APP_DESC,
+  languages: appLanguages,
+  actions: appActions,
+  roles: appRoles,
+  icon: appIcon,
+};
+
 // Render FA app
 render({
-  appConfig: {
-    name: appName,
-    shortName: appShortName,
-    description: appDescription,
-    languages: appLanguages,
-    actions: appActions,
-    roles: appRoles,
-    icon: appIcon,
-  },
+  appConfig,
   Modules,
   keycloakConfig,
   multilingual: i18n,
   devMode,
+  enableNavigationFilter,
   _harmony: true,
 });

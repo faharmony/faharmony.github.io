@@ -9,7 +9,7 @@
  */
 
 import { IModuleProps } from "@faharmony/module";
-import { faFlask } from "@faharmony/icons";
+import { FALogoIconDefinition } from "@faharmony/icons";
 import { MainPage } from "./pages";
 import { ModuleState } from "./state";
 // import { appRoles } from "../../config";
@@ -31,7 +31,7 @@ const ModuleLabelFallback: string = `Logo generator`;
 const ModuleRoles: IModuleProps["roles"] = [];
 
 /** Icon of the Module. Visible in Menu. */
-const ModuleIcon: IModuleProps["icon"] = faFlask;
+const ModuleIcon: IModuleProps["icon"] = FALogoIconDefinition;
 
 /** Sub-modules of the module. Visible in Menu
  * Empty array means no subModules. */

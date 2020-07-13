@@ -2,33 +2,45 @@
 import React from "react";
 import { PageView } from "@faharmony/views";
 import { useLocale } from "@faharmony/locale";
-import { Text, Button, Box, Icon } from "@faharmony/components";
-import { faSpinner } from "@faharmony/icons";
-import { useDispatch, useModuleState } from "@faharmony/state";
-import { ModuleActions, IModuleState } from "../state";
+import { PrimaryWithSidebarLayout } from "@faharmony/layouts";
+import { Button, Box } from "@faharmony/components";
+import { useLocation } from "@faharmony/router";
+import { useModuleState, useDispatch } from "@faharmony/state";
+import { IModuleState, ModuleActions } from "../state";
+import { ConfigDrawer, Display } from "../components";
 
-const SampleState = () => {
-  const t = useLocale();
-  const dispatch = useDispatch();
+const PageActions = () => {
   const state = useModuleState<IModuleState>();
+  const dispatch = useDispatch();
   return (
     <Box>
-      <Text value={t("loading")} />
-      <Icon spin={state.loading} icon={faSpinner} />
       <Button
-        value="Start"
-        onClick={() => dispatch(ModuleActions.setLoading(true))}
-      />
-      <Button
-        value="Stop"
-        onClick={() => dispatch(ModuleActions.setLoading(false))}
-      />
-      <Button
-        value="Toggle"
-        onClick={() => dispatch(ModuleActions.toggleLoading())}
+        value="Configure logo"
+        disabled={state.isConfigDrawerOpen}
+        onClick={() => dispatch(ModuleActions.toggleConfigDrawer())}
       />
     </Box>
   );
+};
+
+const useSetState = (): void => {
+  const dispatch = useDispatch();
+  const search = new URLSearchParams(useLocation().search);
+  search.delete("tab");
+  if (search.toString()) {
+    const jsonString =
+      '"' +
+      decodeURI(search.toString())
+        .replace(/"/g, '\\"')
+        .replace(/&/g, '","')
+        .replace(/=/g, '":"') +
+      '"';
+    const params = JSON.parse(`{${jsonString}}`);
+    Object.entries(params).forEach(([key, val]: [string, any]) => {
+      dispatch({ type: `logo/set${key}`, payload: decodeURIComponent(val) });
+    });
+  }
+  dispatch(ModuleActions.setLoading(false));
 };
 
 /**
@@ -36,10 +48,14 @@ const SampleState = () => {
  * @author Siddhant Gupta <siddhant@fasolutions.com>
  */
 export const MainPage = () => {
+  useSetState();
   const t = useLocale();
   return (
-    <PageView heading={t("moduleName")}>
-      <SampleState />
+    <PageView heading={t("moduleName")} actions={<PageActions />}>
+      <PrimaryWithSidebarLayout
+        primaryNode={<Display />}
+        secondaryNode={<ConfigDrawer />}
+      />
     </PageView>
   );
 };

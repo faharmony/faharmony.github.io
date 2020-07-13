@@ -17,10 +17,8 @@ import { IModuleState } from "./initialState";
 
 // Generic types for ease-of-use
 type Reducer = CaseReducer<IModuleState>;
-type ReducerWithPayload<T extends any> = CaseReducer<
-  IModuleState,
-  PayloadAction<T>
->;
+type ReducerWithPayload<T> = CaseReducer<IModuleState, PayloadAction<T>>;
+type Config = IModuleState["config"];
 
 // -------------------
 // Edit reducers below
@@ -35,4 +33,34 @@ export const toggleLoading: Reducer = (state) => {
  * @example dispatch(setLoading(true)) */
 export const setLoading: ReducerWithPayload<boolean> = (state, { payload }) => {
   state.loading = payload;
+};
+
+/** Reducer with to toggle ConfigDrawer.*/
+export const toggleConfigDrawer: Reducer = (state) => {
+  state.isConfigDrawerOpen = !state.isConfigDrawerOpen;
+};
+
+export const setVariant: ReducerWithPayload<Config["variant"]> = (
+  state,
+  { payload }
+) => {
+  state.config.variant = payload;
+};
+
+export const setIcon: ReducerWithPayload<Config["icon"]> = (
+  state,
+  { payload }
+) => {
+  state.config.icon = payload;
+};
+
+export const setColor: ReducerWithPayload<Config["color"] | string> = (
+  state,
+  { payload }
+) => {
+  if (typeof payload === "string") {
+    const colors = payload.split("@");
+    state.config.color.primary = colors[0];
+    colors.length > 0 && (state.config.color.secondary = colors[1]);
+  } else state.config.color = { ...state.config.color, ...payload };
 };
