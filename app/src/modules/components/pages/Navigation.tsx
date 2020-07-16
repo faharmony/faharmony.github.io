@@ -1,5 +1,5 @@
 import React from "react";
-import { Navigation, INavPrimaryItem } from "@faharmony/navigation";
+import { Menu, IMenuPrimaryItem } from "@faharmony/router";
 import { IIconButtonObject } from "@faharmony/components";
 import { faPlus, faSync } from "@faharmony/icons";
 
@@ -21,7 +21,7 @@ export default () => {
     },
   ];
 
-  const menu: INavPrimaryItem[] = React.useMemo(
+  const menu: IMenuPrimaryItem[] = React.useMemo(
     () => [
       {
         id: "item1",
@@ -54,7 +54,7 @@ export default () => {
   );
 
   return (
-    <Navigation
+    <Menu
       heading="Application Name"
       shortHeading="App"
       menu={menu}

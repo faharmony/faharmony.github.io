@@ -14,7 +14,6 @@
     "@faharmony/core": "^1.6.0-SNAPSHOT.3",
     "@faharmony/helpers": "^1.6.0-SNAPSHOT.3",
     "@faharmony/icons": "^1.6.0-SNAPSHOT.3",
-    "@faharmony/navigation": "^1.6.0-SNAPSHOT.3",
     "@faharmony/state": "^1.6.0-SNAPSHOT.3",
     "@faharmony/table": "^1.6.0-SNAPSHOT.3",
     "@faharmony/views": "^1.6.0-SNAPSHOT.3",
