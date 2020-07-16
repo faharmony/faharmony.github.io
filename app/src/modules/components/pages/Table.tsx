@@ -1,7 +1,7 @@
 import React from "react";
 import { PageView } from "@faharmony/views";
 import { Table } from "@faharmony/table";
-import { useTimeout } from "@faharmony/hooks";
+import { useTimeout } from "@faharmony/helpers";
 import { Tag } from "@faharmony/components";
 import { faTerminal } from "@faharmony/icons";
 
