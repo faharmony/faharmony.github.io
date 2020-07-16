@@ -1,8 +1,7 @@
 // {{Sample}}:MainView
 import React from "react";
-import { PageView } from "@faharmony/views";
+import { PageView, PrimaryWithSidebarLayout } from "@faharmony/views";
 import { useLocale } from "@faharmony/locale";
-import { PrimaryWithSidebarLayout } from "@faharmony/layouts";
 import { Button, Box } from "@faharmony/components";
 import { useLocation } from "@faharmony/router";
 import { useModuleState, useDispatch } from "@faharmony/state";
