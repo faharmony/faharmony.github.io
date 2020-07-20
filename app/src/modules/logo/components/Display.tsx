@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, Accordion, Preloader } from "@faharmony/components";
-import { useModuleState, useDispatch } from "@faharmony/state";
-import { IModuleState, ModuleActions } from "../state";
+import { useModuleState } from "@faharmony/state";
+import { IModuleState } from "../state";
 
 /**
  * @author Siddhant Gupta <siddhant@fasolutions.com>

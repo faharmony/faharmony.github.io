@@ -55,6 +55,11 @@ const subModules: IModuleProps["subModules"] = [
     label: "Table",
     component: Components.Table,
   },
+  {
+    id: "inputField",
+    label: "InputField",
+    component: Components.InputField,
+  },
 ];
 
 /**
