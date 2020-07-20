@@ -10,7 +10,7 @@
   "source": "src/index.ts",
   "private": true,
   "dependencies": {
-    "@faharmony/core": "*",
+    "@faharmony/core": "",
     "@fortawesome/free-brands-svg-icons": "^5.13.0",
     "@mdx-js/react": "^1.6.1",
     "mdx.macro": "^0.2.9",
