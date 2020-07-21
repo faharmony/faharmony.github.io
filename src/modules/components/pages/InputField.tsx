@@ -1,7 +1,26 @@
 import React from "react";
-import { Form, InputField } from "@faharmony/form";
+import { Form, InputField, IInputFieldProps } from "@faharmony/form";
 import { Box } from "@faharmony/components";
-import { faCheckSquare } from "@faharmony/icons";
+import { faHeart } from "@faharmony/icons";
+import { SMLType } from "@faharmony/theme";
+
+const sizes: SMLType[] = ["xs", "sm", "md", "lg", "xl"];
+
+const options: IInputFieldProps[] = [
+  {},
+  { defaultValue: "Default text" },
+  { placeholder: "Favorite hobby", prefixIcon: faHeart },
+  { defaultValue: "Read only name", readOnly: true },
+  { defaultValue: "Disabled text", disabled: true },
+  { status: "success", defaultValue: "101.00", prefixText: "€" },
+  {
+    status: "error",
+    defaultValue: "101a",
+    prefixText: "€",
+    statusTooltip: "Incorrect value.",
+  },
+  { isLoading: true, defaultValue: "Siddhant Gupta" },
+];
 
 export default () => (
   <Form
@@ -9,39 +28,14 @@ export default () => (
       padding: "16px",
     }}
   >
-    <Box>
-      <Box direction="column">
-        <InputField
-          onChange={(e) => console.log(e.target.value)}
-          defaultValue="Hello"
-          placeholder="Lol"
-          spacing="sm"
-          prefixText="USD"
-        />
-        <InputField
-          onChange={(e) => console.log(e.target.value)}
-          defaultValue="isClearable ? inputFieldWithClear : inputField;isClearable ? inputFieldWithClear : inputField;"
-          placeholder="Lol"
-          prefixIcon={faCheckSquare}
-          // disabled
-        />
-        <InputField
-          onChange={(e) => console.log(e.target.value)}
-          defaultValue="Hello"
-          placeholder="Lol"
-          spacing="lg"
-          prefixText="Sexy bitch"
-        />
-        <InputField prefixText="$" disabled />
-        <InputField prefixText="$" readOnly />
-      </Box>
-      <Box direction="column">
-        <InputField prefixText="$" />
-        <InputField prefixText="€" />
-        <InputField prefixText="I" />
-        <InputField prefixText="R" />
-        <InputField prefixIcon={faCheckSquare} />
-      </Box>
+    <Box direction="column">
+      {options.map((o) => (
+        <Box alignItems="start">
+          {sizes.map((s) => (
+            <InputField spacing={s} {...o} ref={null} />
+          ))}
+        </Box>
+      ))}
     </Box>
   </Form>
 );
