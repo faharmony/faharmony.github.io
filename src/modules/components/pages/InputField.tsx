@@ -1,41 +1,49 @@
 import React from "react";
-import { Form, InputField, IInputFieldProps } from "@faharmony/form";
-import { Box } from "@faharmony/components";
+import { InputField, IInputFieldProps } from "@faharmony/form";
+import { Box, Text } from "@faharmony/components";
 import { faHeart } from "@faharmony/icons";
 import { SMLType } from "@faharmony/theme";
+import { PageView } from "@faharmony/views";
 
-const sizes: SMLType[] = ["xs", "sm", "md", "lg", "xl"];
+const sizes: SMLType[] = ["sm", "md", "lg"];
 
-const options: IInputFieldProps[] = [
-  {},
-  { defaultValue: "Default text" },
-  { placeholder: "Favorite hobby", prefixIcon: faHeart },
-  { defaultValue: "Read only name", readOnly: true },
-  { defaultValue: "Disabled text", disabled: true },
-  { status: "success", defaultValue: "101.00", prefixText: "€" },
-  {
+const options: { [name: string]: IInputFieldProps } = {
+  default: {},
+  withText: { defaultValue: "Default text" },
+  withPrefixIcon: { placeholder: "Favorite hobby", prefixIcon: faHeart },
+  readOnly: { defaultValue: "Read only name", readOnly: true },
+  disabled: { defaultValue: "Disabled text", disabled: true },
+  successStatus: {
+    status: "success",
+    defaultValue: "101.00",
+    prefixText: "€",
+  },
+  errorStatus: {
     status: "error",
     defaultValue: "101a",
     prefixText: "€",
     statusTooltip: "Incorrect value.",
   },
-  { isLoading: true, defaultValue: "Siddhant Gupta" },
-];
+  loading: { isLoading: true, defaultValue: "Siddhant Gupta" },
+};
 
 export default () => (
-  <Form
-    style={{
-      padding: "16px",
-    }}
-  >
+  <PageView heading="InputField">
     <Box direction="column">
-      {options.map((o) => (
-        <Box alignItems="start">
+      <Box>
+        <Text value="Type" truncate variant="h5" align="right" />
+        <Text value="Small (sm)" truncate variant="h5" />
+        <Text value="Medium (md, default)" truncate variant="h5" />
+        <Text value="Large (lg)" truncate variant="h5" />
+      </Box>
+      {Object.entries(options).map(([name, o]) => (
+        <Box alignItems="start" key={name}>
+          <Text truncate value={name} align="right" />
           {sizes.map((s) => (
-            <InputField spacing={s} {...o} ref={null} />
+            <InputField spacing={s} {...o} ref={null} key={name + s} />
           ))}
         </Box>
       ))}
     </Box>
-  </Form>
+  </PageView>
 );

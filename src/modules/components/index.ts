@@ -31,32 +31,37 @@ const ModuleIcon: IModuleProps["icon"] = faCubes;
 
 const subModules: IModuleProps["subModules"] = [
   {
-    id: "accordion",
+    id: "Accordion",
     label: "Accordion",
     component: Components.Accordion,
   },
   {
-    id: "button",
+    id: "Button",
     label: "Button",
     component: Components.Button,
   },
   {
-    id: "navigation",
+    id: "Navigation",
     label: "Navigation",
     component: Components.Navigation,
   },
   {
-    id: "skeleton",
+    id: "Skeleton",
     label: "Skeleton",
     component: Components.Skeleton,
   },
   {
-    id: "table",
+    id: "Table",
     label: "Table",
     component: Components.Table,
   },
   {
-    id: "inputField",
+    id: "Form",
+    label: "Form",
+    component: Components.Form,
+  },
+  {
+    id: "InputField",
     label: "InputField",
     component: Components.InputField,
   },
