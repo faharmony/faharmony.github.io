@@ -3,7 +3,7 @@ import {
   Form,
   TextField,
   Checkbox,
-  ComboboxController,
+  Combobox,
   useForm,
   FormValuesWatcher,
   resetFormValues,
@@ -42,7 +42,7 @@ const FormNode = () => {
         placeholder="Enter last name..."
         readOnly
       />
-      <ComboboxController
+      <Combobox
         name="select"
         options={[
           { label: "Option1", value: "o1" },
