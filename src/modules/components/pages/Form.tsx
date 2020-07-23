@@ -1,13 +1,15 @@
 import React from "react";
 import {
   Form,
-  FormValuesWatcher,
   TextField,
-  useForm,
-  resetFormValues,
   Checkbox,
+  ComboboxController,
+  useForm,
+  FormValuesWatcher,
+  resetFormValues,
   useFormContext,
 } from "@faharmony/form";
+
 import { Box, Button } from "@faharmony/components";
 import {
   PageView,
@@ -19,6 +21,7 @@ type Inputs = {
   firstName: string;
   lastName: string;
   remember: boolean;
+  select: { label: string; value: string };
 };
 
 const FormNode = () => {
@@ -39,6 +42,14 @@ const FormNode = () => {
         placeholder="Enter last name..."
         readOnly
       />
+      <ComboboxController
+        name="select"
+        options={[
+          { label: "Option1", value: "o1" },
+          { label: "Option2", value: "o2" },
+        ]}
+      />
+
       <Checkbox ref={register} name="remember" label="Remember me?" />
       <Box direction="row-reverse">
         <Button
@@ -55,7 +66,12 @@ const FormNode = () => {
 
 export default () => {
   const formMethods = useForm<Inputs>({
-    defaultValues: { firstName: "S", lastName: "G" },
+    defaultValues: {
+      firstName: "S",
+      lastName: "G",
+      remember: true,
+      select: { label: "Option1", value: "o1" },
+    },
   });
   return (
     <PageView heading="Form">

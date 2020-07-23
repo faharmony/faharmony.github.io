@@ -47,8 +47,8 @@ const useSetState = (): void => {
  * @author Siddhant Gupta <siddhant@fasolutions.com>
  */
 export const MainPage = () => {
-  useSetState();
   const t = useLocale();
+  useSetState();
   return (
     <PageView heading={t("moduleName")} actions={<PageActions />}>
       <PrimaryWithSidebarLayout

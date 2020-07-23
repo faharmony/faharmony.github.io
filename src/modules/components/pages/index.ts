@@ -19,10 +19,12 @@
  */
 
 export { MainPage } from "./MainPage";
-export { default as Accordion } from "./Accordion";
-export { default as Button } from "./Button";
-export { default as Navigation } from "./Navigation";
-export { default as Skeleton } from "./Skeleton";
-export { default as Table } from "./Table";
-export { default as InputField } from "./InputField";
-export { default as Form } from "./Form";
+export const components = [
+  "Accordion",
+  "Button",
+  "Menu",
+  "Skeleton",
+  "Table",
+  "Form",
+  "TextField",
+];

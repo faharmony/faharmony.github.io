@@ -8,7 +8,7 @@
  * @copyright FA Solutions Oy
  */
 
-import * as Components from "./pages";
+import { components, MainPage } from "./pages";
 import { faCubes } from "@faharmony/icons";
 import { IModuleProps } from "@faharmony/module";
 // import { appRoles } from "../../config";
@@ -29,43 +29,11 @@ const ModuleRoles: IModuleProps["roles"] = [];
  */
 const ModuleIcon: IModuleProps["icon"] = faCubes;
 
-const subModules: IModuleProps["subModules"] = [
-  {
-    id: "Accordion",
-    label: "Accordion",
-    component: Components.Accordion,
-  },
-  {
-    id: "Button",
-    label: "Button",
-    component: Components.Button,
-  },
-  {
-    id: "Navigation",
-    label: "Navigation",
-    component: Components.Navigation,
-  },
-  {
-    id: "Skeleton",
-    label: "Skeleton",
-    component: Components.Skeleton,
-  },
-  {
-    id: "Table",
-    label: "Table",
-    component: Components.Table,
-  },
-  {
-    id: "Form",
-    label: "Form",
-    component: Components.Form,
-  },
-  {
-    id: "InputField",
-    label: "InputField",
-    component: Components.InputField,
-  },
-];
+const subModules: IModuleProps["subModules"] = components.map((c) => ({
+  id: c,
+  label: c,
+  component: require(`./pages/${c}`).default,
+}));
 
 /**
  * -------------------
@@ -77,6 +45,6 @@ export default (): IModuleProps => ({
   label: "Components",
   roles: ModuleRoles,
   icon: ModuleIcon,
-  component: Components.MainPage,
+  component: MainPage,
   subModules,
 });
