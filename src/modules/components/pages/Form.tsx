@@ -2,7 +2,7 @@ import React from "react";
 import {
   Form,
   FormValuesWatcher,
-  InputField,
+  TextField,
   useForm,
   resetFormValues,
   Checkbox,
@@ -26,14 +26,14 @@ const FormNode = () => {
   const onSubmit = handleSubmit(console.log);
   return (
     <Box direction="column" style={{ width: 200 }} alignItems="start">
-      <InputField
+      <TextField
         ref={register({ required: true })}
         name="firstName"
         placeholder="Enter first name..."
         autoComplete={"off"}
         type="password"
       />
-      <InputField
+      <TextField
         ref={register}
         name="lastName"
         placeholder="Enter last name..."
