@@ -27,23 +27,25 @@ const options: { [name: string]: IInputFieldProps } = {
   loading: { isLoading: true, defaultValue: "Siddhant Gupta" },
 };
 
-export default () => (
-  <PageView heading="InputField">
-    <Box direction="column">
-      <Box>
-        <Text value="Type" truncate variant="h5" align="right" />
-        <Text value="Small (sm)" truncate variant="h5" />
-        <Text value="Medium (md, default)" truncate variant="h5" />
-        <Text value="Large (lg)" truncate variant="h5" />
-      </Box>
-      {Object.entries(options).map(([name, o]) => (
-        <Box alignItems="start" key={name}>
-          <Text truncate value={name} align="right" />
-          {sizes.map((s) => (
-            <InputField spacing={s} {...o} ref={null} key={name + s} />
-          ))}
+export default () => {
+  return (
+    <PageView heading="InputField" overflow="auto">
+      <Box direction="column">
+        <Box>
+          <Text value="Type" truncate variant="h5" align="right" />
+          <Text value="Small (sm)" truncate variant="h5" />
+          <Text value="Medium (md, default)" truncate variant="h5" />
+          <Text value="Large (lg)" truncate variant="h5" />
         </Box>
-      ))}
-    </Box>
-  </PageView>
-);
+        {Object.entries(options).map(([name, o]) => (
+          <Box key={name}>
+            <Text truncate value={name} align="right" />
+            {sizes.map((s) => (
+              <InputField spacing={s} {...o} ref={null} key={name + s} />
+            ))}
+          </Box>
+        ))}
+      </Box>
+    </PageView>
+  );
+};
