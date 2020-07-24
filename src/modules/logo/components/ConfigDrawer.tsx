@@ -80,17 +80,17 @@ export const ConfigDrawer = () => {
           placeholder="Select variant..."
           options={configurationOptions.variants}
           defaultValue={getCurrentOption("variants", variant)}
-          onChange={(o) => handleChange(ModuleActions.setVariant, o)}
+          onChange={(o: any) => handleChange(ModuleActions.setVariant, o)}
         />
         <ComboBox
           label="Icon style"
           placeholder="Select icon style..."
           options={configurationOptions.icon}
           defaultValue={getCurrentOption("icon", icon)}
-          onChange={(o) => handleChange(ModuleActions.setIcon, o)}
+          onChange={(o: any) => handleChange(ModuleActions.setIcon, o)}
         />
         <ColorPicker
-          onChange={(o) => handleChange(ModuleActions.setColor, o)}
+          onChange={(o: any) => handleChange(ModuleActions.setColor, o)}
         />
       </Box>
     </SummaryView>

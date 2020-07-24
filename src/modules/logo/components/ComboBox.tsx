@@ -14,7 +14,7 @@ export const ComboBox = (props: IComboboxProps) => {
           <Text value={props.label} variant="h5" />
         </div>
       )}
-      <Combobox {...props} />
+      <Combobox {...props} name={props.label} />
       {props.helpText && (
         <Text value={props.helpText} variant="small" color="secondary" />
       )}
