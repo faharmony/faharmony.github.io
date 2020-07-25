@@ -5,18 +5,11 @@ import {
   Checkbox,
   Combobox,
   useForm,
-  FormValuesWatcher,
   resetFormValues,
-  useFormContext,
-  // IComboboxProps,
   ComboboxOptionsType,
 } from "@faharmony/form";
 import { Box, Button } from "@faharmony/components";
-import {
-  PageView,
-  SummaryView,
-  PrimaryWithSidebarLayout,
-} from "@faharmony/views";
+import { PageView } from "@faharmony/views";
 
 type Option = { label: string; value: string };
 
@@ -29,7 +22,7 @@ type FormInputs = {
 };
 
 const envOptions: ComboboxOptionsType = [
-  { label: "Develop", value: "fadev" },
+  { label: "Develop", value: "dev" },
   { label: "Master", value: "master37" },
   { label: "Test", value: "test37" },
 ];
@@ -47,37 +40,40 @@ const rolesOptions: ComboboxOptionsType = [
 
 const defaultValues: Partial<FormInputs> = {
   username: "admin",
-  // password: "ke5ku5TA",
+  password: "ke5ku5TA",
   remember: true,
+  env: envOptions[0],
   roles: rolesOptions[0].options[0],
 };
 
 const FormNode = () => {
-  const { register, control, handleSubmit, errors } = useFormContext();
+  const formMethods = useForm<FormInputs>({
+    defaultValues,
+    criteriaMode: "all",
+  });
+  const { register, control, handleSubmit, errors } = formMethods;
   const onSubmit = handleSubmit(console.log);
 
   return (
-    <Box direction="column" style={{ width: "300px" }} alignItems="start">
+    <Form formMethods={formMethods} style={{ width: "300px" }}>
       <TextField
-        prefixText="€"
-        ref={register}
+        ref={register({ required: true })}
         name="username"
         placeholder="Enter username..."
-        status="success"
+        error={errors.username && "Username required"}
       />
       <TextField
         name="password"
         ref={register({ required: true })}
         placeholder="Enter password..."
-        autoComplete="off"
         type="password"
-        status={errors.password && "error"}
+        error={errors.password && "Password required"}
       />
-      {errors?.password?.types?.required && <p>password required</p>}
       <Combobox
         name="env"
         placeholder="Select environment..."
         options={envOptions}
+        isSearchable={false}
       />
       <Combobox
         name="roles"
@@ -95,31 +91,14 @@ const FormNode = () => {
         />
         <Button value="Reset" onClick={() => resetFormValues(control)} />
       </Box>
-    </Box>
+    </Form>
   );
 };
 
 export default () => {
-  const formMethods = useForm<FormInputs>({
-    defaultValues,
-    criteriaMode: "all",
-  });
   return (
     <PageView heading="Form">
-      <Form formMethods={formMethods} style={{ height: "100%" }}>
-        <PrimaryWithSidebarLayout
-          primaryNode={<FormNode />}
-          secondaryNode={
-            <SummaryView
-              caption={"form"}
-              heading="Current values"
-              onClose={() => {}}
-            >
-              <FormValuesWatcher />
-            </SummaryView>
-          }
-        />
-      </Form>
+      <FormNode />
     </PageView>
   );
 };

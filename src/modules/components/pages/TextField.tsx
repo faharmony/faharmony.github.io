@@ -14,15 +14,14 @@ const options: { [name: string]: ITextFieldProps } = {
   readOnly: { defaultValue: "Read only name", readOnly: true },
   disabled: { defaultValue: "Disabled text", disabled: true },
   successStatus: {
-    status: "success",
+    success: "Valid input",
     defaultValue: "101.00",
     prefixText: "€",
   },
   errorStatus: {
-    status: "error",
+    error: "Incorrect value.",
     defaultValue: "101a",
     prefixText: "€",
-    statusTooltip: "Incorrect value.",
   },
   loading: { isLoading: true, defaultValue: "Siddhant Gupta" },
 };
