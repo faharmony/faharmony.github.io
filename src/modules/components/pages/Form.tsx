@@ -146,7 +146,7 @@ const FormNode = () => {
 
 export default () => {
   return (
-    <PageView heading="Form">
+    <PageView heading="Form" overflow="scroll">
       <FormNode />
     </PageView>
   );
