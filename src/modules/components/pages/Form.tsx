@@ -6,6 +6,7 @@ import {
   Checkbox,
   Combobox,
   RadioGroup,
+  DatePicker,
   useForm,
   resetFormValues,
   ComboboxOptionType,
@@ -20,6 +21,7 @@ type FormInputs = {
   password: string;
   env: ComboboxOptionType;
   roles: ComboboxOptionType;
+  date: Date;
   env2: string;
   remember: boolean;
 };
@@ -48,6 +50,7 @@ const defaultValues: Partial<FormInputs> = {
   env: envOptions[0] as any,
   env2: "test",
   roles: rolesOptions[0].options[0],
+  date: new Date(),
 };
 
 const FormNode = () => {
@@ -114,6 +117,9 @@ const FormNode = () => {
             ref={register}
             direction="row"
           />
+        </InputField>
+        <InputField label="Registration date">
+          <DatePicker name="date" />
         </InputField>
         <Divider />
         <Box justifyContent="space-between">
