@@ -31,10 +31,6 @@ import {
   enableNavigationFilter,
 } from "./config";
 
-const Modules = ModulesIdList.map((ModuleId) =>
-  require(`./modules/${ModuleId}`).default()
-);
-
 const languageCodes = appLanguages || ["en"];
 const moduleIds: string[] = ModulesIdList || [];
 const resources: Resource = {};
@@ -73,13 +69,19 @@ const appConfig: IAppConfig = {
   icon: appIcon,
 };
 
-// Render FA app
-render({
-  appConfig,
-  Modules,
-  keycloakConfig,
-  multilingual: i18n,
-  devMode,
-  enableNavigationFilter,
-  _harmony: true,
-});
+(async () => {
+  const Modules = [];
+  for (const ModuleId of ModulesIdList) {
+    Modules.push((await import(`./modules/${ModuleId}`)).default);
+  }
+  // Render FA app
+  render({
+    appConfig,
+    Modules,
+    keycloakConfig,
+    multilingual: i18n,
+    devMode,
+    enableNavigationFilter,
+    _harmony: true,
+  });
+})();

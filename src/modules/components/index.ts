@@ -40,11 +40,11 @@ const subModules: IModuleProps["subModules"] = components.map((c) => ({
  * DO NOT CHANGE BELOW
  * -------------------
  */
-export default (): IModuleProps => ({
+export default {
   id: ModuleId,
   label: "Components",
   roles: ModuleRoles,
   icon: ModuleIcon,
   component: MainPage,
   subModules,
-});
+} as IModuleProps;

@@ -37,7 +37,7 @@ const subModules: IModuleProps["subModules"] = [];
  * DO NOT CHANGE BELOW
  * -------------------
  */
-export default (): IModuleProps => ({
+export default {
   id: ModuleId,
   label: "Components",
   roles: ModuleRoles,
@@ -45,4 +45,4 @@ export default (): IModuleProps => ({
   component: Components.MainPage,
   subModules,
   state: ModuleState,
-});
+} as IModuleProps;

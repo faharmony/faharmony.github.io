@@ -12,21 +12,23 @@ const Redux = () => {
   const dispatch = useDispatch();
   const state = useModuleState<IState>();
   return (
-    <Box>
-      <Text value={t("loading")} />
+    <Box justifyContent="flex-start">
+      <Box width="auto">
+        <Button
+          value="Start"
+          onClick={() => dispatch(ModuleActions.startLoading())}
+        />
+        <Button
+          value="Stop"
+          onClick={() => dispatch(ModuleActions.stopLoading())}
+        />
+        <Button
+          value="Toggle"
+          onClick={() => dispatch(ModuleActions.setLoading(!state.loading))}
+        />
+      </Box>
       <Icon spin={state.loading} icon={faSpinner} />
-      <Button
-        value="Start"
-        onClick={() => dispatch(ModuleActions.startLoading())}
-      />
-      <Button
-        value="Stop"
-        onClick={() => dispatch(ModuleActions.stopLoading())}
-      />
-      <Button
-        value="Toggle"
-        onClick={() => dispatch(ModuleActions.setLoading(!state.loading))}
-      />
+      <Text value={t("loading")} />
     </Box>
   );
 };

@@ -42,13 +42,12 @@ const subModules: IModuleProps["subModules"] = [];
  * -------------
  * DO NOT CHANGE
  */
-export default () =>
-  ({
-    id: ModuleId,
-    component: MainPage,
-    label: ModuleLabelFallback,
-    roles: ModuleRoles,
-    icon: ModuleIcon,
-    state: ModuleState,
-    subModules,
-  } as IModuleProps);
+export default {
+  id: ModuleId,
+  component: MainPage,
+  label: ModuleLabelFallback,
+  roles: ModuleRoles,
+  icon: ModuleIcon,
+  state: ModuleState,
+  subModules,
+} as IModuleProps;

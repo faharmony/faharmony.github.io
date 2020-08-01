@@ -9,8 +9,9 @@ export default () => (
     }}
   >
     <Skeleton width="400px" height="20px" />
-    <Skeleton width="400px" height="40px" />
-    <Skeleton width="400px" height="60px" />
-    <Skeleton width="400px" height="20px" />
+    {/* <div style={{ width: "400px" }}>
+      <Skeleton />
+    </div> */}
+    <Skeleton width="60px" height="60px" circle />
   </Box>
 );

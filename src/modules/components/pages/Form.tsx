@@ -7,6 +7,7 @@ import {
   Combobox,
   RadioGroup,
   DatePicker,
+  DatePicker2,
   useForm,
   resetFormValues,
   ComboboxOptionType,
@@ -22,6 +23,7 @@ type FormInputs = {
   env: ComboboxOptionType;
   roles: ComboboxOptionType;
   date: Date;
+  date2: Date;
   env2: string;
   remember: boolean;
 };
@@ -51,6 +53,7 @@ const defaultValues: Partial<FormInputs> = {
   env2: "test",
   roles: rolesOptions[0].options[0],
   date: new Date(),
+  date2: new Date(2018, 11, 30),
 };
 
 const FormNode = () => {
@@ -63,7 +66,14 @@ const FormNode = () => {
 
   return (
     <Form formMethods={formMethods} style={{ width: "100%" }} direction="row">
-      <Box direction="column" width={"300px"} alignItems="start">
+      <Box direction="column" width={"260px"} alignItems="start">
+        <InputField label="Registration date">
+          <DatePicker2
+            name="date2"
+            ref={register}
+            disabledDates={[new Date(2020, 6, 21), new Date(2020, 6, 22)]}
+          />
+        </InputField>
         <InputField
           label="Username"
           helpText="Your login username."
@@ -119,8 +129,12 @@ const FormNode = () => {
           />
         </InputField>
         <InputField label="Registration date">
-          <DatePicker name="date" />
+          <DatePicker
+            name="date"
+            disabledDates={[new Date(2020, 6, 21), new Date(2020, 6, 22)]}
+          />
         </InputField>
+
         <Divider />
         <Box justifyContent="space-between">
           <Checkbox ref={register} name="remember" label="Keep me logged in" />
