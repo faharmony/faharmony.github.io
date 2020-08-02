@@ -1,0 +1,2 @@
+(this.webpackJsonpplayground=this.webpackJsonpplayground||[]).push([[29],{193:function(n,s,p){"use strict";p.r(s),p.d(s,"sampleTrigger",(function(){return r}));const r=new(p(9).c)}}]);
+//# sourceMappingURL=29.1d99c60a.chunk.js.map

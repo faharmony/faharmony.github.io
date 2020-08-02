@@ -1,6 +1,11 @@
 import React from "react";
 import { PageView } from "@faharmony/views";
-import { Button, IIconButtonObject, Box } from "@faharmony/components";
+import {
+  Button,
+  IIconButtonObject,
+  Box,
+  ButtonPopover,
+} from "@faharmony/components";
 import { faBell } from "@faharmony/icons";
 
 export default () => {
@@ -20,7 +25,18 @@ export default () => {
           spacing="sm"
           outline={true}
         />
-        <Button {...iconButton} spacing="sm" outline />
+        <ButtonPopover
+          {...iconButton}
+          spacing="sm"
+          outline
+          popoverPlacement="bottom"
+          popoverTrigger="click"
+          popoverContentCallback={({ closePopover }) => (
+            <div onClick={closePopover} style={{ padding: "20px" }}>
+              Hello World
+            </div>
+          )}
+        />
       </Box>
     </PageView>
   );

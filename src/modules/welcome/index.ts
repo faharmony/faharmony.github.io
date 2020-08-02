@@ -9,7 +9,7 @@
  */
 
 import * as Components from "./pages";
-import { faCubes } from "@faharmony/icons";
+import { faPray } from "@faharmony/icons";
 import { IModuleProps } from "@faharmony/module";
 import { ModuleState } from "./state";
 // import { appRoles } from "../../config";
@@ -28,7 +28,7 @@ const ModuleRoles: IModuleProps["roles"] = [];
 /**
  * Icon of the Module. Visible in Menu.
  */
-const ModuleIcon: IModuleProps["icon"] = faCubes;
+const ModuleIcon: IModuleProps["icon"] = faPray;
 
 const subModules: IModuleProps["subModules"] = [];
 
