@@ -1,1 +1,0 @@
-{"version":3,"sources":["modules/logo/services/graphql.ts"],"names":["query","gql"],"mappings":"6PAMO,MAAMA,EAAQC,cAAH","file":"static/js/33.f4e35ea8.chunk.js","sourcesContent":["import { gql } from \"@faharmony/service\";\n\n/**\n * All Graphql queries\n */\n\nexport const query = gql`\n    {}\n`;\n"],"sourceRoot":""}
