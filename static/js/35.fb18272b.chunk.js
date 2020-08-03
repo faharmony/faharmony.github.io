@@ -1,0 +1,2 @@
+(this.webpackJsonpplayground=this.webpackJsonpplayground||[]).push([[35],{156:function(n,o,r){"use strict";r.r(o),r.d(o,"colors",(function(){return a}));const a={brand:"#AE001A"};o.default={loading:!0,isConfigDrawerOpen:!0,config:{size:200,color:{primary:a.brand,secondary:""},text:"",variant:"all",icon:"all"}}}}]);
+//# sourceMappingURL=35.fb18272b.chunk.js.map
