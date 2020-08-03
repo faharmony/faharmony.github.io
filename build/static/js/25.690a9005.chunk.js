@@ -1,0 +1,2 @@
+(this.webpackJsonpplayground=this.webpackJsonpplayground||[]).push([[25],{173:function(e,t,a){"use strict";a.r(t);var p=a(0),n=a.n(p),r=a(5);t.default=()=>n.a.createElement(r.b,{style:{padding:"20px",flexWrap:"wrap"}},n.a.createElement(r.k,{width:"400px",height:"20px"}),n.a.createElement(r.k,{width:"60px",height:"60px",circle:!0}))}}]);
+//# sourceMappingURL=25.690a9005.chunk.js.map

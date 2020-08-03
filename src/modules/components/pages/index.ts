@@ -21,6 +21,7 @@
 export { MainPage } from "./MainPage";
 export const components = [
   "Accordion",
+  "Breadcrumb",
   "Button",
   "Menu",
   "Skeleton",

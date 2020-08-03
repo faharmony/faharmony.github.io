@@ -6,37 +6,61 @@ import {
   Box,
   ButtonPopover,
 } from "@faharmony/components";
-import { faBell } from "@faharmony/icons";
+import { faBell, faSquare } from "@faharmony/icons";
 
 export default () => {
   const iconButton: IIconButtonObject = {
     id: "notify",
-    icon: faBell,
+    icon: faSquare,
     tooltip: "Notifications",
     variant: "warning",
   };
   return (
-    <PageView heading="Button">
+    <PageView heading="Button" overflow="scroll">
       <Box>
-        <Button value="Notifications" variant="info" />
-        <Button
-          icon={faBell}
-          tooltip="Notifications"
-          spacing="sm"
-          outline={true}
-        />
-        <ButtonPopover
-          {...iconButton}
-          spacing="sm"
-          outline
-          popoverPlacement="bottom"
-          popoverTrigger="click"
-          popoverContentCallback={({ closePopover }) => (
-            <div onClick={closePopover} style={{ padding: "20px" }}>
-              Hello World
-            </div>
-          )}
-        />
+        <Box direction="column">
+          <Button value="Notifications" variant="info" fullWidth />
+          <Button
+            icon={faBell}
+            value="Notifications"
+            outline={true}
+            fullWidth
+          />
+          <Button icon={faBell} value="Notifications" spacing="xl" fullWidth />
+          <Button icon={faBell} value="Notifications" spacing="lg" fullWidth />
+          <Button
+            icon={faBell}
+            value="Notifications"
+            variant="primary"
+            fullWidth
+          />
+          <Button icon={faBell} value="Notifications" spacing="sm" fullWidth />
+          <Button icon={faBell} value="Notifications" spacing="xs" fullWidth />
+          <Button
+            icon={faBell}
+            value="Notifications"
+            spacing="none"
+            fullWidth
+          />
+
+          <ButtonPopover {...iconButton} spacing="sm" outline fullWidth />
+          <ButtonPopover {...iconButton} fullWidth outline />
+          <ButtonPopover {...iconButton} fullWidth />
+        </Box>
+        <Box direction="column">
+          <Button value="Notifications" variant="info" />
+          <Button icon={faBell} value="Notifications" outline={true} />
+          <Button icon={faBell} value="Notifications" spacing="xl" />
+          <Button icon={faBell} value="Notifications" spacing="lg" />
+          <Button icon={faBell} value="Notifications" variant="primary" />
+          <Button icon={faBell} value="Notifications" spacing="sm" />
+          <Button icon={faBell} value="Notifications" spacing="xs" />
+          <Button icon={faBell} value="Notifications" spacing="none" />
+
+          <ButtonPopover {...iconButton} spacing="sm" outline />
+          <ButtonPopover {...iconButton} outline />
+          <ButtonPopover {...iconButton} />
+        </Box>
       </Box>
     </PageView>
   );
