@@ -120,7 +120,7 @@ export const keycloakConfig: KeycloakConfig = {
  * Enabling navigation filter shows an option to filter
  * the subModules in App menu.
  */
-export const enableNavigationFilter = false;
+export const enableNavigationFilter = true;
 
 /**
  * Enabling devMode bypasses keycloak authentication.

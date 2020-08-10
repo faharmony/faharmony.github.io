@@ -1,7 +1,7 @@
 import React from "react";
 import {
   Form,
-  InputField,
+  FormControl,
   TextField,
   Checkbox,
   Combobox,
@@ -65,7 +65,7 @@ const FormNode = () => {
   return (
     <Form formMethods={formMethods} style={{ width: "100%" }} direction="row">
       <Box direction="column" width={"260px"} alignItems="start">
-        <InputField
+        <FormControl
           label="Username"
           helpText="Your login username."
           errorText={errors.username?.message}
@@ -80,8 +80,8 @@ const FormNode = () => {
             placeholder="Enter username..."
             error={errors.username?.message}
           />
-        </InputField>
-        <InputField
+        </FormControl>
+        <FormControl
           label="Password"
           required
           helpText={errors.password?.message}
@@ -93,33 +93,33 @@ const FormNode = () => {
             type="password"
             error={errors.password?.message}
           />
-        </InputField>
-        <InputField label="Applicable roles">
+        </FormControl>
+        <FormControl label="Applicable roles">
           <Combobox
             name="roles"
             placeholder="Select roles..."
             options={rolesOptions}
             isMulti
           />
-        </InputField>
-        <InputField label="Environment">
+        </FormControl>
+        <FormControl label="Environment">
           <Combobox
             name="env"
             placeholder="Select environment..."
             options={envOptions}
             isSearchable={false}
           />
-        </InputField>
+        </FormControl>
 
-        <InputField label="Environment again...">
+        <FormControl label="Environment again...">
           <RadioGroup
             name="env2"
             options={[...envOptions]}
             ref={register}
             direction="row"
           />
-        </InputField>
-        <InputField label="Registration date">
+        </FormControl>
+        <FormControl label="Registration date">
           <Controller
             name="date"
             as={
@@ -129,7 +129,7 @@ const FormNode = () => {
             }
             control={control}
           />
-        </InputField>
+        </FormControl>
 
         <Divider />
         <Box justifyContent="space-between">

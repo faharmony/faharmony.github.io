@@ -21,7 +21,7 @@ const options: { [name: string]: ITextFieldProps } = {
   errorStatus: {
     error: "Incorrect value.",
     defaultValue: "101a",
-    prefixText: "€",
+    prefixText: "EUR",
   },
   loading: { isLoading: true, defaultValue: "Siddhant Gupta" },
 };
@@ -40,7 +40,7 @@ export default () => {
           <Box key={name}>
             <Text truncate value={name} align="right" />
             {sizes.map((s) => (
-              <TextField spacing={s} {...o} ref={null} key={name + s} />
+              <TextField spacing={s} key={name + s} {...o} ref={null} />
             ))}
           </Box>
         ))}
