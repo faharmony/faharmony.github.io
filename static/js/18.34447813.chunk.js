@@ -1,0 +1,2 @@
+(this.webpackJsonpplayground=this.webpackJsonpplayground||[]).push([[18],{180:function(e,o,l){"use strict";l.r(o);var n=l(0),a=l.n(n),t=l(67),r=l(19),c=l(10);o.default=()=>{const e=()=>{},o=[{id:"root",label:"Root",onClick:e},{id:"folder",label:"Folder",icon:c.L,onClick:e},{id:"file",label:"File",icon:c.H}];return a.a.createElement(t.c,{heading:"Breadcrumbs",toolbarContent:a.a.createElement(r.a,{crumbs:[...o,...o]})})}}}]);
+//# sourceMappingURL=18.34447813.chunk.js.map
