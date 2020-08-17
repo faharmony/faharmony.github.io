@@ -1,7 +1,7 @@
 // {{Sample}}:MainView
 import React from "react";
 import { PageView, PrimaryWithSidebarLayout } from "@faharmony/views";
-import { useLocale } from "@faharmony/locale";
+import { useModuleTranslation } from "@faharmony/module";
 import { Button, Box } from "@faharmony/components";
 import { useLocation } from "@faharmony/router";
 import { useModuleState, useDispatch } from "@faharmony/state";
@@ -47,7 +47,7 @@ const useSetState = (): void => {
  * @author Siddhant Gupta <siddhant@fasolutions.com>
  */
 export const MainPage = () => {
-  const t = useLocale();
+  const t = useModuleTranslation();
   useSetState();
   return (
     <PageView heading={t("moduleName")} actions={<PageActions />}>

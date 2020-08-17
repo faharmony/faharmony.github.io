@@ -74,6 +74,7 @@ const TableView = () => {
   );
 
   const handleRowClick = (rowObject: IDataProps) => console.log(rowObject);
+  const handleRowDblClick = (rowObject: IDataProps) => alert(rowObject);
 
   const singleRowActions = (rowObject: IDataProps) => [
     {
@@ -91,6 +92,7 @@ const TableView = () => {
       data={tableData}
       columns={tableColumns}
       handleRowClick={handleRowClick}
+      handleRowDblClick={handleRowDblClick}
       singleRowActions={singleRowActions}
       enableSorting
       enableFiltering

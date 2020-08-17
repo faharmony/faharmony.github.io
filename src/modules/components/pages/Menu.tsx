@@ -1,5 +1,5 @@
 import React from "react";
-import { Menu, IMenuPrimaryItem } from "@faharmony/router";
+import { Menu, IMenuPrimaryItem } from "@faharmony/navigation";
 import { IIconButtonObject } from "@faharmony/components";
 import { faPlus, faSync } from "@faharmony/icons";
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocale } from "@faharmony/locale";
+import { useModuleTranslation } from "@faharmony/module";
 import { PageView } from "@faharmony/views";
 import { Text } from "@faharmony/components";
 // import { importMDX } from "mdx.macro";
@@ -12,7 +12,7 @@ import { Text } from "@faharmony/components";
  * @author Siddhant Gupta <siddhant@fasolutions.com>
  */
 export const MainPage = () => {
-  const t = useLocale();
+  const t = useModuleTranslation();
 
   return (
     <PageView
