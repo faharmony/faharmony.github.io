@@ -1,2 +1,0 @@
-(this.webpackJsonpplayground=this.webpackJsonpplayground||[]).push([[32],{191:function(n,t,r){"use strict";r.r(t),r.d(t,"query",(function(){return e}));var u=r(8),c=r(50);function o(){const n=Object(u.a)(["\n    {}\n"]);return o=function(){return n},n}const e=Object(c.g)(o())}}]);
-//# sourceMappingURL=32.416f1aa8.chunk.js.map
