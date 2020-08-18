@@ -23,9 +23,10 @@ export const components = [
   "Accordion",
   "Breadcrumb",
   "Button",
+  "Date",
+  "Form",
   "Menu",
   "Skeleton",
-  "Table",
-  "Form",
   "TextField",
+  "Table",
 ];

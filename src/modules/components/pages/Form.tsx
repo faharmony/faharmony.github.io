@@ -6,13 +6,11 @@ import {
   Checkbox,
   Combobox,
   RadioGroup,
-  DatePicker,
   useForm,
   resetFormValues,
   ComboboxOptionType,
   ComboboxOptionsType,
   FormValuesWatcher,
-  Controller,
 } from "@faharmony/form";
 import { Box, Button, Divider } from "@faharmony/components";
 import { PageView } from "@faharmony/views";
@@ -22,7 +20,7 @@ type FormInputs = {
   password: string;
   env: ComboboxOptionType;
   roles: ComboboxOptionType;
-  date: Date;
+
   env2: string;
   remember: boolean;
 };
@@ -51,7 +49,6 @@ const defaultValues: Partial<FormInputs> = {
   env: envOptions[0] as any,
   env2: "test",
   roles: rolesOptions[0].options[0],
-  date: new Date(),
 };
 
 const FormNode = () => {
@@ -117,17 +114,6 @@ const FormNode = () => {
             options={[...envOptions]}
             ref={register}
             direction="row"
-          />
-        </FormControl>
-        <FormControl label="Registration date">
-          <Controller
-            name="date"
-            as={
-              <DatePicker
-                disabledDates={[new Date(2020, 7, 21), new Date(2020, 7, 22)]}
-              />
-            }
-            control={control}
           />
         </FormControl>
 
