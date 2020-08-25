@@ -75,20 +75,20 @@ const FormNode = () => {
             })}
             name="username"
             placeholder="Enter username..."
-            error={errors.username?.message}
+            error={!!errors.username}
           />
         </FormControl>
         <FormControl
           label="Password"
           required
-          helpText={errors.password?.message}
+          errorText={errors.password?.message}
         >
           <TextField
             name="password"
             ref={register({ required: "Password required" })}
             placeholder="Enter password..."
             type="password"
-            error={errors.password?.message}
+            error={!!errors.password}
           />
         </FormControl>
         <FormControl label="Applicable roles">
