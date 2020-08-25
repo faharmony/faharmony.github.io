@@ -28,9 +28,7 @@
     "clear": "rm -R build",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "module": "plop",
-    "prepublish": "yarn build",
-    "deploy": "yarn build && git add . && git commit -m \"Deploy\" && git push"
+    "deploy": "yarn build && git config user.email \"siddhant@fasolutions.com\" && git config user.name \"Siddhant Gupta\" && git add . && git commit -m \"Deploy\" && git push"
   },
   "eslintConfig": {
     "extends": "react-app"
