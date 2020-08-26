@@ -28,7 +28,7 @@
     "clear": "rm -R build",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "deploy": "yarn build && git config user.email \"siddhant@fasolutions.com\" && git config user.name \"Siddhant Gupta\" && git add . && git commit -m \"Deploy\" && git push origin develop"
+    "deploy": "yarn build && git config user.email \"siddhant@fasolutions.com\" && git config user.name \"Siddhant Gupta\" && git add . && git commit -m \"Deploy\" && git push origin HEAD:develop"
   },
   "eslintConfig": {
     "extends": "react-app"
