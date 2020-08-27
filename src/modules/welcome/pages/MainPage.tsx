@@ -2,9 +2,8 @@
 import React from "react";
 import { useModule } from "@faharmony/module";
 import { PageView } from "@faharmony/views";
-import { Text, Button, Box, Icon } from "@faharmony/components";
+import { Text, Button, Box, RingLoader } from "@faharmony/components";
 import { useDispatch, useModuleState } from "@faharmony/state";
-import { faSpinner } from "@faharmony/icons";
 import { ModuleActions, IState } from "../state";
 
 const Redux = () => {
@@ -27,7 +26,7 @@ const Redux = () => {
           onClick={() => dispatch(ModuleActions.setLoading(!state.loading))}
         />
       </Box>
-      <Icon spin={state.loading} icon={faSpinner} />
+      {state.loading && <RingLoader />}
       <Text value={t("loading")} />
     </Box>
   );

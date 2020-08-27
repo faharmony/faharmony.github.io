@@ -51,6 +51,7 @@ const FormNode = () => {
             <Button
               value="Reset"
               variant="secondary"
+              loading
               onClick={() => resetFormValues(control)}
             />
             <Button
@@ -58,6 +59,7 @@ const FormNode = () => {
               value="Submit"
               onClick={onSubmit}
               variant="primary"
+              loading
             />
           </Box>
         </Box>
