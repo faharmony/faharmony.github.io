@@ -3,6 +3,7 @@ import {
   Form,
   FormControl,
   TextField,
+  NumberField,
   Checkbox,
   Combobox,
   RadioGroup,
@@ -20,7 +21,7 @@ type FormInputs = {
   password: string;
   env: ComboboxOptionType;
   roles: ComboboxOptionType;
-
+  number: number;
   env2: string;
   remember: boolean;
 };
@@ -46,6 +47,7 @@ const defaultValues: Partial<FormInputs> = {
   username: "admin",
   password: "ke5ku5TA",
   remember: true,
+  number: 324.432,
   env: envOptions[0] as any,
   env2: "test",
   roles: rolesOptions[0].options[0],
@@ -114,6 +116,13 @@ const FormNode = () => {
             options={[...envOptions]}
             ref={register}
             direction="row"
+          />
+        </FormControl>
+        <FormControl label="Number">
+          <NumberField
+            placeholder="0.00"
+            error={!!errors.number}
+            name="number"
           />
         </FormControl>
 

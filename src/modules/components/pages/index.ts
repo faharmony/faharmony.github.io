@@ -26,6 +26,7 @@ export const components = [
   "Date",
   "Form",
   "Menu",
+  "NumberField",
   "Skeleton",
   "TextField",
   "Table",
