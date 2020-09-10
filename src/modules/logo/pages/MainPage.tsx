@@ -2,7 +2,8 @@
 import React from "react";
 import { PageView, PrimaryWithSidebarLayout } from "@faharmony/views";
 import { useModuleTranslation } from "@faharmony/module";
-import { Button, Box } from "@faharmony/components";
+import { Box } from "@faharmony/theme";
+import { Button } from "@faharmony/components";
 import { useLocation } from "@faharmony/router";
 import { useModuleState, useDispatch } from "@faharmony/state";
 import { IModuleState, ModuleActions } from "../state";

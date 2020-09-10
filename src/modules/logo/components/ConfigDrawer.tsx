@@ -1,12 +1,12 @@
 import React from "react";
 import { SummaryView } from "@faharmony/views";
-import { Box } from "@faharmony/components";
+import { Theme, Box } from "@faharmony/theme";
 import { useModuleState, useDispatch } from "@faharmony/state";
 import { insertQueryParam } from "@faharmony/router";
+
 import { IModuleState, ModuleActions } from "../state";
 import { ComboBox } from "./ComboBox";
 import { InputField } from "./InputField";
-import { Theme } from "@faharmony/theme";
 
 interface Obj {
   value: string;

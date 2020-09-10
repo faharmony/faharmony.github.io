@@ -1,9 +1,9 @@
 import React from "react";
 import { PageView } from "@faharmony/views";
+import { Box } from "@faharmony/theme";
 import {
   Button,
   IIconButtonObject,
-  Box,
   ButtonPopover,
 } from "@faharmony/components";
 import { faBell, faSquare } from "@faharmony/icons";

@@ -13,7 +13,8 @@ import {
   ComboboxOptionsType,
   FormValuesWatcher,
 } from "@faharmony/form";
-import { Box, Button, Divider } from "@faharmony/components";
+import { Button, Divider } from "@faharmony/components";
+import { Box } from "@faharmony/theme";
 import { PageView } from "@faharmony/views";
 
 type FormInputs = {

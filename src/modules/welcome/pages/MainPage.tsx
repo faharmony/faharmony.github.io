@@ -1,8 +1,11 @@
 /** i18n-ally useTranslation("welcome") */
 import React from "react";
+
 import { useModule } from "@faharmony/module";
-import { PageView } from "@faharmony/views";
-import { Text, Button, Box, RingLoader } from "@faharmony/components";
+import { PageView, SummaryView } from "@faharmony/views";
+import { useTabs } from "@faharmony/navigation";
+import { Box } from "@faharmony/theme";
+import { Text, Button, RingLoader } from "@faharmony/components";
 import { useDispatch, useModuleState } from "@faharmony/state";
 import { ModuleActions, IState } from "../state";
 
@@ -65,17 +68,36 @@ const Redux = () => {
 export const MainPage = () => {
   const { t } = useModule();
 
+  const { TabBar, TabPanel } = useTabs([
+    { id: "1", label: "Tab1 is great ", content: <Redux /> },
+    {
+      id: "2",
+      label: "I love this Tab2 so much",
+      disabled: true,
+      content: <div>2</div>,
+    },
+    { id: "3", label: "Tab3", content: <div>3</div> },
+  ]);
+
   return (
-    <PageView
-      heading={t("moduleName")}
-      toolbarContent={
-        <Text variant="h4">
-          Harmony is FA Solutions' framework for React-app development
-        </Text>
-      }
-    >
-      <Redux />
-      {/* <ApolloRest /> */}
-    </PageView>
+    <Box justifyContent="auto">
+      <PageView
+        heading={t("moduleName")}
+        toolbarContent={
+          <TabBar />
+          // <Text variant="h4">
+          //   Harmony is FA Solutions' framework for React-app development
+          // </Text>
+        }
+      >
+        <TabBar />
+        <TabPanel />
+      </PageView>
+      <div style={{ height: "100vh", width: "100%" }}>
+        <SummaryView caption="test" heading="Tabs" onClose={() => {}}>
+          <TabPanel />
+        </SummaryView>
+      </div>
+    </Box>
   );
 };
