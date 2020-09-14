@@ -1,5 +1,6 @@
 import React from "react";
-import { Text, Accordion, Preloader } from "@faharmony/components";
+import { Accordion, Text, Preloader } from "@faharmony/components";
+
 import { useModuleState } from "@faharmony/state";
 import { IModuleState } from "../state";
 

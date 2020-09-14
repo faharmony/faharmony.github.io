@@ -1,15 +1,15 @@
 /** i18n-ally useTranslation("welcome") */
 import React from "react";
-
+import { setAppSideDrawer } from "@faharmony/core";
 import { useModule } from "@faharmony/module";
-import { PageView, SummaryView } from "@faharmony/views";
-import { useTabs } from "@faharmony/navigation";
-import { Box } from "@faharmony/theme";
-import { Text, Button, RingLoader } from "@faharmony/components";
+import { PageView } from "@faharmony/views";
+import { ITabsProps } from "@faharmony/navigation";
+import { Box, Center } from "@faharmony/theme";
+import { Text, Button, RingLoader, ButtonPopover } from "@faharmony/components";
 import { useDispatch, useModuleState } from "@faharmony/state";
 import { ModuleActions, IState } from "../state";
 
-const Redux = () => {
+export const Redux = () => {
   const { t } = useModule();
   const dispatch = useDispatch();
   const state = useModuleState<IState>();
@@ -61,6 +61,17 @@ const Redux = () => {
 //   );
 // };
 
+const Counter = () => {
+  const [count, setCount] = React.useState(0);
+  React.useEffect(() => {
+    const t = setInterval(() => setCount((c) => c + 1), 1000);
+    return () => {
+      clearInterval(t);
+    };
+  }, []);
+  return <Center>{count}</Center>;
+};
+
 /**
  * Default page of module
  * @author Siddhant Gupta <siddhant@fasolutions.com>
@@ -68,36 +79,42 @@ const Redux = () => {
 export const MainPage = () => {
   const { t } = useModule();
 
-  const { TabBar, TabPanel } = useTabs([
-    { id: "1", label: "Tab1 is great ", content: <Redux /> },
+  const tabs: ITabsProps[] = [
+    {
+      id: "1",
+      label: "Preview NAV",
+      content: <Center>1</Center>,
+      defaultActive: true,
+    },
     {
       id: "2",
-      label: "I love this Tab2 so much",
-      disabled: true,
-      content: <div>2</div>,
+      label: "Portfolio",
+      content: <Counter />,
+      // disabled: true,
     },
-    { id: "3", label: "Tab3", content: <div>3</div> },
-  ]);
+    { id: "3", label: "Warnings", content: <Center>3</Center> },
+  ];
+
+  // const { TabBar } = useTabs([...tabs]);
+  const openSide = () =>
+    setAppSideDrawer({
+      caption: "Calculated nav",
+      heading: "FA Equity +",
+      toolbarContent: <div />,
+      tabs,
+    });
+
+  // setTimeout(openSide, 100);
 
   return (
-    <Box justifyContent="auto">
-      <PageView
-        heading={t("moduleName")}
-        toolbarContent={
-          <TabBar />
-          // <Text variant="h4">
-          //   Harmony is FA Solutions' framework for React-app development
-          // </Text>
-        }
-      >
-        <TabBar />
-        <TabPanel />
-      </PageView>
-      <div style={{ height: "100vh", width: "100%" }}>
-        <SummaryView caption="test" heading="Tabs" onClose={() => {}}>
-          <TabPanel />
-        </SummaryView>
-      </div>
-    </Box>
+    <PageView
+      caption={"Test"}
+      heading={t("moduleName")}
+      toolbarContent={<Text variant="h4" value="Harmony" />}
+      actions={<ButtonPopover value="Open" onClick={openSide} spacing="sm" />}
+      tabs={tabs}
+    />
   );
 };
+
+// is FA Solutions' framework for React-app development
