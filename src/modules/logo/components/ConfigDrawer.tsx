@@ -1,6 +1,7 @@
 import React from "react";
 import { SummaryView } from "@faharmony/views";
-import { Theme, Box } from "@faharmony/theme";
+import { Theme } from "@faharmony/theme";
+import { Box } from "@faharmony/components";
 import { useModuleState, useDispatch } from "@faharmony/state";
 import { insertQueryParam } from "@faharmony/router";
 

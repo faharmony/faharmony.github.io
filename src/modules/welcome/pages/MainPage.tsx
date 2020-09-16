@@ -1,11 +1,17 @@
 /** i18n-ally useTranslation("welcome") */
 import React from "react";
-import { setAppSideDrawer } from "@faharmony/core";
+// import { setAppSideDrawer } from "@faharmony/core";
 import { useModule } from "@faharmony/module";
 import { PageView } from "@faharmony/views";
-import { ITabsProps } from "@faharmony/navigation";
-import { Box, Center } from "@faharmony/theme";
-import { Text, Button, RingLoader, ButtonPopover } from "@faharmony/components";
+// import { ITabsProps } from "@faharmony/navigation";
+// import { Box, Center } from "@faharmony/theme";
+import {
+  Text,
+  Button,
+  RingLoader,
+  // ButtonPopover,
+  Box,
+} from "@faharmony/components";
 import { useDispatch, useModuleState } from "@faharmony/state";
 import { ModuleActions, IState } from "../state";
 
@@ -61,16 +67,16 @@ export const Redux = () => {
 //   );
 // };
 
-const Counter = () => {
-  const [count, setCount] = React.useState(0);
-  React.useEffect(() => {
-    const t = setInterval(() => setCount((c) => c + 1), 1000);
-    return () => {
-      clearInterval(t);
-    };
-  }, []);
-  return <Center>{count}</Center>;
-};
+// const Counter = () => {
+//   const [count, setCount] = React.useState(0);
+//   React.useEffect(() => {
+//     const t = setInterval(() => setCount((c) => c + 1), 1000);
+//     return () => {
+//       clearInterval(t);
+//     };
+//   }, []);
+//   return <Center>{count}</Center>;
+// };
 
 /**
  * Default page of module
@@ -79,30 +85,30 @@ const Counter = () => {
 export const MainPage = () => {
   const { t } = useModule();
 
-  const tabs: ITabsProps[] = [
-    {
-      id: "1",
-      label: "Preview NAV",
-      content: <Center>1</Center>,
-      defaultActive: true,
-    },
-    {
-      id: "2",
-      label: "Portfolio",
-      content: <Counter />,
-      // disabled: true,
-    },
-    { id: "3", label: "Warnings", content: <Center>3</Center> },
-  ];
+  // const tabs: ITabsProps[] = [
+  //   {
+  //     id: "1",
+  //     label: "Preview NAV",
+  //     content: <Center>1</Center>,
+  //     defaultActive: true,
+  //   },
+  //   {
+  //     id: "2",
+  //     label: "Portfolio",
+  //     content: <Counter />,
+  //     // disabled: true,
+  //   },
+  //   { id: "3", label: "Warnings", content: <Center>3</Center> },
+  // ];
 
   // const { TabBar } = useTabs([...tabs]);
-  const openSide = () =>
-    setAppSideDrawer({
-      caption: "Calculated nav",
-      heading: "FA Equity +",
-      toolbarContent: <div />,
-      tabs,
-    });
+  // const openSide = () =>
+  //   setAppSideDrawer({
+  //     caption: "Calculated nav",
+  //     heading: "FA Equity +",
+  //     toolbarContent: <div />,
+  //     tabs,
+  //   });
 
   // setTimeout(openSide, 100);
 
@@ -111,8 +117,8 @@ export const MainPage = () => {
       caption={"Test"}
       heading={t("moduleName")}
       toolbarContent={<Text variant="h4" value="Harmony" />}
-      actions={<ButtonPopover value="Open" onClick={openSide} spacing="sm" />}
-      tabs={tabs}
+      // actions={<ButtonPopover value="Open" onClick={openSide} spacing="sm" />}
+      children={<Redux />}
     />
   );
 };

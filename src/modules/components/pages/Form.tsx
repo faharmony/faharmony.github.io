@@ -14,7 +14,7 @@ import {
   FormValuesWatcher,
 } from "@faharmony/form";
 import { Button, Divider } from "@faharmony/components";
-import { Box } from "@faharmony/theme";
+import { Box } from "@faharmony/components";
 import { PageView } from "@faharmony/views";
 
 type FormInputs = {

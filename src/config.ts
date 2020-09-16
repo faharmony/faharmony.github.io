@@ -26,7 +26,8 @@ import {
  * If the Module Id is not in the list, the app
  * will not include the Module.
  */
-export const ModulesIdList = ["welcome", "components", "logo"];
+// export const ModulesIdList = ["welcome", "components", "logo"];
+export const ModulesIdList = ["components"];
 
 /**
  * App icon visible in Landing page.
