@@ -9,7 +9,7 @@ import {
   Toggle,
   NumberField,
 } from "@faharmony/form";
-import { Box } from "@faharmony/components";
+import { Box } from "@faharmony/theme";
 import { Button, Divider } from "@faharmony/components";
 import { PageView } from "@faharmony/views";
 

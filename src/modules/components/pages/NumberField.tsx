@@ -1,6 +1,6 @@
 import React from "react";
 import { NumberField, INumberFieldProps } from "@faharmony/form";
-import { Box } from "@faharmony/components";
+import { Box } from "@faharmony/theme";
 import { Text } from "@faharmony/components";
 import { faHeart } from "@faharmony/icons";
 import { SMLType } from "@faharmony/theme";

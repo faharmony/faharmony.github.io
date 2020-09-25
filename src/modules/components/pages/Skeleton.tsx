@@ -1,5 +1,5 @@
 import React from "react";
-import { Box } from "@faharmony/components";
+import { Box } from "@faharmony/theme";
 import { Skeleton } from "@faharmony/components";
 
 export default () => (

@@ -1,8 +1,8 @@
 import React from "react";
 import { TextField, ITextFieldProps } from "@faharmony/form";
-import { Text, Box } from "@faharmony/components";
+import { Text } from "@faharmony/components";
 import { faHeart } from "@faharmony/icons";
-import { SMLType } from "@faharmony/theme";
+import { SMLType, Box } from "@faharmony/theme";
 import { PageView } from "@faharmony/views";
 
 const sizes: SMLType[] = ["sm", "md", "lg"];

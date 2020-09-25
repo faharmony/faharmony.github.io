@@ -4,13 +4,12 @@ import React from "react";
 import { useModule } from "@faharmony/module";
 import { PageView } from "@faharmony/views";
 // import { ITabsProps } from "@faharmony/navigation";
-// import { Box, Center } from "@faharmony/theme";
+import { Box } from "@faharmony/theme";
 import {
   Text,
   Button,
   RingLoader,
   // ButtonPopover,
-  Box,
 } from "@faharmony/components";
 import { useDispatch, useModuleState } from "@faharmony/state";
 import { ModuleActions, IState } from "../state";
