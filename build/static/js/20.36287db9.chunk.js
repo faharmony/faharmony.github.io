@@ -1,0 +1,2 @@
+(this.webpackJsonpplayground=this.webpackJsonpplayground||[]).push([[20],{238:function(e,a,n){"use strict";n.r(a);var t=n(0),r=n.n(t),c=n(1),o=n(78),i=n(7),l={heading:"Apple Inc.",body:"Market price date cannot be older than today.",icon:n(14).B,iconColor:c.e.colorTint("warning")},d=Array(10).fill(l);a.default=()=>r.a.createElement(o.c,{heading:"Card"},r.a.createElement(c.b,{direction:"column"},d.map((e,a)=>r.a.createElement(i.d,Object.assign({key:a},e)))))}}]);
+//# sourceMappingURL=20.36287db9.chunk.js.map

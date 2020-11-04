@@ -23,6 +23,7 @@ export const components = [
   "Accordion",
   "Breadcrumb",
   "Button",
+  "Card",
   "Form",
   "Form2",
   "Menu",
