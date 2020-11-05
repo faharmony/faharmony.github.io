@@ -29,6 +29,7 @@ export const components = [
   "Menu",
   "NumberField",
   "Skeleton",
+  "SummaryView",
   "TextField",
   "Table",
 ];
