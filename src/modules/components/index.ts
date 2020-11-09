@@ -8,7 +8,8 @@
  * @copyright FA Solutions Oy
  */
 
-import { components, MainPage } from "./pages";
+import { lazy } from "react";
+import { components } from "./pages";
 import { faCubes } from "@faharmony/icons";
 import { IModuleProps } from "@faharmony/module";
 // import { appRoles } from "../../config";
@@ -32,7 +33,7 @@ const ModuleIcon: IModuleProps["icon"] = faCubes;
 const subModules: IModuleProps["subModules"] = components.map((c) => ({
   id: c,
   label: c,
-  component: require(`./pages/${c}`).default,
+  component: lazy(() => import(`./pages/${c}`)),
 }));
 
 /**
@@ -45,6 +46,6 @@ export default {
   label: "Components",
   roles: ModuleRoles,
   icon: ModuleIcon,
-  component: MainPage,
+  component: lazy(() => import("./pages/MainPage")),
   subModules,
 } as IModuleProps;

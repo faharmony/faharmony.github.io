@@ -26,3 +26,5 @@ export const MainPage = () => {
     ></PageView>
   );
 };
+
+export default MainPage;
