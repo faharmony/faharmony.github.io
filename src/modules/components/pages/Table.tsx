@@ -106,8 +106,10 @@ const TableView = () => {
   );
 };
 
-export default () => (
+const Page = () => (
   <PageView heading="Table">
     <TableView />
   </PageView>
 );
+
+export default Page;

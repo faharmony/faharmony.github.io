@@ -3,7 +3,7 @@ import { PageView } from "@faharmony/views";
 import { Breadcrumbs, IBreadcrumb } from "@faharmony/navigation";
 import { faFolder, faFile } from "@faharmony/icons";
 
-export default () => {
+const Page = () => {
   const onClick = () => {};
   const crumbs: IBreadcrumb[] = [
     {
@@ -30,3 +30,5 @@ export default () => {
     />
   );
 };
+
+export default Page;

@@ -3,7 +3,7 @@ import { Menu, IMenuPrimaryItem } from "@faharmony/navigation";
 import { IIconButtonObject } from "@faharmony/components";
 import { faPlus, faSync } from "@faharmony/icons";
 
-export default () => {
+const Page = () => {
   const [selectedId, setSelectedId] = React.useState<string>("");
 
   const actions: IIconButtonObject[] = [
@@ -62,3 +62,5 @@ export default () => {
     />
   );
 };
+
+export default Page;

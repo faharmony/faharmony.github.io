@@ -8,7 +8,7 @@ import {
 } from "@faharmony/components";
 import { faBell, faSquare } from "@faharmony/icons";
 
-export default () => {
+const Page = () => {
   const iconButton: IIconButtonObject = {
     id: "notify",
     icon: faSquare,
@@ -65,3 +65,5 @@ export default () => {
     </PageView>
   );
 };
+
+export default Page;

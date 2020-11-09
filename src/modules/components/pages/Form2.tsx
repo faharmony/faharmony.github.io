@@ -71,10 +71,10 @@ const FormNode = () => {
   );
 };
 
-export default () => {
-  return (
-    <PageView heading="Form" overflow="scroll">
-      <FormNode />
-    </PageView>
-  );
-};
+const Page = () => (
+  <PageView heading="Form" overflow="scroll">
+    <FormNode />
+  </PageView>
+);
+
+export default Page;

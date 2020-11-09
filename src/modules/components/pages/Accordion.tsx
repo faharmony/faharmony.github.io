@@ -23,8 +23,10 @@ const panels: IAccordionPanelProps[] = [
   },
 ];
 
-export default () => (
+const Page = () => (
   <PageView heading="Accordion">
     <Accordion panels={panels} />
   </PageView>
 );
+
+export default Page;

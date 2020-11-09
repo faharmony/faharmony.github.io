@@ -2,7 +2,7 @@ import React from "react";
 import { Box } from "@faharmony/theme";
 import { Skeleton } from "@faharmony/components";
 
-export default () => (
+const Page = () => (
   <Box
     style={{
       padding: "20px",
@@ -16,3 +16,5 @@ export default () => (
     <Skeleton width="60px" height="60px" circle />
   </Box>
 );
+
+export default Page;

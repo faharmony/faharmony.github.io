@@ -26,25 +26,25 @@ const options: { [name: string]: INumberFieldProps } = {
   },
 };
 
-export default () => {
-  return (
-    <PageView heading="TextField" overflow="auto">
-      <Box direction="column">
-        <Box justifyContent="space-evenly">
-          <Text value="Type" truncate variant="h5" align="right" />
-          <Text value="Small (sm)" truncate variant="h5" />
-          <Text value="Medium (md, default)" truncate variant="h5" />
-          <Text value="Large (lg)" truncate variant="h5" />
-        </Box>
-        {Object.entries(options).map(([name, o]) => (
-          <Box key={name} justifyContent="space-evenly" width="100%">
-            <Text truncate value={name} align="right" />
-            {sizes.map((s) => (
-              <NumberField spacing={s} key={name + s} {...o} ref={null} />
-            ))}
-          </Box>
-        ))}
+const Page = () => (
+  <PageView heading="TextField" overflow="auto">
+    <Box direction="column">
+      <Box justifyContent="space-evenly">
+        <Text value="Type" truncate variant="h5" align="right" />
+        <Text value="Small (sm)" truncate variant="h5" />
+        <Text value="Medium (md, default)" truncate variant="h5" />
+        <Text value="Large (lg)" truncate variant="h5" />
       </Box>
-    </PageView>
-  );
-};
+      {Object.entries(options).map(([name, o]) => (
+        <Box key={name} justifyContent="space-evenly" width="100%">
+          <Text truncate value={name} align="right" />
+          {sizes.map((s) => (
+            <NumberField spacing={s} key={name + s} {...o} ref={null} />
+          ))}
+        </Box>
+      ))}
+    </Box>
+  </PageView>
+);
+
+export default Page;

@@ -13,7 +13,7 @@ const code = `// Example
 </SummaryView>
 `;
 
-export default () => {
+const Page = () => {
   const [open, setOpen] = React.useState(true);
   return (
     <PageView
@@ -40,3 +40,5 @@ export default () => {
     </PageView>
   );
 };
+
+export default Page;

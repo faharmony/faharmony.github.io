@@ -12,14 +12,14 @@ const card: ICardProps = {
 };
 const cards: ICardProps[] = Array(10).fill(card);
 
-export default () => {
-  return (
-    <PageView heading="Card">
-      <Box direction="column">
-        {cards.map((card, index) => (
-          <Card key={index} {...card} />
-        ))}
-      </Box>
-    </PageView>
-  );
-};
+const Page = () => (
+  <PageView heading="Card">
+    <Box direction="column">
+      {cards.map((card, index) => (
+        <Card key={index} {...card} />
+      ))}
+    </Box>
+  </PageView>
+);
+
+export default Page;
