@@ -32,4 +32,5 @@ export const components = [
   "SummaryView",
   "TextField",
   "Table",
+  "Tabs",
 ];
