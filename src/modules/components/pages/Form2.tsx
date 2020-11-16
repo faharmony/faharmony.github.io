@@ -20,10 +20,16 @@ type FormInputs = {
 };
 
 const defaultValues: Partial<FormInputs> = {
-  date: new Date("2020-09-20"),
+  date: new Date(),
   toggle: true,
   number: 1343400.234,
 };
+
+const enabledDates = [
+  new Date(),
+  new Date("2020-11-12"),
+  new Date("2020-11-29"),
+];
 
 const FormNode = () => {
   const formMethods = useForm<FormInputs>({
@@ -37,7 +43,7 @@ const FormNode = () => {
     <Form formMethods={formMethods} style={{ width: "100%" }} direction="row">
       <Box direction="column" width={"260px"} alignItems="start">
         <FormControl label="Date">
-          <DatePicker name="date" />
+          <DatePicker name="date" enabledDates={enabledDates} />
         </FormControl>
         <FormControl label="Toggle">
           <Toggle name="toggle" ref={register} label="Hello world" />
