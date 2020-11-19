@@ -1,6 +1,6 @@
 import React from "react";
 import { Combobox, IComboboxProps } from "@faharmony/form";
-import { Theme } from "@faharmony/theme";
+import { theme } from "@faharmony/theme";
 import { Text } from "@faharmony/components";
 
 /**
@@ -10,7 +10,7 @@ export const ComboBox = (props: IComboboxProps) => {
   return (
     <div>
       {props.label && (
-        <div style={{ marginLeft: Theme.spacing("sm") }}>
+        <div style={{ marginLeft: theme.spacing.sm }}>
           <Text value={props.label} variant="h5" />
         </div>
       )}

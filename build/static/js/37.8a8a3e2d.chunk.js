@@ -1,0 +1,2 @@
+(this.webpackJsonpplayground=this.webpackJsonpplayground||[]).push([[37],{237:function(n,e,t){"use strict";t.r(e);var c=t(6),r=t(319),o=(t(0),t(1)),a=t(78),i=t(7),d={heading:"Apple Inc.",body:"Market price date cannot be older than today.",icon:t(14).B,iconColor:o.k.color.text.warning},l=Array(10).fill(d);e.default=function(){return Object(r.jsx)(a.c,{heading:"Card",children:Object(r.jsx)(o.b,{direction:"column",children:l.map((function(n,e){return Object(r.jsx)(i.d,Object(c.a)({},n),e)}))})})}}}]);
+//# sourceMappingURL=37.8a8a3e2d.chunk.js.map

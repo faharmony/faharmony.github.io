@@ -1,6 +1,6 @@
 import React from "react";
 import { SummaryView } from "@faharmony/views";
-import { Theme, Box } from "@faharmony/theme";
+import { theme, Box } from "@faharmony/theme";
 
 import { useModuleState, useDispatch } from "@faharmony/state";
 import { insertQueryParam } from "@faharmony/router";
@@ -74,7 +74,7 @@ export const ConfigDrawer = () => {
       <Box
         direction="column"
         alignItems="normal"
-        style={{ padding: Theme.spacing() }}
+        style={{ padding: theme.spacing.md }}
       >
         <ComboBox
           label="Variant"

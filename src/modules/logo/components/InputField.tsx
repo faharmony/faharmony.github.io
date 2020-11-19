@@ -1,5 +1,5 @@
 import React from "react";
-import { Theme, styled } from "@faharmony/theme";
+import { theme, styled } from "@faharmony/theme";
 import { Text } from "@faharmony/components";
 
 export interface IInputFieldProps {
@@ -25,7 +25,7 @@ export const InputField = (props: IInputFieldProps) => {
   return (
     <div>
       {label && (
-        <div style={{ marginLeft: Theme.spacing("sm") }}>
+        <div style={{ marginLeft: theme.spacing.sm }}>
           <Text value={label} variant="h5" />
         </div>
       )}
