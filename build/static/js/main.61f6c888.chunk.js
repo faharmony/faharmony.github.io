@@ -1,2 +1,0 @@
-(this.webpackJsonpplayground=this.webpackJsonpplayground||[]).push([[0],{4:function(e,t,n){"use strict";n.r(t);var r=n(2),c=n(3);Object(c.render)(Object(r.jsx)("div",{children:"SIDDHANT"}),document.getElementById("root"))}},[[4,1,2]]]);
-//# sourceMappingURL=main.61f6c888.chunk.js.map
