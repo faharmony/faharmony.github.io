@@ -1,2 +1,0 @@
-(this.webpackJsonpplayground=this.webpackJsonpplayground||[]).push([[35],{235:function(o,n,c){"use strict";c.r(n);var e=c(319),t=(c(0),c(78)),i=c(66),l=c(14);n.default=function(){var o=function(){},n=[{id:"root",label:"Root",onClick:o},{id:"folder",label:"Folder",icon:l.G,onClick:o},{id:"file",label:"File",icon:l.D}];return Object(e.jsx)(t.c,{heading:"Breadcrumbs",toolbarContent:Object(e.jsx)(i.a,{crumbs:[].concat(n,n)})})}}}]);
-//# sourceMappingURL=35.3b5ab150.chunk.js.map
