@@ -87,6 +87,6 @@ const appConfig: IAppConfig = {
     multilingual: i18n,
     devMode,
     enableNavigationFilter,
-    _harmony: false,
+    _harmony: true,
   });
 })();
