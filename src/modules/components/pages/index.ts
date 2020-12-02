@@ -35,4 +35,5 @@ export const components = [
   "TextField",
   "Table",
   "Tabs",
+  "Tags",
 ];
