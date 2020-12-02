@@ -10,7 +10,7 @@ const sizes: SMLType[] = ["sm", "md", "lg"];
 
 const options: { [name: string]: INumberFieldProps } = {
   default: {},
-  withText: { defaultValue: 123.234034 },
+  withText: { defaultValue: 123.234034, precision: 4 },
   withPrefixIcon: { placeholder: "Favorite hobby", prefixIcon: faHeart },
   readOnly: { defaultValue: 123.123123, readOnly: true },
   disabled: { defaultValue: 235.64465, disabled: true },

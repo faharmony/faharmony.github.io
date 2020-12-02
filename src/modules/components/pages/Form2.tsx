@@ -14,13 +14,15 @@ import { Button, Divider } from "@faharmony/components";
 import { PageView } from "@faharmony/views";
 
 type FormInputs = {
-  date: Date;
+  testDate: Date;
+  realDate: Date;
   toggle: boolean;
   number: number;
 };
 
 const defaultValues: Partial<FormInputs> = {
-  date: new Date(),
+  testDate: new Date(),
+  realDate: new Date("2020-12-12"),
   toggle: true,
   number: 1343400.234,
 };
@@ -43,7 +45,18 @@ const FormNode = () => {
     <Form formMethods={formMethods} style={{ width: "100%" }} direction="row">
       <Box direction="column" width={"260px"} alignItems="start">
         <FormControl label="Date">
-          <DatePicker name="date" enabledDates={enabledDates} />
+          <DatePicker
+            name="testDate"
+            enabledDates={enabledDates}
+            onChange={console.log}
+          />
+        </FormControl>
+        <FormControl label="Date2">
+          <DatePicker
+            name="realDate"
+            onChange={console.log}
+            defaultValue={new Date()}
+          />
         </FormControl>
         <FormControl label="Toggle">
           <Toggle name="toggle" ref={register} label="Hello world" />
