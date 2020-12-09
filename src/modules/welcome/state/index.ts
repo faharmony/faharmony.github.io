@@ -1,5 +1,9 @@
-import { createModuleState } from "@faharmony/state";
-import { initialState } from "./store";
+import {
+  createModuleState,
+  createUseModuleStateHook,
+  useDispatch,
+} from "@faharmony/state";
+import { initialState, IState } from "./store";
 import * as reducers from "./reducers";
 
 const ModuleId = "welcome";
@@ -12,5 +16,10 @@ const ModuleState = createModuleState({
 
 const { actions: ModuleActions } = ModuleState;
 
-export { ModuleState, ModuleActions };
+const {
+  useModuleState,
+  useModuleStateSelector,
+} = createUseModuleStateHook<IState>(ModuleId);
+export { useDispatch };
+export { ModuleState, ModuleActions, useModuleState, useModuleStateSelector };
 export * from "./store";

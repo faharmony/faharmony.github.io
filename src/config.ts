@@ -27,7 +27,7 @@ import {
  * will not include the Module.
  */
 // export const ModulesIdList = ["welcome", "components", "logo"];
-export const ModulesIdList = ["components"];
+export const ModulesIdList = ["components", "welcome"];
 
 /**
  * App icon visible in Landing page.

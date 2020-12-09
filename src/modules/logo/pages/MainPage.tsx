@@ -5,12 +5,11 @@ import { useModuleTranslation } from "@faharmony/module";
 import { Box } from "@faharmony/theme";
 import { Button } from "@faharmony/components";
 import { useLocation } from "@faharmony/router";
-import { useModuleState, useDispatch } from "@faharmony/state";
-import { IModuleState, ModuleActions } from "../state";
+import { ModuleActions, useModuleState, useDispatch } from "../state";
 import { ConfigDrawer, Display } from "../components";
 
 const PageActions = () => {
-  const state = useModuleState<IModuleState>();
+  const state = useModuleState();
   const dispatch = useDispatch();
   return (
     <Box>

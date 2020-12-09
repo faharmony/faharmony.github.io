@@ -1,41 +1,45 @@
 /** i18n-ally useTranslation("welcome") */
 import React from "react";
-// import { setAppSideDrawer } from "@faharmony/core";
 import { useModule } from "@faharmony/module";
 import { PageView } from "@faharmony/views";
-// import { ITabsProps } from "@faharmony/navigation";
 import { Box } from "@faharmony/theme";
+import { Text, Button, RingLoader } from "@faharmony/components";
 import {
-  Text,
-  Button,
-  RingLoader,
-  // ButtonPopover,
-} from "@faharmony/components";
-import { useDispatch, useModuleState } from "@faharmony/state";
-import { ModuleActions, IState } from "../state";
+  ModuleActions,
+  useModuleState,
+  useModuleStateSelector,
+  useDispatch,
+} from "../state";
 
 export const Redux = () => {
   const { t } = useModule();
   const dispatch = useDispatch();
-  const state = useModuleState<IState>();
+  const state2 = useModuleStateSelector((state) => state.loading);
+  const state = useModuleState();
   return (
-    <Box justifyContent="flex-start">
-      <Box width="auto">
-        <Button
-          value="Start"
-          onClick={() => dispatch(ModuleActions.startLoading())}
-        />
-        <Button
-          value="Stop"
-          onClick={() => dispatch(ModuleActions.stopLoading())}
-        />
-        <Button
-          value="Toggle"
-          onClick={() => dispatch(ModuleActions.setLoading(!state.loading))}
-        />
+    <Box direction="column">
+      <Box justifyContent="flex-start">
+        <Box width="auto">
+          <Button
+            value="Start"
+            onClick={() => dispatch(ModuleActions.startLoading())}
+          />
+          <Button
+            value="Stop"
+            onClick={() => dispatch(ModuleActions.stopLoading())}
+          />
+          <Button
+            value="Toggle"
+            onClick={() => dispatch(ModuleActions.setLoading(!state.loading))}
+          />
+        </Box>
+        {state.loading && <RingLoader />}
+        <Text value={t("loading")} />
       </Box>
-      {state.loading && <RingLoader />}
-      <Text value={t("loading")} />
+      <pre>
+        {JSON.stringify(state, null, 2)}
+        {JSON.stringify(state2, null, 2)}
+      </pre>
     </Box>
   );
 };

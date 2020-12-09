@@ -1,14 +1,13 @@
 import React from "react";
 import { Accordion, Text, Preloader } from "@faharmony/components";
 
-import { useModuleState } from "@faharmony/state";
-import { IModuleState } from "../state";
+import { useModuleState } from "../state";
 
 /**
  * @author Siddhant Gupta <siddhant@fasolutions.com>
  */
 export const Display = () => {
-  const state = useModuleState<IModuleState>();
+  const state = useModuleState();
   //   const dispatch = useDispatch();
   if (state.loading) return <Preloader />;
   else

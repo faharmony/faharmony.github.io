@@ -1,11 +1,9 @@
 import React from "react";
 import { SummaryView } from "@faharmony/views";
 import { theme, Box } from "@faharmony/theme";
-
-import { useModuleState, useDispatch } from "@faharmony/state";
 import { insertQueryParam } from "@faharmony/router";
 
-import { IModuleState, ModuleActions } from "../state";
+import { useModuleState, useDispatch, ModuleActions } from "../state";
 import { ComboBox } from "./ComboBox";
 import { InputField } from "./InputField";
 
@@ -37,7 +35,7 @@ const getCurrentOption = (
 const ColorPicker = ({ onChange }: { onChange: (o: Obj) => void }) => {
   const {
     config: { color },
-  } = useModuleState<IModuleState>();
+  } = useModuleState();
   const [value, setValue] = React.useState(color.primary);
   const handleChange = (val: string) => {
     setValue(val);
@@ -51,7 +49,7 @@ const ColorPicker = ({ onChange }: { onChange: (o: Obj) => void }) => {
  */
 export const ConfigDrawer = () => {
   const dispatch = useDispatch();
-  const { isConfigDrawerOpen, config } = useModuleState<IModuleState>();
+  const { isConfigDrawerOpen, config } = useModuleState();
   const { variant, icon } = config;
 
   const handleChange = (

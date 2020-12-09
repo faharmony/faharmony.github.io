@@ -18,23 +18,36 @@
  * ModuleId changes.
  */
 
-import { createModuleState } from "@faharmony/state";
-import initialState from "./initialState";
+import {
+  createModuleState,
+  createUseModuleStateHook,
+  useDispatch,
+} from "@faharmony/state";
+import initialState, { IModuleState } from "./initialState";
 import * as reducers from "./reducers";
+
+const ModuleID = "logo";
 
 /** Create Module's state using wrapper of createSlice(). */
 const ModuleState = createModuleState({
   /** name should be exact same as Module ID. */
-  name: "logo",
+  name: ModuleID,
   /** Initial value of Module's state. */
   initialState,
   /** Object of case reducers to modify Module's state. */
   reducers,
 });
 
+const {
+  useModuleState,
+  useModuleStateSelector,
+} = createUseModuleStateHook<IModuleState>(ModuleID);
+
 // Extract `actions` from Module's state
 const { actions: ModuleActions } = ModuleState;
 // Export state for Module config and actions for dispatch usage.
-export { ModuleState, ModuleActions };
+export { ModuleState, ModuleActions, useModuleState, useModuleStateSelector };
 // Export State type definition
 export * from "./initialState";
+
+export { useDispatch };
