@@ -51,17 +51,25 @@ const FormNode = () => {
             onChange={console.log}
           />
         </FormControl>
-        <FormControl label="Date2">
+        <FormControl label="Date (readonly)">
           <DatePicker
             name="realDate"
             onChange={console.log}
             defaultValue={new Date()}
+            readonly
           />
         </FormControl>
-        <FormControl label="Toggle">
-          <Toggle name="toggle" ref={register} label="Hello world" />
-        </FormControl>
-        <Toggle disabled />
+        <Box>
+          <FormControl label="Toggle (enabled)">
+            <Toggle name="toggle" ref={register} label="Hello world" />
+          </FormControl>
+          <FormControl label="Toggle (disabled)">
+            <Box>
+              <Toggle disabled />
+              <Toggle disabled checked={true} />
+            </Box>
+          </FormControl>
+        </Box>
         <FormControl label="NumberField">
           <NumberField name="number" ref={register} prefixText="EUR" />
         </FormControl>
