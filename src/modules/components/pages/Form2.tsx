@@ -10,7 +10,7 @@ import {
   NumberField,
 } from "@faharmony/form";
 import { Box } from "@faharmony/theme";
-import { Button, Divider } from "@faharmony/components";
+import { Button, Divider, InfoBox } from "@faharmony/components";
 import { PageView } from "@faharmony/views";
 
 type FormInputs = {
@@ -51,12 +51,12 @@ const FormNode = () => {
             onChange={console.log}
           />
         </FormControl>
-        <FormControl label="Date (readonly)">
+        <FormControl label="Date (disabled)">
           <DatePicker
             name="realDate"
             onChange={console.log}
             defaultValue={new Date()}
-            readonly
+            disabled
           />
         </FormControl>
         <Box>
@@ -101,6 +101,25 @@ const FormNode = () => {
 const Page = () => (
   <PageView heading="Form" overflow="scroll">
     <FormNode />
+    <Box style={{ width: "200px" }}>
+      <FormControl label="Date (readonly)">
+        <DatePicker
+          name="realDate"
+          onChange={console.log}
+          value={new Date()}
+          readonly
+        />
+      </FormControl>
+
+      <InfoBox field="Date (readonly)">
+        <DatePicker
+          name="realDate"
+          onChange={console.log}
+          value={new Date()}
+          readonly
+        />
+      </InfoBox>
+    </Box>
   </PageView>
 );
 
