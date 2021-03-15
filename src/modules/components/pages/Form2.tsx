@@ -7,7 +7,7 @@ import {
   DatePicker,
   FormControl,
   Toggle,
-  NumberField,
+  // NumberField,
 } from "@faharmony/form";
 import { Box } from "@faharmony/theme";
 import { Button, Divider, InfoBox } from "@faharmony/components";
@@ -29,8 +29,8 @@ const defaultValues: Partial<FormInputs> = {
 
 const enabledDates = [
   new Date(),
-  new Date("2020-11-12"),
-  new Date("2020-11-29"),
+  new Date("2021-03-12"),
+  new Date("2021-03-29"),
 ];
 
 const FormNode = () => {
@@ -45,17 +45,13 @@ const FormNode = () => {
     <Form formMethods={formMethods} style={{ width: "100%" }} direction="row">
       <Box direction="column" width={"260px"} alignItems="start">
         <FormControl label="Date">
-          <DatePicker
-            name="testDate"
-            enabledDates={enabledDates}
-            onChange={console.log}
-          />
+          <DatePicker name="testDate" includeDates={enabledDates} />
         </FormControl>
         <FormControl label="Date (disabled)">
           <DatePicker
             name="realDate"
             onChange={console.log}
-            defaultValue={new Date()}
+            includeDates={[new Date()]}
             disabled
           />
         </FormControl>
@@ -70,9 +66,9 @@ const FormNode = () => {
             </Box>
           </FormControl>
         </Box>
-        <FormControl label="NumberField">
+        {/* <FormControl label="NumberField">
           <NumberField name="number" ref={register} prefixText="EUR" />
-        </FormControl>
+        </FormControl> */}
         <Divider />
         <Box justifyContent="space-between">
           <Box width="auto">
@@ -101,22 +97,21 @@ const FormNode = () => {
 const Page = () => (
   <PageView heading="Form" overflow="scroll">
     <FormNode />
-    <Box style={{ width: "200px" }}>
+    <Box style={{ width: "300px" }}>
       <FormControl label="Date (readonly)">
         <DatePicker
           name="realDate"
           onChange={console.log}
-          value={new Date()}
-          readonly
+          selected={new Date()}
+          readOnly
         />
       </FormControl>
 
-      <InfoBox field="Date (readonly)">
+      <InfoBox field="Date ">
         <DatePicker
           name="realDate"
-          onChange={console.log}
-          value={new Date()}
-          readonly
+          onDateChange={console.log}
+          selected={new Date()}
         />
       </InfoBox>
     </Box>

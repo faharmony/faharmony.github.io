@@ -3,7 +3,7 @@ import {
   Form,
   FormControl,
   TextField,
-  NumberField,
+  // NumberField,
   Checkbox,
   Combobox,
   RadioGroup,
@@ -119,13 +119,13 @@ const FormNode = () => {
             direction="row"
           />
         </FormControl>
-        <FormControl label="Number">
+        {/* <FormControl label="Number">
           <NumberField
             placeholder="0.00"
             error={!!errors.number}
             name="number"
           />
-        </FormControl>
+        </FormControl> */}
 
         <Divider />
         <Box justifyContent="space-between">
