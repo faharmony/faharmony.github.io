@@ -81,13 +81,13 @@ const TableView = () => {
       id: "log",
       icon: faTerminal,
       tooltip: "Log",
-      onClick: () => console.log(rowObject),
+      onClick: () => console.log("hello", rowObject),
     },
   ];
 
   return (
     // <PageView heading="Table">
-    <Table<IDataProps>
+    <Table
       tableHeading="Table"
       data={tableData}
       columns={tableColumns}
@@ -98,7 +98,10 @@ const TableView = () => {
       enableFiltering
       enablePagination
       enableMultipleRowSelect
-      enableColumnVisibilitySelector
+      columnVisibilitySelector={{
+        handleChange: (hiddenColumnIds) => console.log(hiddenColumnIds),
+        defaultHiddenColumnsIds: ["name"],
+      }}
       exportTable
       isLoading={!showContent}
     />
