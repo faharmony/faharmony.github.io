@@ -1,0 +1,2 @@
+(this.webpackJsonpplayground=this.webpackJsonpplayground||[]).push([[36],{325:function(e,n,t){"use strict";t.r(n),t.d(n,"query",(function(){return i}));var r,c=t(463),u=t(37),i=Object(u.i)(r||(r=Object(c.a)(["\n    {}\n"])))},463:function(e,n,t){"use strict";function r(e,n){return n||(n=e.slice(0)),Object.freeze(Object.defineProperties(e,{raw:{value:Object.freeze(n)}}))}t.d(n,"a",(function(){return r}))}}]);
+//# sourceMappingURL=36.1ff500de.chunk.js.map
