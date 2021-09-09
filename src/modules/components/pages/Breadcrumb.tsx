@@ -1,4 +1,3 @@
-import React from "react";
 import { PageView } from "@faharmony/views";
 import { Breadcrumbs, IBreadcrumb } from "@faharmony/navigation";
 import { faFolder, faFile } from "@faharmony/icons";
