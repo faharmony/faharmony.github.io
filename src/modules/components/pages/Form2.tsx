@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Form,
   useForm,
@@ -7,7 +6,7 @@ import {
   DatePicker,
   FormControl,
   Toggle,
-  // NumberField,
+  TextField,
 } from "@faharmony/form";
 import { Box } from "@faharmony/theme";
 import { Button, Divider, InfoBox } from "@faharmony/components";
@@ -66,9 +65,9 @@ const FormNode = () => {
             </Box>
           </FormControl>
         </Box>
-        {/* <FormControl label="NumberField">
-          <NumberField name="number" ref={register} prefixText="EUR" />
-        </FormControl> */}
+        <FormControl label="NumberField">
+          <TextField name="number" ref={register} prefixText="EUR" />
+        </FormControl>
         <Divider />
         <Box justifyContent="space-between">
           <Box width="auto">

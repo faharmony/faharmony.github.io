@@ -3,157 +3,250 @@ import {
   Form,
   FormControl,
   TextField,
-  // NumberField,
   Checkbox,
   Combobox,
-  RadioGroup,
+  Button,
+  DatePicker,
+  Toggle,
   useForm,
-  resetFormValues,
+  useFormContext,
+  useFormDatePickerProps,
+} from "@faharmony/form";
+import { Box } from "@faharmony/theme";
+import { formatDate } from "@faharmony/locale";
+import type {
   ComboboxOptionType,
   ComboboxOptionsType,
-  FormValuesWatcher,
+  SubmitHandler,
 } from "@faharmony/form";
-import { Button, Divider } from "@faharmony/components";
-import { Box } from "@faharmony/theme";
-import { PageView } from "@faharmony/views";
+import type { FC } from "react";
 
-type FormInputs = {
+interface UserFormInputs {
+  fullName?: string;
   username: string;
   password: string;
-  env: ComboboxOptionType;
-  roles: ComboboxOptionType;
-  number: number;
-  env2: string;
-  remember: boolean;
+  dob: string;
+  roles: ComboboxOptionType[];
+  locale?: ComboboxOptionType;
+  darkMode?: boolean;
+  terms: boolean;
+  privacy: boolean;
+}
+
+const userFormDefaultValues: Partial<UserFormInputs> = {
+  fullName: "",
+  username: "Love",
+  password: "KesKus44tA",
+  dob: formatDate(new Date("01-01-2020")),
+  darkMode: false,
+  locale: { value: "en", label: "English" },
+  terms: false,
+  privacy: false,
 };
 
-const envOptions: ComboboxOptionsType = [
-  { label: "Develop", value: "dev" },
-  { label: "Master", value: "master" },
-  { label: "Test", value: "test", isDisabled: true },
-];
-
-const rolesOptions: ComboboxOptionsType = [
-  {
-    label: "roles",
-    options: [
-      { label: "Admin", value: "admin" },
-      { label: "BO", value: "back" },
-      { label: "Client", value: "front", isDisabled: true },
-    ],
-  },
-];
-
-const defaultValues: Partial<FormInputs> = {
-  username: "admin",
-  password: "ke5ku5TA",
-  remember: true,
-  number: 324.432,
-  env: envOptions[0] as any,
-  env2: "test",
-  roles: rolesOptions[0].options[0],
+const UserFormFullNameField: FC = () => {
+  const { register, errors } = useFormContext<UserFormInputs>();
+  return (
+    <FormControl label="Full name" errorText={errors.fullName?.message}>
+      <TextField
+        name="fullName"
+        placeholder="Enter full name"
+        error={!!errors.fullName}
+        ref={register}
+      />
+    </FormControl>
+  );
 };
 
-const FormNode = () => {
-  const formMethods = useForm<FormInputs>({
-    defaultValues,
-    criteriaMode: "all",
+const UserFormUsernameField: FC = () => {
+  const { register, errors } = useFormContext<UserFormInputs>();
+  return (
+    <FormControl
+      label="Username"
+      helpText="Login username for the user."
+      errorText={errors.username?.message}
+      required
+    >
+      <TextField
+        name="username"
+        placeholder="Enter username"
+        error={!!errors.username}
+        ref={register({
+          required: "Username is required",
+          minLength: { value: 4, message: "At least 4 characters required." },
+        })}
+      />
+    </FormControl>
+  );
+};
+
+const UserFormPasswordField: FC = () => {
+  const { register, errors } = useFormContext<UserFormInputs>();
+  const passwordPatternRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+  const passwordPatternMessage =
+    "Password should be minimum 8 characters long and contain at least one uppercase letter, one lowercase letter and one number.";
+  return (
+    <FormControl
+      label="Password"
+      helpText="Login password for the user."
+      errorText={errors.password?.message}
+      required
+    >
+      <TextField
+        name="password"
+        type="password"
+        placeholder="Enter password"
+        error={!!errors.password}
+        ref={register({
+          required: "Password is required",
+          pattern: {
+            value: passwordPatternRegex,
+            message: passwordPatternMessage,
+          },
+        })}
+      />
+    </FormControl>
+  );
+};
+
+const UserFormDOBField: FC = () => {
+  const formDatePickerProps = useFormDatePickerProps(
+    "dob",
+    userFormDefaultValues.dob
+  );
+  return (
+    <FormControl label="Date of birth" required>
+      <DatePicker {...formDatePickerProps} />
+    </FormControl>
+  );
+};
+
+const UserFormRolesField: FC = () => {
+  const rolesOptions: ComboboxOptionsType = [
+    { label: "Admin", value: "admin" },
+    { label: "BO", value: "back" },
+    { label: "Client", value: "front" },
+    { label: "Super Admin", value: "super", isDisabled: true },
+  ];
+  return (
+    <FormControl label="Roles" required>
+      <Combobox
+        name="roles"
+        required
+        placeholder="Select roles..."
+        options={rolesOptions}
+        isMulti
+      />
+    </FormControl>
+  );
+};
+
+const UserFormLocaleField: FC = () => {
+  const localeOptions: ComboboxOptionsType = [
+    { label: "English", value: "en" },
+    { label: "Suomi", value: "fi" },
+    { label: "Sverige", value: "sv" },
+  ];
+  return (
+    <FormControl label="Locale">
+      <Combobox
+        name="locale"
+        placeholder="Select locale..."
+        options={localeOptions}
+        isSearchable={false}
+      />
+    </FormControl>
+  );
+};
+
+const UserFormDarkModeField: FC = () => {
+  const { register } = useFormContext<UserFormInputs>();
+  return (
+    <FormControl label="Prefer dark mode?">
+      <Toggle name="darkMode" ref={register} />
+    </FormControl>
+  );
+};
+
+const UserFormTermsField: FC = () => {
+  const { register, errors } = useFormContext<UserFormInputs>();
+  return (
+    <>
+      <FormControl
+        label="Terms and conditions"
+        errorText={errors.terms?.message}
+      >
+        <Checkbox
+          name="terms"
+          label="Accept the terms and conditions."
+          ref={register({
+            required: "It is required to accept the terms and condition",
+          })}
+        />
+      </FormControl>
+      <FormControl errorText={errors.privacy?.message}>
+        <Checkbox
+          name="privacy"
+          label="Accept the privacy policy."
+          ref={register({
+            required: "It is required to accept the privacy policy",
+          })}
+        />
+      </FormControl>
+    </>
+  );
+};
+
+const UserFormButtons: FC = () => {
+  const { formState } = useFormContext<UserFormInputs>();
+  const { isSubmitting, isDirty } = formState;
+  return (
+    <Box direction="row-reverse">
+      <Button
+        type="submit"
+        variant="primary"
+        value="Add user"
+        loading={isSubmitting}
+      />
+      <Button
+        type="reset"
+        variant="secondary"
+        value="Reset form"
+        disabled={!isDirty}
+      />
+    </Box>
+  );
+};
+
+const UserForm: FC = () => {
+  const formMethods = useForm<UserFormInputs>({
+    defaultValues: userFormDefaultValues,
   });
-  const { register, control, handleSubmit, errors } = formMethods;
-  const onSubmit = handleSubmit(console.log);
+  const onSubmit: SubmitHandler<UserFormInputs> = React.useCallback(
+    async (values) => {
+      console.log(values);
+      // Dummy wait for 1s.
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+    },
+    []
+  );
 
   return (
-    <Form formMethods={formMethods} style={{ width: "100%" }} direction="row">
-      <Box direction="column" width={"260px"} alignItems="start">
-        <FormControl
-          label="Username"
-          helpText="Your login username."
-          errorText={errors.username?.message}
-          required
-        >
-          <TextField
-            ref={register({
-              required: "Username required",
-              minLength: { value: 4, message: "More than 3 characters." },
-            })}
-            name="username"
-            placeholder="Enter username..."
-            error={!!errors.username}
-          />
-        </FormControl>
-        <FormControl
-          label="Password"
-          required
-          errorText={errors.password?.message}
-        >
-          <TextField
-            name="password"
-            ref={register({ required: "Password required" })}
-            placeholder="Enter password..."
-            type="password"
-            error={!!errors.password}
-          />
-        </FormControl>
-        <FormControl label="Applicable roles">
-          <Combobox
-            name="roles"
-            placeholder="Select roles..."
-            options={rolesOptions}
-            isMulti
-          />
-        </FormControl>
-        <FormControl label="Environment">
-          <Combobox
-            name="env"
-            placeholder="Select environment..."
-            options={envOptions}
-            isSearchable={false}
-          />
-        </FormControl>
-
-        <FormControl label="Environment again...">
-          <RadioGroup
-            name="env2"
-            options={[...envOptions]}
-            ref={register}
-            direction="row"
-          />
-        </FormControl>
-        {/* <FormControl label="Number">
-          <NumberField
-            placeholder="0.00"
-            error={!!errors.number}
-            name="number"
-          />
-        </FormControl> */}
-
-        <Divider />
-        <Box justifyContent="space-between">
-          <Checkbox ref={register} name="remember" label="Keep me logged in" />
-          <Box width="auto">
-            <Button
-              value="Reset"
-              variant="secondary"
-              onClick={() => resetFormValues(control)}
-            />
-            <Button
-              type="submit"
-              value="Submit"
-              onClick={onSubmit}
-              variant="primary"
-            />
-          </Box>
-        </Box>
-      </Box>
-      <FormValuesWatcher />
+    <Form
+      formMethods={formMethods}
+      onSubmit={formMethods.handleSubmit(onSubmit)}
+    >
+      <UserFormFullNameField />
+      <UserFormUsernameField />
+      <UserFormPasswordField />
+      <UserFormDOBField />
+      <UserFormRolesField />
+      <UserFormLocaleField />
+      <UserFormDarkModeField />
+      <UserFormTermsField />
+      <UserFormButtons />
     </Form>
   );
 };
 
-const Page = () => (
-  <PageView heading="Form" overflow="scroll">
-    <FormNode />
-  </PageView>
-);
-
-export default Page;
+export default UserForm;

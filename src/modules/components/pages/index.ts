@@ -26,10 +26,11 @@ export const components = [
   "Card",
   "Editor",
   "Form",
+  "Form1",
   "Form2",
   "GraphiQL",
   "Menu",
-  "NumberField",
+
   "Skeleton",
   "SummaryView",
   "TextField",
