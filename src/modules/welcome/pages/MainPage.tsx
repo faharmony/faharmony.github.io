@@ -1,5 +1,5 @@
 /** i18n-ally useTranslation("welcome") */
-import React from "react";
+
 import { useModule } from "@faharmony/module";
 import { PageView } from "@faharmony/views";
 import { Box } from "@faharmony/theme";

@@ -1,4 +1,3 @@
-import React from "react";
 import { useModuleTranslation } from "@faharmony/module";
 import { PageView } from "@faharmony/views";
 import { Text } from "@faharmony/components";

@@ -1,4 +1,3 @@
-import React from "react";
 import { Center } from "@faharmony/theme";
 import { PageView } from "@faharmony/views";
 import { ITabsProps } from "@faharmony/navigation";

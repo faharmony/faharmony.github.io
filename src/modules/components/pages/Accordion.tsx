@@ -1,4 +1,3 @@
-import React from "react";
 import { PageView } from "@faharmony/views";
 import { Accordion, IAccordionPanelProps } from "@faharmony/components";
 

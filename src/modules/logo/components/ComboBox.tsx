@@ -1,4 +1,3 @@
-import React from "react";
 import { Combobox, IComboboxProps } from "@faharmony/form";
 import { theme } from "@faharmony/theme";
 import { Text } from "@faharmony/components";

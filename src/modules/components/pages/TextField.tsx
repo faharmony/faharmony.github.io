@@ -1,4 +1,3 @@
-import React from "react";
 import { TextField, ITextFieldProps } from "@faharmony/form";
 import { Text } from "@faharmony/components";
 import { faHeart } from "@faharmony/icons";

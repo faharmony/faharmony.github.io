@@ -1,4 +1,3 @@
-import React from "react";
 import { Box, theme } from "@faharmony/theme";
 import { PageView } from "@faharmony/views";
 import { Card, ICardProps } from "@faharmony/components";
