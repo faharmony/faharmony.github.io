@@ -210,6 +210,19 @@ const TableView = () => {
         handleVisibleColumns: (visibleColumnIds) =>
           console.log(visibleColumnIds),
         defaultHiddenColumnsIds: ["lastName"],
+        defaultVisibleColumnsOrder: [
+          "column1",
+          "column2",
+          "column3",
+          "column4",
+          "column5",
+          "name",
+          "age",
+          "category",
+          "country",
+          "address1",
+          "address2",
+        ],
       }}
       exportTable
       isLoading={!showContent}
