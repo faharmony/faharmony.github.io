@@ -22,6 +22,7 @@ export { MainPage } from "./MainPage";
 export const components = [
   "Accordion",
   "Breadcrumb",
+  "ButtonUpload",
   "Button",
   "Card",
   "Editor",
