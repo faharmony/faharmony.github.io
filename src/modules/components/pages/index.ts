@@ -31,6 +31,8 @@ export const components = [
   "Form2",
   "GraphiQL",
   "Menu",
+  "Step",
+  "Stepper",
 
   "Skeleton",
   "SummaryView",
