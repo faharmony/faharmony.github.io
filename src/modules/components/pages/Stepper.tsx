@@ -281,7 +281,7 @@ const Page = () => {
     currentStep: 0,
     formMethods: formMethods,
     handleSubmitButton: onSubmit,
-    editMode: true,
+    editMode: false,
   };
 
   return (
