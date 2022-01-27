@@ -2,13 +2,12 @@ import { useState, useCallback, FC } from "react";
 
 import { PageView, SummaryView } from "@faharmony/views";
 import { IStepProps, IStepperProps } from "@faharmony/navigation";
-import { Button } from "@faharmony/components";
+import { Button, useModal } from "@faharmony/components";
 import {
   FormControl,
   TextField,
   useForm,
   useFormContext,
-  FormValuesWatcher,
   SubmitHandler,
   resetFormValues,
 } from "@faharmony/form";
@@ -16,29 +15,129 @@ import { Box } from "@faharmony/theme";
 import { addToast } from "@faharmony/core";
 
 interface UserFormInputs {
-  fullName?: string;
+  firstName: string;
+  lastName: string;
+  address?: {};
+  phone?: string;
+  email?: string;
   username: string;
   password: string;
 }
 const userFormDefaultValues: Partial<UserFormInputs> = {
-  fullName: "",
-  username: "Harmony user",
-  password: "password 123",
+  firstName: "test",
+  lastName: "ssss",
+  address: {},
+  phone: "",
+  email: "",
+  username: "",
+  password: "",
 };
 
-const UserFormFullNameField: FC = () => {
+const UserFirstNameField: FC = () => {
   const { register, errors } = useFormContext<UserFormInputs>();
   return (
     <Box direction="column">
-      <FormControl label="Full name" errorText={errors.fullName?.message}>
+      <FormControl
+        label="First name"
+        errorText={errors.firstName?.message}
+        helpText="Firstname of the user."
+        required
+      >
         <TextField
-          name="fullName"
+          name="firstName"
           placeholder="Enter full name"
-          error={!!errors.fullName}
+          error={!!errors.firstName}
+          ref={register({
+            required: "Firstname is required",
+            minLength: { value: 3, message: "At least 3 characters required." },
+          })}
+        />
+      </FormControl>
+    </Box>
+  );
+};
+
+const UserLastNameField: FC = () => {
+  const { register, errors } = useFormContext<UserFormInputs>();
+  return (
+    <Box direction="column">
+      <FormControl
+        label="Lastname"
+        helpText="Lastname of the user."
+        errorText={errors.lastName?.message}
+        required
+      >
+        <TextField
+          name="lastName"
+          placeholder="Enter lastname"
+          error={!!errors.lastName}
+          ref={register({
+            required: "Lastname is required",
+            minLength: { value: 3, message: "At least 3 characters required." },
+          })}
+        />
+      </FormControl>
+    </Box>
+  );
+};
+
+const AddressField = ({ i }: { i: number }) => {
+  const { register, errors } = useFormContext<UserFormInputs>();
+  return (
+    <Box direction="column">
+      <FormControl
+        label={"Address " + i}
+        errorText={errors.address ? errors.address[i].message : ""}
+      >
+        <TextField
+          name={"address." + i}
+          placeholder={"Enter address line " + i}
+          error={errors.address ? !!errors.address[i] : false}
           ref={register}
         />
       </FormControl>
-      <FormValuesWatcher />
+    </Box>
+  );
+};
+
+const PhoneField = () => {
+  const { register, errors } = useFormContext<UserFormInputs>();
+  return (
+    <Box direction="column">
+      <FormControl label="Phone" errorText={errors.phone?.message}>
+        <TextField
+          name={"phone"}
+          placeholder="Enter phone number"
+          error={!!errors.phone}
+          ref={register({
+            pattern: {
+              value: /^\d{10}$/,
+              message: "Only 10 digits phone number is allowed ",
+            },
+          })}
+        />
+      </FormControl>
+    </Box>
+  );
+};
+
+const EmailField = () => {
+  const { register, errors } = useFormContext<UserFormInputs>();
+  return (
+    <Box direction="column">
+      <FormControl label="Email" errorText={errors.email?.message}>
+        <TextField
+          name={"email"}
+          placeholder="Enter email"
+          error={!!errors.email}
+          ref={register({
+            pattern: {
+              value: /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/,
+              message: "Invalid email",
+            },
+          })}
+        />
+      </FormControl>
     </Box>
   );
 };
@@ -81,7 +180,10 @@ const UserFormPasswordField: FC = () => {
           name="password"
           placeholder="Enter password"
           error={!!errors.password}
-          ref={register}
+          ref={register({
+            required: "Passsword is required",
+            minLength: { value: 8, message: "At least 8 characters required." },
+          })}
         />
       </FormControl>
     </Box>
@@ -91,10 +193,70 @@ const UserFormPasswordField: FC = () => {
 const Page = () => {
   // https://stackoverflow.com/questions/61380289/react-hook-form-field-value-get-lost-when-i-collapse-add-or-delete-panel
   const [open, setOpen] = useState(true);
+  console.log("page");
+  const [ModalWrapper, openModal, closeModal] = useModal(false);
+
+  const steps: IStepProps[] = [
+    {
+      label: "Basic Information",
+      completed: false,
+      state: "active",
+      content: (
+        <Box direction="column">
+          <UserFirstNameField />
+          <UserLastNameField />
+        </Box>
+      ),
+    },
+    {
+      label: "Address",
+      completed: false,
+      state: "active",
+      content: (
+        <Box direction="column">
+          <AddressField i={0} />
+          <AddressField i={1} />
+        </Box>
+      ),
+    },
+    {
+      label: "Contact",
+      completed: false,
+      state: "active",
+      content: (
+        <Box direction="column">
+          <PhoneField />
+          <EmailField />
+        </Box>
+      ),
+    },
+    {
+      label: "Credentials",
+      completed: false,
+      state: "active",
+      content: (
+        <Box direction="column">
+          <UserFormUsernameField />
+          <UserFormPasswordField />
+        </Box>
+      ),
+    },
+    {
+      label: "Dummy Step",
+      completed: false,
+      state: "active",
+    },
+    {
+      label: "Dummy Step 2",
+      completed: false,
+      state: "active",
+    },
+  ];
 
   const formMethods = useForm<UserFormInputs>({
     defaultValues: userFormDefaultValues,
     shouldUnregister: false,
+    mode: "onBlur",
   });
 
   const { control } = formMethods;
@@ -114,69 +276,6 @@ const Page = () => {
     [control]
   );
 
-  const steps: IStepProps[] = [
-    {
-      label: "Step 0",
-      completed: false,
-      state: "active",
-      content: <UserFormFullNameField />,
-    },
-    {
-      label: "Step 1",
-      completed: false,
-      state: "active",
-      content: <UserFormUsernameField />,
-    },
-    {
-      label: "Step 2 with very very very long name",
-      completed: false,
-      state: "active",
-      content: <UserFormPasswordField />,
-    },
-    {
-      label: "Step 3",
-      completed: false,
-      state: "active",
-      content: <UserFormUsernameField />,
-    },
-    {
-      label: "Step 4 with very very very long name",
-      completed: false,
-      state: "active",
-      content: <UserFormUsernameField />,
-    },
-    {
-      label: "Step 5",
-      completed: false,
-      state: "active",
-      content: <UserFormUsernameField />,
-    },
-    {
-      label: "Step 6 with very very very long name",
-      completed: false,
-      state: "active",
-      content: <UserFormUsernameField />,
-    },
-    {
-      label: "Step 7",
-      completed: false,
-      state: "active",
-      content: <UserFormUsernameField />,
-    },
-    {
-      label: "Step 8 with very very very long name",
-      completed: false,
-      state: "active",
-      content: <UserFormUsernameField />,
-    },
-    {
-      label: "Step 9",
-      completed: false,
-      state: "active",
-      content: <UserFormUsernameField />,
-    },
-  ];
-
   const stepper: IStepperProps = {
     steps: steps,
     currentStep: 0,
@@ -189,11 +288,15 @@ const Page = () => {
     <PageView
       heading="Stepper component"
       actions={
-        <Button
-          value="Open SummaryView"
-          onClick={() => setOpen(true)}
-          disabled={open}
-        />
+        <>
+          <Button
+            value="Open SummaryView"
+            onClick={() => setOpen(true)}
+            disabled={open}
+          />
+
+          <Button value="Open As Modal" onClick={() => openModal()} />
+        </>
       }
     >
       {open && (
@@ -204,6 +307,14 @@ const Page = () => {
           stepper={stepper}
         ></SummaryView>
       )}
+      <ModalWrapper style={{ height: "90vh", width: "30vw" }}>
+        <SummaryView
+          caption="FA user"
+          heading="New user"
+          onClose={() => closeModal()}
+          stepper={stepper}
+        ></SummaryView>
+      </ModalWrapper>
     </PageView>
   );
 };
