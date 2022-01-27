@@ -33,7 +33,7 @@ export const components = [
   "Menu",
   "Step",
   "Stepper",
-  "ModalTest",
+
   "Skeleton",
   "SummaryView",
   "TextField",
