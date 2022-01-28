@@ -1,4 +1,4 @@
-import { useState, useCallback, FC } from "react";
+import { useCallback, FC, useState } from "react";
 
 import { PageView, SummaryView } from "@faharmony/views";
 import { IStepProps, IStepperProps } from "@faharmony/navigation";
@@ -193,8 +193,8 @@ const UserFormPasswordField: FC = () => {
 const Page = () => {
   // https://stackoverflow.com/questions/61380289/react-hook-form-field-value-get-lost-when-i-collapse-add-or-delete-panel
   const [open, setOpen] = useState(true);
-  console.log("page");
-  const [ModalWrapper, openModal, closeModal] = useModal(false);
+
+  const [ModalWrapper, openModal, closeModal, isOpen] = useModal(false);
 
   const steps: IStepProps[] = [
     {
@@ -264,7 +264,7 @@ const Page = () => {
   const onSubmit: SubmitHandler<UserFormInputs> = useCallback(
     (values: UserFormInputs) => {
       console.log("Sent values: " + JSON.stringify(values));
-      setOpen(false);
+
       addToast({
         id: "submit",
         title: "Information saved",
@@ -281,7 +281,7 @@ const Page = () => {
     currentStep: 0,
     formMethods: formMethods,
     handleSubmitButton: onSubmit,
-    editMode: false,
+    editMode: true,
   };
 
   return (
@@ -295,7 +295,14 @@ const Page = () => {
             disabled={open}
           />
 
-          <Button value="Open As Modal" onClick={() => openModal()} />
+          <Button
+            value="Open As Modal"
+            onClick={() => {
+              openModal();
+              setOpen(false); //Close the summary view otherwise it will go on infinite render due to duplicate form.
+            }}
+            disabled={isOpen}
+          />
         </>
       }
     >
