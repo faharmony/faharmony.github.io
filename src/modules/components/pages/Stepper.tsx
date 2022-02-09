@@ -266,14 +266,26 @@ const Page = () => {
   const { control } = formMethods;
 
   const submitButtonRef = useRef<IStepButtonRef>(null);
+  const backButtonRef = useRef<IStepButtonRef>(null);
+  const nextButtonRef = useRef<IStepButtonRef>(null);
+
+  const disableButtons = (disable: boolean) => {
+    const setSubmitting = submitButtonRef?.current?.setSubmitting;
+    setSubmitting && setSubmitting(disable);
+
+    const back = backButtonRef?.current?.setDisabled;
+    back && back(disable);
+
+    const next = nextButtonRef?.current?.setDisabled;
+    next && next(disable);
+  };
 
   const onSubmit: SubmitHandler<UserFormInputs> = async (
     values: UserFormInputs
   ) => {
     console.log("Sent values: " + JSON.stringify(values));
 
-    const setSubmitting = submitButtonRef?.current?.setSubmitting;
-    setSubmitting && setSubmitting(true);
+    disableButtons(true);
 
     await setTimeout(() => {
       addToast({
@@ -284,7 +296,7 @@ const Page = () => {
       });
       resetFormValues(control);
 
-      setSubmitting && setSubmitting(false);
+      disableButtons(false);
     }, 5000);
   };
 
@@ -295,6 +307,8 @@ const Page = () => {
     handleSubmitButton: onSubmit,
     editMode: true,
     submitButtonRef: submitButtonRef,
+    backButtonRef: backButtonRef,
+    nextButtonRef: nextButtonRef,
   };
 
   return (
