@@ -1,7 +1,11 @@
-import { useCallback, FC, useState } from "react";
+import { FC, useState, useRef } from "react";
 
 import { PageView, SummaryView } from "@faharmony/views";
-import { IStepProps, IStepperProps } from "@faharmony/navigation";
+import {
+  IStepProps,
+  IStepperProps,
+  IStepButtonRef,
+} from "@faharmony/navigation";
 import { Button, useModal } from "@faharmony/components";
 import {
   FormControl,
@@ -261,10 +265,17 @@ const Page = () => {
 
   const { control } = formMethods;
 
-  const onSubmit: SubmitHandler<UserFormInputs> = useCallback(
-    (values: UserFormInputs) => {
-      console.log("Sent values: " + JSON.stringify(values));
+  const submitButtonRef = useRef<IStepButtonRef>(null);
 
+  const onSubmit: SubmitHandler<UserFormInputs> = async (
+    values: UserFormInputs
+  ) => {
+    console.log("Sent values: " + JSON.stringify(values));
+
+    const setSubmitting = submitButtonRef?.current?.setSubmitting;
+    setSubmitting && setSubmitting(true);
+
+    await setTimeout(() => {
       addToast({
         id: "submit",
         title: "Information saved",
@@ -272,9 +283,10 @@ const Page = () => {
         persist: false,
       });
       resetFormValues(control);
-    },
-    [control]
-  );
+
+      setSubmitting && setSubmitting(false);
+    }, 5000);
+  };
 
   const stepper: IStepperProps = {
     steps: steps,
@@ -282,6 +294,7 @@ const Page = () => {
     formMethods: formMethods,
     handleSubmitButton: onSubmit,
     editMode: true,
+    submitButtonRef: submitButtonRef,
   };
 
   return (
