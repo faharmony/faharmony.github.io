@@ -1,0 +1,1 @@
+{"version":3,"sources":["modules/welcome/state/store.ts"],"names":["initialState","loading"],"mappings":"2GAIA,oDAAO,IAAMA,EAAuB,CAAEC,SAAS","file":"static/js/48.60556be6.chunk.js","sourcesContent":["export interface IState {\r\n  loading: boolean;\r\n}\r\n\r\nexport const initialState: IState = { loading: true };\r\n"],"sourceRoot":""}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { PageView } from "@faharmony/views";
 import { Table } from "@faharmony/table";
 import { useTimeout } from "@faharmony/helpers";
@@ -24,6 +24,8 @@ const TableView = () => {
   const [showContent, setShowContent] = React.useState(false);
   useTimeout(() => setShowContent(true), 1000);
 
+  const [time, setTime] = useState(new Date(Date.now()).toLocaleString());
+
   const tableData: IDataProps[] = React.useMemo(
     () =>
       showContent
@@ -41,6 +43,7 @@ const TableView = () => {
               column3: "Column 3",
               column4: "Column 4",
               column5: "Column 5",
+              currentTime: time,
               subRows: [
                 {
                   name: "Shobhit",
@@ -85,6 +88,8 @@ const TableView = () => {
               column3: "Column 3",
               column4: "Column 4",
               column5: "Column 5",
+              currentTime: time,
+
               subRows: [
                 {
                   name: "Chris",
@@ -104,7 +109,7 @@ const TableView = () => {
             },
           ]
         : [],
-    [showContent]
+    [showContent, time]
   );
 
   const tableColumns: any[] = React.useMemo(
@@ -177,6 +182,12 @@ const TableView = () => {
         disableFilter: true,
         align: "left",
       },
+      {
+        accessor: "currentTime",
+        Header: "Time",
+        disableFilter: true,
+        align: "left",
+      },
     ],
     []
   );
@@ -192,6 +203,15 @@ const TableView = () => {
       onClick: () => console.log("hello", rowObject),
     },
   ];
+
+  useEffect(() => {
+    const t = setInterval(() => {
+      console.log("refreshing table ");
+      setTime(new Date(Date.now()).toLocaleString());
+    }, 5000);
+
+    return () => clearInterval(t);
+  }, [time]);
 
   return (
     // <PageView heading="Table">

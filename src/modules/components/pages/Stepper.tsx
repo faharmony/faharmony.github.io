@@ -24,12 +24,12 @@ interface UserFormInputs {
   address?: {};
   phone?: string;
   email?: string;
-  username: string;
-  password: string;
+  username: string | undefined;
+  password: string | undefined;
 }
 const userFormDefaultValues: Partial<UserFormInputs> = {
-  firstName: "test",
-  lastName: "ssss",
+  firstName: undefined,
+  lastName: undefined,
   address: {},
   phone: "",
   email: "",
@@ -305,7 +305,7 @@ const Page = () => {
     currentStep: 0,
     formMethods: formMethods,
     handleSubmitButton: onSubmit,
-    editMode: true,
+    editMode: false,
     submitButtonRef: submitButtonRef,
     backButtonRef: backButtonRef,
     nextButtonRef: nextButtonRef,
