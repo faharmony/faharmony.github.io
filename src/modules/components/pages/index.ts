@@ -25,6 +25,7 @@ export const components = [
   "ButtonUpload",
   "Button",
   "Card",
+  "Charts",
   "Editor",
   "Form",
   "Form1",
@@ -33,7 +34,6 @@ export const components = [
   "Menu",
   "Step",
   "Stepper",
-
   "Skeleton",
   "SummaryView",
   "TextField",
