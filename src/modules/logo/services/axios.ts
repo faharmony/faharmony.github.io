@@ -13,7 +13,7 @@ export const apiInstance = axios.create({
 apiInstance.interceptors.request.use(
   (config) => {
     // Read token from in-memory.
-    config.headers.Authorization = `Bearer ${getAuthToken() || ""}`;
+    config.headers!.Authorization = `Bearer ${getAuthToken() || ""}`;
     return config;
   },
   (error) => Promise.reject(error)

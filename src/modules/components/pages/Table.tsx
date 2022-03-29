@@ -36,6 +36,7 @@ const TableView = () => {
               age: 25,
               category: "Developer",
               country: "India",
+              defaultExpanded: true,
               address1: "First address",
               address2: "Second address",
               column1: "Column 1",
@@ -44,27 +45,15 @@ const TableView = () => {
               column4: "Column 4",
               column5: "Column 5",
               currentTime: time,
+              type: "mainRow",
               subRows: [
                 {
+                  type: "subRow",
                   name: "Shobhit",
                   lastName: "Gupta",
                   age: 28,
                   category: "Developer",
                   country: "New Delhi",
-                  address1: "Test address 1",
-                  address2: "Test address 2",
-                  column1: "Sub row 1",
-                  column2: "Sub row 2",
-                  column3: "Sub row 3",
-                  column4: "Sub row 4",
-                  column5: "Sub row 5",
-                },
-                {
-                  name: "Linus",
-                  lastName: "Torvalds",
-                  age: 51,
-                  category: "Sr Developer",
-                  country: "Finland",
                   address1: "Test address 1",
                   address2: "Test address 2",
                   column1: "Sub row 1",
@@ -81,6 +70,7 @@ const TableView = () => {
               age: 36,
               category: "Actress",
               country: "USA",
+              defaultExpanded: true,
               address1: "United States",
               address2: "Second address",
               column1: "Column 1",
@@ -89,12 +79,13 @@ const TableView = () => {
               column4: "Column 4",
               column5: "Column 5",
               currentTime: time,
-
+              type: "mainRow",
               subRows: [
                 {
                   name: "Chris",
                   lastName: "Evans",
                   age: 40,
+                  defaultExpanded: true,
                   category: "Actor",
                   country: "United States",
                   address1: "Test address 1",
@@ -104,6 +95,24 @@ const TableView = () => {
                   column3: "Sub row 3",
                   column4: "Sub row 4",
                   column5: "Sub row 5",
+                  type: "subRow",
+                  subRows: [
+                    {
+                      name: "Linus",
+                      lastName: "Torvalds",
+                      age: 51,
+                      category: "Sr Developer",
+                      country: "Finland",
+                      address1: "Test address 1",
+                      address2: "Test address 2",
+                      column1: "Sub row 1",
+                      column2: "Sub row 2",
+                      column3: "Sub row 3",
+                      column4: "Sub row 4",
+                      column5: "Sub row 5",
+                      type: "subSubRow",
+                    },
+                  ],
                 },
               ],
             },
@@ -246,6 +255,7 @@ const TableView = () => {
       }}
       exportTable
       isLoading={!showContent}
+      key={showContent ? 1 : 0}
     />
     // </PageView>
   );
