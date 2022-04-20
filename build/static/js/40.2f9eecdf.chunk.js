@@ -1,2 +1,0 @@
-(this.webpackJsonpplayground=this.webpackJsonpplayground||[]).push([[40],{323:function(n,t,e){"use strict";e.r(t);var c=e(2),a=e(94),o=e(1),r=["Very very long tab name","B","C","D"].map((function(n,t){return{id:n,label:"Tab ".concat(n),defaultActive:0===t,content:Object(o.jsxs)(c.c,{children:["Content ",n]}),onActive:function(){return console.log(1)},disabled:2===t}}));t.default=function(){return Object(o.jsx)(a.c,{heading:"Tabs",tabs:r})}}}]);
-//# sourceMappingURL=40.2f9eecdf.chunk.js.map
