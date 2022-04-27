@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { PageView } from "@faharmony/views";
 import { Table } from "@faharmony/table";
 import { useTimeout } from "@faharmony/helpers";
@@ -217,10 +217,33 @@ const TableView = () => {
     const t = setInterval(() => {
       console.log("refreshing table ");
       setTime(new Date(Date.now()).toLocaleString());
-    }, 5000);
+    }, 1000);
 
     return () => clearInterval(t);
-  }, [time]);
+  }, []);
+
+  const columnVisibilitySelector = useMemo(
+    () => ({
+      handleChange: (hiddenColumnIds: string[]) => console.log(hiddenColumnIds),
+      handleVisibleColumns: (visibleColumnIds: string[]) =>
+        console.log(visibleColumnIds),
+      defaultHiddenColumnsIds: ["lastName"],
+      defaultVisibleColumnsOrder: [
+        "column1",
+        "column2",
+        "column3",
+        "column4",
+        "column5",
+        "name",
+        "age",
+        "category",
+        "country",
+        "address1",
+        "address2",
+      ],
+    }),
+    []
+  );
 
   return (
     // <PageView heading="Table">
@@ -235,24 +258,7 @@ const TableView = () => {
       enableFiltering
       enablePagination
       enableMultipleRowSelect
-      columnVisibilitySelector={{
-        handleVisibleColumns: (visibleColumnIds) =>
-          console.log(visibleColumnIds),
-        defaultHiddenColumnsIds: ["lastName"],
-        defaultVisibleColumnsOrder: [
-          "column1",
-          "column2",
-          "column3",
-          "column4",
-          "column5",
-          "name",
-          "age",
-          "category",
-          "country",
-          "address1",
-          "address2",
-        ],
-      }}
+      columnVisibilitySelector={columnVisibilitySelector}
       exportTable
       isLoading={!showContent}
       key={showContent ? 1 : 0}
