@@ -27,6 +27,7 @@ interface UserFormInputs {
   password: string;
   dob: string;
   roles: ComboboxOptionType[];
+  massiveOptions: ComboboxOptionType[];
   locale?: ComboboxOptionType;
   darkMode?: boolean;
   terms: boolean;
@@ -141,6 +142,23 @@ const UserFormRolesField: FC = () => {
   );
 };
 
+const UserFormMassiveComboboxField: FC = () => {
+  const options = [];
+  for (let i = 0; i < 10000; i = i + 1) {
+    options.push({ value: i, label: `Option ${i}` });
+  }
+  return (
+    <FormControl label="Massive Options" required>
+      <Combobox
+        name="massiveOptions"
+        required
+        placeholder="Select option..."
+        options={options}
+      />
+    </FormControl>
+  );
+};
+
 const UserFormLocaleField: FC = () => {
   const localeOptions: ComboboxOptionsType = [
     { label: "English", value: "en" },
@@ -241,6 +259,7 @@ const UserForm: FC = () => {
       <UserFormPasswordField />
       <UserFormDOBField />
       <UserFormRolesField />
+      <UserFormMassiveComboboxField />
       <UserFormLocaleField />
       <UserFormDarkModeField />
       <UserFormTermsField />
