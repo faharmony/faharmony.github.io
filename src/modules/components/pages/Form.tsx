@@ -206,6 +206,7 @@ const UserFormTermsField: FC = () => {
         <Checkbox
           name="privacy"
           label="Accept the privacy policy."
+          helpText="Test"
           ref={register({
             required: "It is required to accept the privacy policy",
           })}
