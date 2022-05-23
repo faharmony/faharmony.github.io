@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkplayground=self.webpackChunkplayground||[]).push([[7943],{17943:function(n,r,e){e.r(r);var a=e(50189),o=e(38315),c=e(6380),t=e(31913),i=e(46931),l=e(37878),u={heading:"Apple Inc.",body:"Market price date cannot be older than today.",icon:i.eHv,iconColor:o.rS.color.text.warning},d=Array(10).fill(u);r.default=function(){return(0,l.jsx)(c.B4,{heading:"Card",children:(0,l.jsx)(o.xu,{direction:"column",children:d.map((function(n,r){return(0,l.jsx)(t.Zb,(0,a.Z)({},n),r)}))})})}}}]);
+//# sourceMappingURL=7943.e38be607.chunk.js.map
