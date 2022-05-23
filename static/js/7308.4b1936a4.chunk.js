@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkplayground=self.webpackChunkplayground||[]).push([[7308],{87308:function(n,a,e){e.r(a),e.d(a,{MainPage:function(){return l}});var r=e(61238),o=e(6380),t=e(31913),u=e(37878),l=function(){var n=(0,r.L$)();return(0,u.jsx)(o.B4,{heading:n("moduleName"),overflow:"auto",toolbarContent:(0,u.jsx)(t.xv,{variant:"h4",children:"Harmony is FA Solutions' support library for React-app development"})})};a.default=l}}]);
+//# sourceMappingURL=7308.4b1936a4.chunk.js.map
