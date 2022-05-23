@@ -81,6 +81,28 @@ const UserFormUsernameField: FC = () => {
   );
 };
 
+const UserFormUsernameFieldWithLongLabel: FC = () => {
+  const { register, errors } = useFormContext<UserFormInputs>();
+  return (
+    <FormControl
+      label="Long label for a long field (Testing positioning of help and asterick )"
+      helpText="Login username for the user."
+      errorText={errors.username?.message}
+      required
+    >
+      <TextField
+        name="username"
+        placeholder="Enter username"
+        error={!!errors.username}
+        ref={register({
+          required: "Username is required",
+          minLength: { value: 4, message: "At least 4 characters required." },
+        })}
+      />
+    </FormControl>
+  );
+};
+
 const UserFormPasswordField: FC = () => {
   const { register, errors } = useFormContext<UserFormInputs>();
   const passwordPatternRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
@@ -257,6 +279,7 @@ const UserForm: FC = () => {
     >
       <UserFormFullNameField />
       <UserFormUsernameField />
+      <UserFormUsernameFieldWithLongLabel />
       <UserFormPasswordField />
       <UserFormDOBField />
       <UserFormRolesField />
