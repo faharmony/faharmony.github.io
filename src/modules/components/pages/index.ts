@@ -41,4 +41,5 @@ export const components = [
   "Tabs",
   "Tags",
   "Tooltip",
+  "Icons",
 ];
