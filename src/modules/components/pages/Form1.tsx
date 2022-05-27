@@ -65,7 +65,7 @@ const FormNode = () => {
       <Box direction="column" width={"260px"} alignItems="start">
         <FormControl
           label="Username"
-          helpText="Your login username.  \n <strong>Must meet the requirement</strong>"
+          helpText="Your login username.  \n Must meet the requirement"
           errorText={errors.username?.message}
           required
         >
