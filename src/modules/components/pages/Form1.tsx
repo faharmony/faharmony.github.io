@@ -65,7 +65,7 @@ const FormNode = () => {
       <Box direction="column" width={"260px"} alignItems="start">
         <FormControl
           label="Username"
-          helpText="Your login username."
+          helpText="Your login username.  \n <strong>Must meet the requirement</strong>"
           errorText={errors.username?.message}
           required
         >
@@ -99,7 +99,7 @@ const FormNode = () => {
             options={rolesOptions}
           />
         </FormControl>
-        <FormControl label="Environment">
+        <FormControl label="Environment" helpText="Development environment">
           <Combobox
             name="env"
             placeholder="Select environment..."
