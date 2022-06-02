@@ -170,14 +170,17 @@ const UserFormMassiveComboboxField: FC = () => {
     options.push({ value: i, label: `Option ${i}` });
   }
   return (
-    <FormControl label="Massive Options" required>
-      <Combobox
-        name="massiveOptions"
-        required
-        placeholder="Select option..."
-        options={options}
-      />
-    </FormControl>
+    <Box width={"500px"}>
+      <FormControl label="Massive Options" required>
+        <Combobox
+          name="massiveOptions"
+          required
+          placeholder="Select option..."
+          options={options}
+          isMulti={true}
+        />
+      </FormControl>
+    </Box>
   );
 };
 

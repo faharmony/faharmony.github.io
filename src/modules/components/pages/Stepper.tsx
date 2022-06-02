@@ -202,7 +202,7 @@ const Page = () => {
 
   const steps: IStepProps[] = [
     {
-      label: "Basic Information",
+      label: "Basic Information and a veryVeryLongWord",
       completed: false,
       state: "active",
       content: (
