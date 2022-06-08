@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkplayground=self.webpackChunkplayground||[]).push([[9409],{39409:function(n,e,t){t.r(e);var a=t(38315),u=t(6380),c=t(37878),o=["Very very long tab name","B","C","D"].map((function(n,e){return{id:n,label:"Tab ".concat(n),defaultActive:0===e,content:(0,c.jsxs)(a.M5,{children:["Content ",n]}),onActive:function(){return console.log(1)},disabled:2===e}}));e.default=function(){return(0,c.jsx)(u.B4,{heading:"Tabs",tabs:o})}}}]);
-//# sourceMappingURL=9409.d3adda5e.chunk.js.map
