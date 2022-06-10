@@ -3,7 +3,7 @@ import { PageView } from "@faharmony/views";
 import { ITabsProps } from "@faharmony/navigation";
 import { useForm, useFormContext } from "react-hook-form";
 import { FormControl, TextField } from "@faharmony/form";
-import { ITabFormProps } from "@faharmony/navigation/lib/Tabs/types";
+import { ITabFormProps } from "@faharmony/navigation";
 
 const Page = () => {
   interface UserFormInputs {
