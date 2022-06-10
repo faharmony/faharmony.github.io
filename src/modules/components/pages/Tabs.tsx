@@ -1,9 +1,11 @@
 import { Box, Center } from "@faharmony/theme";
-import { PageView } from "@faharmony/views";
+import { PageView, SummaryView } from "@faharmony/views";
 import { ITabsProps } from "@faharmony/navigation";
 import { useForm, useFormContext } from "react-hook-form";
 import { FormControl, TextField } from "@faharmony/form";
 import { ITabFormProps } from "@faharmony/navigation";
+import { useState } from "react";
+import { Button, useModal } from "@faharmony/components";
 
 const Page = () => {
   interface UserFormInputs {
@@ -278,8 +280,49 @@ const Page = () => {
     },
   };
 
+  const [open, setOpen] = useState(true);
+
+  const [ModalWrapper, openModal, closeModal, isOpen] = useModal(false);
+
   return (
-    <PageView caption="FA user" heading="Tabs with Form" tabs={tabsForms} />
+    <PageView
+      heading="Tabs component"
+      actions={
+        <>
+          <Button
+            value="Open SummaryView"
+            onClick={() => setOpen(true)}
+            disabled={open}
+          />
+
+          <Button
+            value="Open As Modal"
+            onClick={() => {
+              openModal();
+              setOpen(false); //Close the summary view otherwise it will go on infinite render due to duplicate form.
+            }}
+            disabled={isOpen}
+          />
+        </>
+      }
+    >
+      {open && (
+        <SummaryView
+          caption="FA user"
+          heading="Tabs with Form"
+          onClose={() => setOpen(false)}
+          tabs={tabsForms}
+        ></SummaryView>
+      )}
+      <ModalWrapper style={{ height: "90vh", width: "30vw" }}>
+        <SummaryView
+          caption="FA user"
+          heading="Tabs with Form"
+          onClose={() => closeModal()}
+          tabs={tabsForms}
+        ></SummaryView>
+      </ModalWrapper>
+    </PageView>
   );
 };
 
