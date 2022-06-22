@@ -31,6 +31,25 @@ const Page = () => {
             <Text>Tooltip with custom component, hover to test</Text>
           </Tooltip>
         </Box>
+        <Divider></Divider>
+        <Box width={"auto"}>
+          <Tooltip value="https://bitbucket.org/fasolutions-ondemand/faharmony/src/develop/packages/components/src/Tooltip/index.tsx">
+            <Text value="Test tooltip with url"></Text>
+          </Tooltip>
+        </Box>
+        <Divider></Divider>
+        <Box width={"auto"}>
+          <Tooltip
+            value={
+              <a href="https://bitbucket.org/fasolutions-ondemand/faharmony/src/develop/packages/components/src/Tooltip/index.tsx">
+                Link to tooltip repo
+              </a>
+            }
+            interactive={true}
+          >
+            <Text value="Interactive tooltip"></Text>
+          </Tooltip>
+        </Box>
       </Box>
     </PageView>
   );
