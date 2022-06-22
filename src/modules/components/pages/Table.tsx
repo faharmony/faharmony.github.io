@@ -116,6 +116,21 @@ const TableView = () => {
                 },
               ],
             },
+            {
+              name: "UnSelectable",
+              lastName: "Test",
+              age: 51,
+              category: "Sr Developer",
+              country: "Finland",
+              address1: "Test address 1",
+              address2: "Test address 2",
+              column1: "Column 1",
+              column2: "Column 2",
+              column3: "Column 3",
+              column4: "Column 4",
+              column5: "Column 5",
+              selectionDisabled: true,
+            },
           ]
         : [],
     [showContent, time]
@@ -254,8 +269,17 @@ const TableView = () => {
       handleRowClick={handleRowClick}
       handleRowDblClick={handleRowDblClick}
       singleRowActions={singleRowActions}
+      multipleRowActions={(selected) => [
+        {
+          id: "deleteMultiple",
+          tooltip: "Print selected row to console",
+          icon: faTerminal,
+          onClick: () => console.log(selected),
+        },
+      ]}
       enableSorting
       enableFiltering
+      disableSubRowSelect
       enablePagination
       enableMultipleRowSelect
       columnVisibilitySelector={columnVisibilitySelector}
