@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkplayground=self.webpackChunkplayground||[]).push([[4124],{94124:function(e,n,r){r.r(n),r.d(n,{query:function(){return c}});var u,t=r(53773),c=(0,r(66106).Ps)(u||(u=(0,t.Z)(["\n    {}\n"])))},53773:function(e,n,r){function u(e,n){return n||(n=e.slice(0)),Object.freeze(Object.defineProperties(e,{raw:{value:Object.freeze(n)}}))}r.d(n,{Z:function(){return u}})}}]);
-//# sourceMappingURL=4124.db77413a.chunk.js.map

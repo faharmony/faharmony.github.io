@@ -280,6 +280,7 @@ const TableView = () => {
       enableSorting
       enableFiltering
       disableSubRowSelect
+      autoResetSortBy={false}
       enablePagination
       enableMultipleRowSelect
       columnVisibilitySelector={columnVisibilitySelector}
