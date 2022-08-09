@@ -39,6 +39,7 @@ export const components = [
   "TextField",
   "Table",
   "Tabs",
+  "Tabs_PageView",
   "Tags",
   "Tooltip",
   "Icons",

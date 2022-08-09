@@ -1,9 +1,12 @@
 import { Box, Center } from "@faharmony/theme";
 import { PageView, SummaryView } from "@faharmony/views";
-import { ITabsProps } from "@faharmony/navigation";
+import {
+  ITabsProps,
+  TabOrientationType,
+  ITabFormProps,
+} from "@faharmony/navigation";
 import { useForm, useFormContext } from "react-hook-form";
 import { FormControl, TextField } from "@faharmony/form";
-import { ITabFormProps } from "@faharmony/navigation";
 import { useState } from "react";
 import { Button, useModal } from "@faharmony/components";
 
@@ -203,7 +206,7 @@ const Page = () => {
   });
 
   const dummytabs: ITabsProps[] = [
-    "Very very long tab name",
+    "Very very long tab name maxwidth check/ tooltip",
     "dummy1",
     "dummy2",
     "dummy3",
@@ -213,6 +216,15 @@ const Page = () => {
     "dummy7",
     "dummy8",
     "dummy9",
+    "dummy10",
+    "dummy11",
+    "dummy12",
+    "dummy13",
+    "dummy14",
+    "dummy15",
+    "dummy16",
+    "dummy17",
+    "dummy18",
   ].map((id, index) => ({
     id,
     label: `Tab ${id}`,
@@ -223,7 +235,7 @@ const Page = () => {
   }));
   const tabs: ITabsProps[] = [
     {
-      id: "a",
+      id: "basicInfo",
       label: `Basic info`,
       defaultActive: true,
       content: (
@@ -234,7 +246,7 @@ const Page = () => {
       ),
     },
     {
-      id: "b",
+      id: "address",
       label: `Address`,
       defaultActive: false,
       content: (
@@ -246,7 +258,7 @@ const Page = () => {
     },
     ...dummytabs,
     {
-      id: "c",
+      id: "contact",
       label: `Contact`,
       defaultActive: false,
       content: (
@@ -257,7 +269,7 @@ const Page = () => {
       ),
     },
     {
-      id: "d",
+      id: "credentials",
       label: `Credentials`,
       defaultActive: false,
       content: (
@@ -268,21 +280,31 @@ const Page = () => {
       ),
     },
   ];
-
+  const [orientation, setOrientation] =
+    useState<TabOrientationType>("vertical");
   const tabsForms: ITabFormProps = {
     formMethods: formMethods,
     tabs: tabs,
+    orientation: orientation,
     fieldNames: {
-      a: ["firstName", "lastName"],
-      b: ["address"],
-      c: ["email", "phone"],
-      d: ["username", "password"],
+      basicInfo: ["firstName", "lastName"],
+      address: ["address"],
+      contact: ["email", "phone"],
+      credentials: ["username", "password"],
     },
   };
 
   const [open, setOpen] = useState(true);
 
   const [ModalWrapper, openModal, closeModal, isOpen] = useModal(false);
+
+  const toggleOrientation = () => {
+    if (orientation === "vertical") {
+      setOrientation("horizontal");
+    } else {
+      setOrientation("vertical");
+    }
+  };
 
   return (
     <PageView
@@ -303,6 +325,15 @@ const Page = () => {
             }}
             disabled={isOpen}
           />
+
+          <Button
+            value={` Set ${
+              orientation === "horizontal" ? "vertical" : "horizontal"
+            }`}
+            onClick={() => {
+              toggleOrientation(); //Close the summary view otherwise it will go on infinite render due to duplicate form.
+            }}
+          />
         </>
       }
     >
@@ -314,10 +345,10 @@ const Page = () => {
           tabs={tabsForms}
         ></SummaryView>
       )}
-      <ModalWrapper style={{ height: "90vh", width: "30vw" }}>
+      <ModalWrapper style={{ height: "90vh", width: "800px" }}>
         <SummaryView
           caption="FA user"
-          heading="Tabs with Form"
+          heading="Tabs Form Modal"
           onClose={() => closeModal()}
           tabs={tabsForms}
         ></SummaryView>

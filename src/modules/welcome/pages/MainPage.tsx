@@ -88,7 +88,7 @@ export const Redux = () => {
 export const MainPage = () => {
   const { t } = useModule();
 
-  // const tabs: ITabsProps[] = [
+  // const tabs: ITabFormProps[] = [
   //   {
   //     id: "1",
   //     label: "Preview NAV",
