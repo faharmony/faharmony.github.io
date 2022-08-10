@@ -225,6 +225,7 @@ const Page = () => {
     "dummy16",
     "dummy17",
     "dummy18",
+    "dummy19",
   ].map((id, index) => ({
     id,
     label: `Tab ${id}`,
