@@ -7,16 +7,21 @@ import {
   FormControl,
   Toggle,
   TextField,
+  DateRangePicker,
+  useFormDateRangeProps,
 } from "@faharmony/form";
 import { Box } from "@faharmony/theme";
 import { Button, Divider, InfoBox } from "@faharmony/components";
 import { PageView } from "@faharmony/views";
+import React from "react";
 
 type FormInputs = {
   testDate: Date;
   realDate: Date;
   toggle: boolean;
   number: number;
+  startDate: Date;
+  endDate: Date;
 };
 
 const defaultValues: Partial<FormInputs> = {
@@ -24,6 +29,8 @@ const defaultValues: Partial<FormInputs> = {
   realDate: new Date("2020-12-12"),
   toggle: true,
   number: 1343400.234,
+  startDate: undefined,
+  endDate: undefined,
 };
 
 const enabledDates = [
@@ -42,7 +49,7 @@ const FormNode = () => {
   const onSubmit = handleSubmit(console.log);
   return (
     <Form formMethods={formMethods} style={{ width: "100%" }} direction="row">
-      <Box direction="column" width={"260px"} alignItems="start">
+      <Box direction="column" width={"350px"} alignItems="start">
         <FormControl label="Date">
           <DatePicker name="testDate" includeDates={enabledDates} />
         </FormControl>
@@ -69,6 +76,8 @@ const FormNode = () => {
           <TextField name="number" ref={register} prefixText="EUR" />
         </FormControl>
         <Divider />
+
+        <UserFormDateRangeField />
         <Box justifyContent="space-between">
           <Box width="auto">
             <Button
@@ -114,7 +123,55 @@ const Page = () => (
         />
       </InfoBox>
     </Box>
+    <UserFormDateRangeField2 />
   </PageView>
 );
 
 export default Page;
+
+const UserFormDateRangeField: React.FC = () => {
+  const props = useFormDateRangeProps(
+    "startDate",
+    "endDate",
+    new Date("2021/05/04 22:21"),
+    new Date("2021/06/04 15:30")
+  );
+
+  return (
+    <FormControl label="Date Range in a Form" required>
+      <DateRangePicker
+        {...props}
+        dateFormat="dd.MM.yyyy HH:mm"
+        showCustomTimeSelector
+        hideTodayButton
+      ></DateRangePicker>
+    </FormControl>
+  );
+};
+
+const UserFormDateRangeField2: React.FC = () => {
+  const [startDate, setStartDate] = React.useState<Date | undefined>(
+    new Date("2021/05/04 22:21")
+  );
+  const [endDate, setEndDate] = React.useState<Date | undefined>(
+    new Date("2021/05/04 22:21")
+  );
+
+  console.log(
+    "This is date state controlled date range outside a form ",
+    startDate,
+    endDate
+  );
+
+  return (
+    <FormControl label="Test Range without form " required>
+      <DateRangePicker
+        endDate={endDate}
+        startDate={startDate}
+        setEndDate={setEndDate}
+        setStartDate={setStartDate}
+        dateFormat="dd.MM.yyyy hh:mm a"
+      ></DateRangePicker>
+    </FormControl>
+  );
+};

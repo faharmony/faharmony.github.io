@@ -137,9 +137,14 @@ const UserFormDOBField: FC = () => {
     "dob",
     userFormDefaultValues.dob
   );
+
   return (
     <FormControl label="Date of birth" required>
-      <DatePicker {...formDatePickerProps} />
+      <DatePicker
+        {...formDatePickerProps}
+        dateFormat="dd.MM.yyyy hh:mm a"
+        selected={new Date("2021/05/04 22:21")}
+      />
     </FormControl>
   );
 };
