@@ -123,6 +123,7 @@ const Page = () => (
         />
       </InfoBox>
     </Box>
+
     <UserFormDateRangeField2 />
   </PageView>
 );
@@ -141,7 +142,6 @@ const UserFormDateRangeField: React.FC = () => {
     <FormControl label="Date Range in a Form" required>
       <DateRangePicker
         {...props}
-        dateFormat="dd.MM.yyyy HH:mm"
         showCustomTimeSelector
         hideTodayButton
       ></DateRangePicker>
@@ -157,21 +157,29 @@ const UserFormDateRangeField2: React.FC = () => {
     new Date("2021/05/04 22:21")
   );
 
-  console.log(
-    "This is date state controlled date range outside a form ",
-    startDate,
-    endDate
+  React.useEffect(
+    () =>
+      console.log(
+        "This is date state controlled date range outside a form ",
+        startDate,
+        endDate
+      ),
+    [startDate, endDate]
   );
 
   return (
-    <FormControl label="Test Range without form " required>
-      <DateRangePicker
-        endDate={endDate}
-        startDate={startDate}
-        setEndDate={setEndDate}
-        setStartDate={setStartDate}
-        dateFormat="dd.MM.yyyy hh:mm a"
-      ></DateRangePicker>
-    </FormControl>
+    <Box justifyContent="flex-start">
+      <FormControl label="Test Range without form " required>
+        <Box width={"min-content"}>
+          <DateRangePicker
+            endDate={endDate}
+            startDate={startDate}
+            setEndDate={setEndDate}
+            setStartDate={setStartDate}
+            showCustomTimeSelector
+          ></DateRangePicker>
+        </Box>
+      </FormControl>
+    </Box>
   );
 };
