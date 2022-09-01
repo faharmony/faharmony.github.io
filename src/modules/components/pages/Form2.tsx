@@ -44,7 +44,7 @@ const FormNode = () => {
     defaultValues,
     criteriaMode: "all",
   });
-  const { control, handleSubmit, register } = formMethods;
+  const { control, handleSubmit, register, setValue } = formMethods;
 
   const onSubmit = handleSubmit(console.log);
   return (
@@ -73,7 +73,13 @@ const FormNode = () => {
           </FormControl>
         </Box>
         <FormControl label="NumberField">
-          <TextField name="number" ref={register} prefixText="EUR" />
+          <TextField
+            name="number"
+            ref={register}
+            prefixText="EUR"
+            isClearable
+            onInputClear={() => setValue("number", "")}
+          />
         </FormControl>
         <Divider />
 
