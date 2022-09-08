@@ -148,6 +148,12 @@ const UserFormDateRangeField: React.FC = () => {
     <FormControl label="Date Range in a Form" required>
       <DateRangePicker
         {...props}
+        onStartCalenderClose={() => {
+          console.log("start calender closed ");
+        }}
+        onEndCalenderClose={() => {
+          console.log("end calender closed ");
+        }}
         showCustomTimeSelector
         hideTodayButton
       ></DateRangePicker>
@@ -182,6 +188,12 @@ const UserFormDateRangeField2: React.FC = () => {
             startDate={startDate}
             setEndDate={setEndDate}
             setStartDate={setStartDate}
+            onStartCalenderClose={() => {
+              console.log("start calender closed ");
+            }}
+            onEndCalenderClose={() => {
+              console.log("end calender closed ");
+            }}
             showCustomTimeSelector
           ></DateRangePicker>
         </Box>
