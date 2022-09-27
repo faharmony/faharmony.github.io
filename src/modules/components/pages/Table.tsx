@@ -36,7 +36,7 @@ const TableView = () => {
               age: 25,
               category: "Developer",
               country: "India",
-              defaultExpanded: true,
+              defaultExpanded: false,
               address1: "First address",
               address2: "Second address",
               column1: "Column 1",
@@ -70,7 +70,7 @@ const TableView = () => {
               age: 36,
               category: "Actress",
               country: "USA",
-              defaultExpanded: true,
+              defaultExpanded: false,
               address1: "United States",
               address2: "Second address",
               column1: "Column 1",
@@ -85,7 +85,7 @@ const TableView = () => {
                   name: "Chris",
                   lastName: "Evans",
                   age: 40,
-                  defaultExpanded: true,
+                  defaultExpanded: false,
                   category: "Actor",
                   country: "United States",
                   address1: "Test address 1",
@@ -270,6 +270,7 @@ const TableView = () => {
       tableHeading="Table"
       data={tableData}
       columns={tableColumns}
+      defaultExpanded
       handleRowClick={handleRowClick}
       handleRowDblClick={handleRowDblClick}
       singleRowActions={singleRowActions}
