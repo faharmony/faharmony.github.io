@@ -289,7 +289,7 @@ const TableView = () => {
       enablePagination
       enableMultipleRowSelect
       columnVisibilitySelector={columnVisibilitySelector}
-      exportTable={["csv", "excel"]}
+      exportTable
       isLoading={!showContent}
       key={showContent ? 1 : 0}
     />
