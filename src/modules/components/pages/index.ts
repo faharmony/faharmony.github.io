@@ -32,6 +32,7 @@ export const components = [
   "Form2",
   "GraphiQL",
   "Menu",
+  "Menu_Drilldown",
   "Step",
   "Stepper",
   "Skeleton",
