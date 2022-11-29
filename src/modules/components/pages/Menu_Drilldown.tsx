@@ -1,6 +1,6 @@
 import { PageView } from "@faharmony/views";
 import { Box } from "@faharmony/theme";
-import { MultiList } from "@faharmony/shared";
+import { MenuDrilldown } from "@faharmony/shared";
 import { useState } from "react";
 
 const Page = () => {
@@ -9,7 +9,7 @@ const Page = () => {
     <PageView heading="Menu Drilldown" overflow="scroll">
       <Box direction="column">
         <div style={{ width: 300, height: 340 }}>
-          <MultiList
+          <MenuDrilldown
             enableFiltering
             optionsTree={{
               label: "Groupings",
