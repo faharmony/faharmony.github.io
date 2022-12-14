@@ -10,6 +10,7 @@ import {
   ComboboxOptionType,
   ComboboxOptionsType,
   FormValuesWatcher,
+  RadioOptionType,
 } from "@faharmony/form";
 import { Button, Divider } from "@faharmony/components";
 import { Box } from "@faharmony/theme";
@@ -18,16 +19,16 @@ import { PageView } from "@faharmony/views";
 type FormInputs = {
   username: string;
   password: string;
-  env: ComboboxOptionType;
+  env: RadioOptionType;
   roles: ComboboxOptionType[];
   number: number;
   env2: string;
   remember: boolean;
 };
 
-const envOptions: ComboboxOptionsType = [
+const envOptions: ComboboxOptionsType[] | RadioOptionType[] = [
   { label: "Develop", value: "dev" },
-  { label: "Master", value: "master" },
+  { label: "Master", value: "master", help: "Master Environment" },
   { label: "Test", value: "test", isDisabled: true },
 ];
 

@@ -31,6 +31,8 @@ export const components = [
   "Form1",
   "Form2",
   "GraphiQL",
+  "Icons",
+  "InfoBox",
   "Menu",
   "Menu_Drilldown",
   "Step",
@@ -43,5 +45,4 @@ export const components = [
   "Tabs_PageView",
   "Tags",
   "Tooltip",
-  "Icons",
 ];
