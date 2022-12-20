@@ -35,6 +35,7 @@ export const components = [
   "InfoBox",
   "Menu",
   "Menu_Drilldown",
+  "ProgressLoader",
   "Step",
   "Stepper",
   "Skeleton",

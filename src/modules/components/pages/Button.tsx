@@ -129,6 +129,7 @@ const Page = () => {
               spacing="xs"
               fullWidth
             />
+
             <Button
               icon={faBell}
               value="Notifications"
@@ -153,6 +154,47 @@ const Page = () => {
             <ButtonPopover {...iconButton} spacing="sm" outline />
             <ButtonPopover {...iconButton} outline />
             <ButtonPopover {...iconButton} />
+
+            <Button
+              value="Loading"
+              spacing="xl"
+              loading={true}
+              progressPercentage={90}
+            />
+
+            <Button
+              value="Loading"
+              spacing="lg"
+              loading={true}
+              progressPercentage={90}
+            />
+
+            <Button
+              value="Loading"
+              spacing="md"
+              loading={true}
+              progressPercentage={90}
+            />
+
+            <Button
+              value="Loading"
+              spacing="sm"
+              loading={true}
+              progressPercentage={90}
+            />
+
+            <Button
+              value="Loading"
+              spacing="xs"
+              loading={true}
+              progressPercentage={90}
+            />
+
+            <ButtonPopover
+              {...iconButton}
+              loading={true}
+              progressPercentage={90}
+            />
           </Box>
         </Box>
       </Box>
