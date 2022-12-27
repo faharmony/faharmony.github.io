@@ -1,7 +1,7 @@
 import { PageView } from "@faharmony/views";
 import { Tag, ITagProps, Divider } from "@faharmony/components";
 import { Box } from "@faharmony/theme";
-import { faTag } from "@faharmony/icons";
+import { faTag, faMoneyBill } from "@faharmony/icons";
 
 const Page = () => {
   const colors: ITagProps["color"][] = [
@@ -30,6 +30,17 @@ const Page = () => {
           />
         ))}
       </Box>
+
+      <br />
+      <Divider>With different icon and text sizes</Divider>
+        <Tag
+            value={"Eur"}
+            valueVariant={"h3"}
+            icon={faMoneyBill}
+            iconSize={"lg"}
+            autoHeight={true}
+            color={"secondary"}
+          />
     </PageView>
   );
 };

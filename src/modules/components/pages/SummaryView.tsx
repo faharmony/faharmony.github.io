@@ -8,6 +8,8 @@ const code = `// Example
   heading="FA Equity +"
   onClose={handleClose}
   headingSuffix={<Tag value="Calculated" color="info" />}
+  captionSuffix={<Tag value="Optional caption suffix" color="secondary" />}
+  additionalContent={<p>Here can be placed any optional react element</p>}
 >
   {content}
 </SummaryView>
@@ -33,6 +35,8 @@ const Page = () => {
           heading="FA Equity +"
           onClose={() => setOpen(false)}
           headingSuffix={<Tag value="Calculated" color="info" />}
+          captionSuffix={<Tag value="Optional caption suffix" color="secondary" />}
+          additionalContent={<p>Here can be placed any optional react element</p>}
         >
           <pre>{code}</pre>
         </SummaryView>

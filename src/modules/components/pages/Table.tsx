@@ -270,6 +270,7 @@ const TableView = () => {
       tableHeading="Table"
       data={tableData}
       columns={tableColumns}
+      headerAdditionalContent={<p>Here can be placed any optional react element</p>}
       defaultExpanded
       handleRowClick={handleRowClick}
       handleRowDblClick={handleRowDblClick}
