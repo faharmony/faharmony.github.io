@@ -10,7 +10,7 @@ import {
   DateRangePicker,
   useFormDateRangeProps,
 } from "@faharmony/form";
-import { Box } from "@faharmony/theme";
+import { Box, useExternalRef } from "@faharmony/theme";
 import { Button, Divider, InfoBox } from "@faharmony/components";
 import { PageView } from "@faharmony/views";
 import React from "react";
@@ -51,7 +51,7 @@ const FormNode = () => {
     <Form formMethods={formMethods} style={{ width: "100%" }} direction="row">
       <Box direction="column" width={"350px"} alignItems="start">
         <FormControl label="Date">
-          <DatePicker name="testDate" includeDates={enabledDates} />
+          <DatePicker name="testDate" includeDates={enabledDates} ref={useExternalRef()} />
         </FormControl>
         <FormControl label="Date (disabled)">
           <DatePicker
@@ -126,6 +126,7 @@ const Page = () => (
           name="realDate"
           onDateChange={console.log}
           selected={new Date()}
+          ref={useExternalRef()}
         />
       </InfoBox>
     </Box>
