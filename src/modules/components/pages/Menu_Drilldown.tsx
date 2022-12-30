@@ -1,6 +1,7 @@
 import { PageView } from "@faharmony/views";
 import { Box } from "@faharmony/theme";
 import { MenuDrilldown } from "@faharmony/shared";
+import { StartWorkflowButtonPopover } from "@faharmony/taskmanager";
 import { useState } from "react";
 
 const Page = () => {
@@ -9,6 +10,7 @@ const Page = () => {
     <PageView heading="Menu Drilldown" overflow="scroll">
       <Box direction="column">
         <div style={{ width: 300, height: 340 }}>
+          <StartWorkflowButtonPopover />
           <MenuDrilldown
             enableFiltering
             optionsTree={{
