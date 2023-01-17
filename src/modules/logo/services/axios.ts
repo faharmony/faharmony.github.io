@@ -13,6 +13,7 @@ export const apiInstance = axios.create({
 apiInstance.interceptors.request.use(
   (config) => {
     // Read token from in-memory.
+    // @ts-ignore
     config.headers!.Authorization = `Bearer ${getAuthToken() || ""}`;
     return config;
   },

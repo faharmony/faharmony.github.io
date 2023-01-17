@@ -4,6 +4,7 @@ import { ITableProps, Table } from "@faharmony/table";
 import { useTimeout } from "@faharmony/helpers";
 import { Tag } from "@faharmony/components";
 import { faTerminal } from "@faharmony/icons";
+import { forEach, isPlainObject, set } from "lodash";
 
 interface IDataProps {
   name: string;
@@ -26,115 +27,130 @@ const TableView = () => {
 
   const [time, setTime] = useState(new Date(Date.now()).toLocaleString());
 
-  const tableData: IDataProps[] = React.useMemo(
-    () =>
-      showContent
-        ? [
-            {
-              name: "Siddhant",
-              lastName: "Gupta",
-              age: 25,
-              category: "Developer",
-              country: "India",
-              defaultExpanded: false,
-              address1: "First address",
-              address2: "Second address",
-              column1: "Column 1",
-              column2: "Column 2",
-              column3: "Column 3",
-              column4: "Column 4",
-              column5: "Column 5",
-              currentTime: time,
-              type: "mainRow",
-              subRows: [
-                {
-                  type: "subRow",
-                  name: "Shobhit",
-                  lastName: "Gupta",
-                  age: 28,
-                  category: "Developer",
-                  country: "New Delhi",
-                  address1: "Test address 1",
-                  address2: "Test address 2",
-                  column1: "Sub row 1",
-                  column2: "Sub row 2",
-                  column3: "Sub row 3",
-                  column4: "Sub row 4",
-                  column5: "Sub row 5",
-                },
-              ],
-            },
-            {
-              name: "Scarlett",
-              lastName: "Johansson",
-              age: 36,
-              category: "Actress",
-              country: "USA",
-              defaultExpanded: false,
-              address1: "United States",
-              address2: "Second address",
-              column1: "Column 1",
-              column2: "Column 2",
-              column3: "Column 3",
-              column4: "Column 4",
-              column5: "Column 5",
-              currentTime: time,
-              type: "mainRow",
-              subRows: [
-                {
-                  name: "Chris",
-                  lastName: "Evans",
-                  age: 40,
-                  defaultExpanded: false,
-                  category: "Actor",
-                  country: "United States",
-                  address1: "Test address 1",
-                  address2: "NA",
-                  column1: "Sub row 1",
-                  column2: "Sub row 2",
-                  column3: "Sub row 3",
-                  column4: "Sub row 4",
-                  column5: "Sub row 5",
-                  type: "subRow",
-                  subRows: [
-                    {
-                      name: "Linus",
-                      lastName: "Torvalds",
-                      age: 51,
-                      category: "Sr Developer",
-                      country: "Finland",
-                      address1: "Test address 1",
-                      address2: "Test address 2",
-                      column1: "Sub row 1",
-                      column2: "Sub row 2",
-                      column3: "Sub row 3",
-                      column4: "Sub row 4",
-                      column5: "Sub row 5",
-                      type: "subSubRow",
-                    },
-                  ],
-                },
-              ],
-            },
-            {
-              name: "UnSelectable",
-              lastName: "Test",
-              age: 51,
-              category: "Sr Developer",
-              country: "Finland",
-              address1: "Test address 1",
-              address2: "Test address 2",
-              column1: "Column 1",
-              column2: "Column 2",
-              column3: "Column 3",
-              column4: "Column 4",
-              column5: "Column 5",
-              selectionDisabled: true,
-            },
-          ]
-        : [],
-    [showContent, time]
-  );
+  const tableData: IDataProps[] = React.useMemo(() => {
+    let result = showContent
+      ? [
+          {
+            name: "Siddhant",
+            lastName: "Gupta",
+            age: 25,
+            category: "Developer",
+            country: "India",
+            defaultExpanded: false,
+            address1: "First address",
+            address2: "Second address",
+            column1: "Column 1",
+            column2: "Column 2",
+            column3: "Column 3",
+            column4: "Column 4",
+            column5: "Column 5",
+            currentTime: time,
+            type: "mainRow",
+            subRows: [
+              {
+                type: "subRow",
+                name: "Shobhit",
+                lastName: "Gupta",
+                age: 28,
+                category: "Developer",
+                country: "New Delhi",
+                address1: "Test address 1",
+                address2: "Test address 2",
+                column1: "Sub row 1",
+                column2: "Sub row 2",
+                column3: "Sub row 3",
+                column4: "Sub row 4",
+                column5: "Sub row 5",
+              },
+            ],
+          },
+          {
+            name: "Scarlett",
+            lastName: "Johansson",
+            age: 36,
+            category: "Actress",
+            country: "USA",
+            defaultExpanded: false,
+            address1: "United States",
+            address2: "Second address",
+            column1: "Column 1",
+            column2: "Column 2",
+            column3: "Column 3",
+            column4: "Column 4",
+            column5: "Column 5",
+            currentTime: time,
+            type: "mainRow",
+            subRows: [
+              {
+                name: "Chris",
+                lastName: "Evans",
+                age: 40,
+                defaultExpanded: false,
+                category: "Actor",
+                country: "United States",
+                address1: "Test address 1",
+                address2: "NA",
+                column1: "Sub row 1",
+                column2: "Sub row 2",
+                column3: "Sub row 3",
+                column4: "Sub row 4",
+                column5: "Sub row 5",
+                type: "subRow",
+                subRows: [
+                  {
+                    name: "Linus",
+                    lastName: "Torvalds",
+                    age: 51,
+                    category: "Sr Developer",
+                    country: "Finland",
+                    address1: "Test address 1",
+                    address2: "Test address 2",
+                    column1: "Sub row 1",
+                    column2: "Sub row 2",
+                    column3: "Sub row 3",
+                    column4: "Sub row 4",
+                    column5: "Sub row 5",
+                    type: "subSubRow",
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            name: "UnSelectable",
+            lastName: "Test",
+            age: 51,
+            category: "Sr Developer",
+            country: "Finland",
+            address1: "Test address 1",
+            address2: "Test address 2",
+            column1: "Column 1",
+            column2: "Column 2",
+            column3: "Column 3",
+            column4: "Column 4",
+            column5: "Column 5",
+            selectionDisabled: true,
+          },
+        ]
+      : [];
+
+    const addProperty = (obj: any, propName: string, propValue: Function) => {
+      forEach(obj, (value) => {
+        if (isPlainObject(value)) {
+          set(value, propName, propValue());
+          addProperty(value.subRows, propName, propValue);
+        }
+      });
+    };
+
+    addProperty(
+      result,
+      "percentage",
+      () => Math.floor(Math.random() * 100) + " %"
+    );
+
+    return result;
+  }, [showContent, time]);
 
   const tableColumns: any[] = React.useMemo(
     () => [
@@ -150,7 +166,7 @@ const TableView = () => {
       },
       {
         accessor: "category",
-        Header: "Category",
+        Header: "category",
         disableFilter: true,
         Cell: ({ value }: any) => <Tag>{value}</Tag>,
       },
@@ -212,6 +228,13 @@ const TableView = () => {
         disableFilter: true,
         align: "left",
       },
+      {
+        accessor: "percentage",
+        Header: "Percentage",
+        disableFilter: true,
+        align: "right",
+        // Cell: ({ value }: any) => (value ? value * 100 + " %" : "0 %"),
+      },
     ],
     []
   );
@@ -232,7 +255,7 @@ const TableView = () => {
     const t = setInterval(() => {
       console.log("refreshing table ");
       setTime(new Date(Date.now()).toLocaleString());
-    }, 1000);
+    }, 60_000);
 
     return () => clearInterval(t);
   }, []);
@@ -270,7 +293,9 @@ const TableView = () => {
       tableHeading="Table"
       data={tableData}
       columns={tableColumns}
-      headerAdditionalContent={<p>Here can be placed any optional react element</p>}
+      headerAdditionalContent={
+        <p>Here can be placed any optional react element</p>
+      }
       defaultExpanded
       handleRowClick={handleRowClick}
       handleRowDblClick={handleRowDblClick}
@@ -290,7 +315,11 @@ const TableView = () => {
       enablePagination
       enableMultipleRowSelect
       columnVisibilitySelector={columnVisibilitySelector}
-      exportTable
+      exportTable={{
+        fileTypes: "all",
+        fileName: "Custom Exported File Name",
+        exportButtonTooltip: "Export",
+      }}
       isLoading={!showContent}
       key={showContent ? 1 : 0}
     />
