@@ -12,7 +12,7 @@ import {
 } from "@faharmony/form";
 import { Box, useExternalRef } from "@faharmony/theme";
 import { Button, Divider, InfoBox } from "@faharmony/components";
-import { PageView } from "@faharmony/views";
+import { ContentView, PageView } from "@faharmony/views";
 import React from "react";
 
 type FormInputs = {
@@ -48,63 +48,104 @@ const FormNode = () => {
 
   const onSubmit = handleSubmit(console.log);
   return (
-    <Form formMethods={formMethods} style={{ width: "100%" }} direction="row">
-      <Box direction="column" width={"350px"} alignItems="start">
-        <FormControl label="Date">
-          <DatePicker name="testDate" includeDates={enabledDates} ref={useExternalRef()} />
-        </FormControl>
-        <FormControl label="Date (disabled)">
-          <DatePicker
-            name="realDate"
-            onChange={console.log}
-            includeDates={[new Date()]}
-            disabled
-          />
-        </FormControl>
-        <Box>
-          <FormControl label="Toggle (enabled)">
-            <Toggle name="toggle" ref={register} label="Hello world" />
-          </FormControl>
-          <FormControl label="Toggle (disabled)">
-            <Box>
-              <Toggle disabled />
-              <Toggle disabled checked={true} />
+    <ContentView
+      headerTitle="Form"
+      onClose={() => {
+        console.log("close");
+      }}
+      headerActions={
+        <Button onClick={() => {}} disabled>
+          Disabled Action
+        </Button>
+      }
+      headerAdditionalContentToggleButtonEnabled
+      headerAdditionalContent={
+        <Box direction="column">
+          <Box spacing="xl" wrap="wrap">
+            <Box width={"auto"} direction="column">
+              <InfoBox field="Info">Hello World!</InfoBox>
             </Box>
-          </FormControl>
-        </Box>
-        <FormControl label="NumberField">
-          <TextField
-            name="number"
-            ref={register}
-            prefixText="EUR"
-            isClearable
-            onInputClear={() => setValue("number", "")}
-          />
-        </FormControl>
-        <Divider />
-
-        <UserFormDateRangeField />
-        <Box justifyContent="space-between">
-          <Box width="auto">
-            <Button
-              value="Reset"
-              variant="secondary"
-              loading
-              onClick={() => resetFormValues(control)}
-            />
-            <Button
-              type="submit"
-              value="Submit"
-              onClick={onSubmit}
-              variant="primary"
-            />
+            <Box width={"auto"} direction="column">
+              <InfoBox field="Info">Hello World!</InfoBox>
+            </Box>
+            <Box width={"auto"} direction="column">
+              <InfoBox field="Info">Hello World!</InfoBox>
+            </Box>
+            <Box width={"auto"} direction="column">
+              <InfoBox field="Info">Hello World!</InfoBox>
+            </Box>
+            <Box width={"auto"} direction="column">
+              <InfoBox field="Info">Hello World!</InfoBox>
+            </Box>
+            <Box width={"auto"} direction="column">
+              <InfoBox field="Info">Hello World!</InfoBox>
+            </Box>
           </Box>
         </Box>
-      </Box>
-      <div>
-        <FormValuesWatcher />
-      </div>
-    </Form>
+      }
+    >
+      <Form formMethods={formMethods} style={{ width: "100%" }} direction="row">
+        <Box direction="column" width={"350px"} alignItems="start">
+          <FormControl label="Date">
+            <DatePicker
+              name="testDate"
+              includeDates={enabledDates}
+              ref={useExternalRef()}
+            />
+          </FormControl>
+          <FormControl label="Date (disabled)">
+            <DatePicker
+              name="realDate"
+              onChange={console.log}
+              includeDates={[new Date()]}
+              disabled
+            />
+          </FormControl>
+          <Box>
+            <FormControl label="Toggle (enabled)">
+              <Toggle name="toggle" ref={register} label="Hello world" />
+            </FormControl>
+            <FormControl label="Toggle (disabled)">
+              <Box>
+                <Toggle disabled />
+                <Toggle disabled checked={true} />
+              </Box>
+            </FormControl>
+          </Box>
+          <FormControl label="NumberField">
+            <TextField
+              name="number"
+              ref={register}
+              prefixText="EUR"
+              isClearable
+              onInputClear={() => setValue("number", "")}
+            />
+          </FormControl>
+          <Divider />
+
+          <UserFormDateRangeField />
+          <Box justifyContent="space-between">
+            <Box width="auto">
+              <Button
+                value="Reset"
+                variant="secondary"
+                loading
+                onClick={() => resetFormValues(control)}
+              />
+              <Button
+                type="submit"
+                value="Submit"
+                onClick={onSubmit}
+                variant="primary"
+              />
+            </Box>
+          </Box>
+        </Box>
+        <div>
+          <FormValuesWatcher />
+        </div>
+      </Form>
+    </ContentView>
   );
 };
 

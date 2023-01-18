@@ -149,6 +149,14 @@ const TableView = () => {
       () => Math.floor(Math.random() * 100) + " %"
     );
 
+    addProperty(result, "two_decimals", () =>
+      Math.floor(Math.random() * 100).toFixed(2)
+    );
+
+    addProperty(result, "six_decimals", () =>
+      Math.floor(Math.random() * 100).toFixed(6)
+    );
+
     return result;
   }, [showContent, time]);
 
@@ -234,6 +242,14 @@ const TableView = () => {
         disableFilter: true,
         align: "right",
         // Cell: ({ value }: any) => (value ? value * 100 + " %" : "0 %"),
+      },
+      {
+        accessor: "two_decimals",
+        Header: "Two Decimals",
+      },
+      {
+        accessor: "six_decimals",
+        Header: "Six Decimals",
       },
     ],
     []

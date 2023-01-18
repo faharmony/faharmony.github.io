@@ -1,6 +1,7 @@
 import React from "react";
 import { PageView, SummaryView } from "@faharmony/views";
-import { Button, Tag } from "@faharmony/components";
+import { Button, InfoBox, Tag } from "@faharmony/components";
+import { Box } from "@faharmony/theme";
 
 const code = `// Example
 <SummaryView
@@ -35,8 +36,36 @@ const Page = () => {
           heading="FA Equity +"
           onClose={() => setOpen(false)}
           headingSuffix={<Tag value="Calculated" color="info" />}
-          captionSuffix={<Tag value="Optional caption suffix" color="secondary" />}
-          additionalContent={<p>Here can be placed any optional react element</p>}
+          captionSuffix={
+            <Tag value="Optional caption suffix" color="secondary" />
+          }
+          additionalContent={
+            <Box direction="column">
+              <p>Here can be placed any optional react element</p>
+              <Box spacing="xl" wrap="wrap">
+                <Box width={"auto"} direction="column">
+                  <InfoBox field="Info">Hello World!</InfoBox>
+                </Box>
+                <Box width={"auto"} direction="column">
+                  <InfoBox field="Info">Hello World!</InfoBox>
+                </Box>
+                <Box width={"auto"} direction="column">
+                  <InfoBox field="Info">Hello World!</InfoBox>
+                </Box>
+                <Box width={"auto"} direction="column">
+                  <InfoBox field="Info">Hello World!</InfoBox>
+                </Box>
+                <Box width={"auto"} direction="column">
+                  <InfoBox field="Info">Hello World!</InfoBox>
+                </Box>
+                <Box width={"auto"} direction="column">
+                  <InfoBox field="Info">Hello World!</InfoBox>
+                </Box>
+              </Box>
+            </Box>
+          }
+          additionalContentExpandedByDefault
+          additionalContentToggleButtonEnabled
         >
           <pre>{code}</pre>
         </SummaryView>
