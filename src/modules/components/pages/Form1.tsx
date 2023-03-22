@@ -20,6 +20,7 @@ type FormInputs = {
   username: string;
   password: string;
   env: RadioOptionType;
+  envCreate: ComboboxOptionType[];
   roles: ComboboxOptionType[];
   number: number;
   env2: string;
@@ -107,6 +108,16 @@ const FormNode = () => {
             options={envOptions}
             isMulti={false}
             isSearchable={false}
+          />
+        </FormControl>
+
+        <FormControl label="Creatable combobox">
+          <Combobox
+            name="envCreate"
+            placeholder="Select or add new environment"
+            isCreatable
+            options={envOptions}
+            isMulti={false}
           />
         </FormControl>
 
