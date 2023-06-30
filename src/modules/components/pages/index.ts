@@ -20,6 +20,7 @@
 
 export { MainPage } from "./MainPage";
 export const components = [
+  "MUI_Components",
   "Accordion",
   "Breadcrumb",
   "ButtonUpload",
