@@ -11,7 +11,7 @@ import ListItemAvatar from "@mui/material/ListItemAvatar";
 import ListItemText from "@mui/material/ListItemText";
 import Typography from "@mui/material/Typography";
 import React from "react";
-import { MUIDialog } from "@faharmony/core";
+import { DialogMUI, addDialogMUI, addToastMUI } from "@faharmony/core";
 
 const emails = ["username@gmail.com", "user02@gmail.com"];
 
@@ -106,14 +106,39 @@ export default function DialogExample() {
         Open simple dialog
       </Button>
       <Button variant="outlined" color="primary" onClick={handleClickOpen2}>
-        Open Harmony MUI dialog
+        Open dialog component
+      </Button>
+      <Button
+        variant="outlined"
+        color="primary"
+        onClick={() =>
+          addDialogMUI({
+            title: "This is title.",
+            content: "This is content, Abcdefg.",
+            confirmationText: "Confirm",
+            cancellationText: "Close",
+            allowClose: true,
+            confirmationButtonProps: {
+              variant: "contained",
+              color: "primary",
+              onClick: () => {
+                console.log("Functional dialog confirmed");
+                addToastMUI("Functional dialog confirmed", {
+                  variant: "success",
+                });
+              },
+            },
+          })
+        }
+      >
+        Open functional dialog
       </Button>
       <SimpleDialog
         selectedValue={selectedValue}
         open={open}
         onClose={handleClose}
       />
-      <MUIDialog
+      <DialogMUI
         id="MUIDialog-example"
         open={open2}
         title="MUI Dialog"

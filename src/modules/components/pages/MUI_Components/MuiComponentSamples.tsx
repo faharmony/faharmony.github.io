@@ -1,4 +1,4 @@
-import { Box, Button, Grid, Typography, Card } from "@mui/material";
+import { Box, Button, Grid, Typography } from "@mui/material";
 import componentSamples from "./Samples";
 import { PageView } from "@faharmony/views";
 

@@ -3,7 +3,6 @@ import CloseIcon from "@mui/icons-material/Close";
 import { Box, IconButton } from "@mui/material";
 import Button from "@mui/material/Button";
 import SnackbarContent from "@mui/material/SnackbarContent";
-import React from "react";
 
 const action = (
   <Button color="secondary" size="small">
@@ -54,7 +53,8 @@ export default function SnackbarExample() {
         <Button
           onClick={() =>
             addToastMUI(
-              "I love candy. I love cookies. I love cupcakes. I love cheesecake. I love chocolate."
+              "I love candy. I love cookies. I love cupcakes. I love cheesecake. I love chocolate.",
+              { variant: "default" }
             )
           }
         >
