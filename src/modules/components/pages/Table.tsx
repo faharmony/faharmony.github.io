@@ -5,6 +5,8 @@ import { useTimeout } from "@faharmony/helpers";
 import { Tag } from "@faharmony/components";
 import { faTerminal } from "@faharmony/icons";
 import { forEach, isPlainObject, set } from "lodash";
+import { Combobox, FormControl, RadioGroup } from "@faharmony/form";
+import { Box } from "@faharmony/theme";
 
 interface IDataProps {
   name: string;
@@ -26,6 +28,8 @@ const TableView = () => {
   useTimeout(() => setShowContent(true), 1000);
 
   const [time, setTime] = useState(new Date(Date.now()).toLocaleString());
+
+  const [exportColumns, setExportColumns] = useState<string | string[]>("all");
 
   const tableData: IDataProps[] = React.useMemo(() => {
     let result = showContent
@@ -166,23 +170,39 @@ const TableView = () => {
         accessor: "name",
         Header: "Name",
         disableFilter: false,
+        fixed: "left",
+        maxWidth: 150,
+        minWidth: 150,
+        width: 150,
       },
       {
         accessor: "lastName",
         Header: "Last Name",
         disableFilter: false,
+        fixed: "left",
+        maxWidth: 150,
+        minWidth: 150,
+        width: 150,
       },
       {
         accessor: "category",
         Header: "category",
         disableFilter: true,
         Cell: ({ value }: any) => <Tag>{value}</Tag>,
+        fixed: "right",
+        maxWidth: 100,
+        minWidth: 100,
+        width: 100,
       },
       {
         accessor: "age",
         Header: "Age",
         disableFilter: true,
         align: "right",
+        fixed: "right",
+        maxWidth: 50,
+        minWidth: 50,
+        width: 50,
       },
       {
         accessor: "country",
@@ -255,6 +275,10 @@ const TableView = () => {
     []
   );
 
+  const tableColumnOptions = tableColumns.map((col) => {
+    return { label: col.Header, value: col.accessor };
+  });
+
   const handleRowClick = (rowObject: IDataProps) => console.log(rowObject);
   const handleRowDblClick = (rowObject: IDataProps) => alert(rowObject);
 
@@ -285,61 +309,105 @@ const TableView = () => {
           console.log(hiddenColumnIds),
         handleVisibleColumns: (visibleColumnIds: string[]) =>
           console.log(visibleColumnIds),
-        defaultHiddenColumnsIds: ["lastName"],
+        defaultHiddenColumnsIds: ["address2"],
         defaultVisibleColumnsOrder: [
+          "name",
+          "lastName",
           "column1",
           "column2",
           "column3",
           "column4",
           "column5",
-          "name",
+
           "age",
           "category",
           "country",
           "address1",
-          "address2",
         ],
       }),
       []
     );
 
   return (
-    // <PageView heading="Table">
-    <Table
-      tableHeading="Table"
-      data={tableData}
-      columns={tableColumns}
-      headerAdditionalContent={
-        <p>Here can be placed any optional react element</p>
-      }
-      defaultExpanded
-      handleRowClick={handleRowClick}
-      handleRowDblClick={handleRowDblClick}
-      singleRowActions={singleRowActions}
-      multipleRowActions={(selected) => [
-        {
-          id: "deleteMultiple",
-          tooltip: "Print selected row to console",
-          icon: faTerminal,
-          onClick: () => console.log(selected),
-        },
-      ]}
-      enableSorting
-      enableFiltering
-      disableSubRowSelect
-      autoResetSortBy={false}
-      enablePagination
-      enableMultipleRowSelect
-      columnVisibilitySelector={columnVisibilitySelector}
-      exportTable={{
-        fileTypes: "all",
-        fileName: "Custom Exported File Name",
-        exportButtonTooltip: "Export",
-      }}
-      isLoading={!showContent}
-      key={showContent ? 1 : 0}
-    />
-    // </PageView>
+    <>
+      <Box style={{ marginBottom: "10px" }}>
+        <FormControl label="Export Columns">
+          <>
+            <RadioGroup
+              name="env2"
+              defaultValue="all"
+              options={[
+                { label: "All", value: "all" },
+                { label: "Selected columns", value: "select" },
+              ]}
+              onChange={(val) => {
+                if (val.target.value === "all") {
+                  setExportColumns("all");
+                } else {
+                  setExportColumns([]);
+                }
+              }}
+              direction="row"
+            />
+            {typeof exportColumns !== "string" && (
+              <Combobox
+                name="roles"
+                placeholder="Select Export columns"
+                options={tableColumnOptions}
+                isMulti
+                onChange={(val: any) => {
+                  if (val) {
+                    setExportColumns(
+                      val.map((opt: { value: any }) => opt.value)
+                    );
+                  } else {
+                    setExportColumns([]);
+                  }
+                }}
+              />
+            )}
+          </>
+        </FormControl>
+      </Box>
+
+      <Table
+        tableHeading="Table"
+        data={tableData}
+        columns={tableColumns}
+        headerAdditionalContent={
+          <p>Here can be placed any optional react element</p>
+        }
+        defaultExpanded
+        handleRowClick={handleRowClick}
+        handleRowDblClick={handleRowDblClick}
+        singleRowActions={singleRowActions}
+        multipleRowActions={(selected) => [
+          {
+            id: "deleteMultiple",
+            tooltip: "Print selected row to console",
+            icon: faTerminal,
+            onClick: () => console.log(selected),
+          },
+        ]}
+        enableSorting
+        enableFiltering
+        disableSubRowSelect
+        autoResetSortBy={false}
+        enablePagination
+        enableMultipleRowSelect
+        columnVisibilitySelector={columnVisibilitySelector}
+        exportTable={{
+          fileTypes: "all",
+          fileName: "Custom Exported File Name",
+          exportButtonTooltip: "Export",
+          all: typeof exportColumns !== "string" ? undefined : !!exportColumns,
+          exportColumns:
+            typeof exportColumns === "string" ? undefined : exportColumns,
+        }}
+        isLoading={!showContent}
+        key={showContent ? 1 : 0}
+      />
+    </>
   );
 };
 
