@@ -5,10 +5,17 @@ import { Button } from "@faharmony/components";
 // api:MainPage
 /** i18n-ally useTranslation("api") */
 
-import { Route, useHistory, useRouteMatch, useParams } from "@faharmony/router";
+import {
+  Route,
+  useHistory,
+  useRouteMatch,
+  useParams,
+  Switch,
+} from "@faharmony/router";
 import React from "react";
 import { MainPage } from "./MainPage";
 import { Box } from "@faharmony/theme";
+import { PageView } from "@faharmony/views";
 /**
  * Default page of module
  * @author Siddhant Gupta <siddhant@fasolutions.com>
@@ -16,18 +23,22 @@ import { Box } from "@faharmony/theme";
 export const Routes = () => {
   const { path } = useRouteMatch();
   return (
-    <React.Fragment>
-      <Route exact path={path + "/pages"} key={"test"}>
-        <CustomPageList />
-      </Route>
+    <Switch>
       <Route exact path={path + "/pages/:id"} key={"pageId"}>
         <CustomPage />
       </Route>
-      {/* Default */}
+      <Route exact path={path + "/pages"} key={"test"}>
+        <CustomPageList />
+      </Route>
+      {/* Module landing page */}
       <Route exact path={path}>
         <MainPage />;
       </Route>
-    </React.Fragment>
+      {/**If no routes match */}
+      <Route>
+        <PageView heading="Page not found" />
+      </Route>
+    </Switch>
   );
 };
 

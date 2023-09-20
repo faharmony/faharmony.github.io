@@ -1,4 +1,4 @@
-import { useRouteMatch, Route, useHistory } from "@faharmony/router";
+import { useRouteMatch, Route, useHistory, Switch } from "@faharmony/router";
 import React from "react";
 import { CustomPage, CustomPageList } from "../../welcome/pages/Routes";
 import { PageView } from "@faharmony/views";
@@ -8,7 +8,7 @@ import { Box } from "@faharmony/theme";
 const Page = () => {
   const { path } = useRouteMatch();
   return (
-    <React.Fragment>
+    <Switch>
       <Route exact path={path + "/pages"} key={"test"}>
         <CustomPageList />
       </Route>
@@ -19,7 +19,11 @@ const Page = () => {
       <Route exact path={path}>
         <SubModulePage />;
       </Route>
-    </React.Fragment>
+      {/**If no routes match */}
+      <Route>
+        <PageView heading="Page not found" />
+      </Route>
+    </Switch>
   );
 };
 
