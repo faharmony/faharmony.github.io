@@ -18,4 +18,4 @@
  * replaced as per requirement.
  */
 
-export { MainPage } from "./MainPage";
+export { Routes } from "./Routes";

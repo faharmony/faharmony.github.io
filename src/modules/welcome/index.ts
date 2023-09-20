@@ -42,7 +42,7 @@ export default {
   label: "Components",
   roles: ModuleRoles,
   icon: ModuleIcon,
-  component: Components.MainPage,
+  component: Components.Routes,
   subModules,
   state: ModuleState,
 } as IModuleProps;

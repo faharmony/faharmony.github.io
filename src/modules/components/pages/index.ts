@@ -48,4 +48,5 @@ export const components = [
   "Tabs_PageView",
   "Tags",
   "Tooltip",
+  "RouterTest",
 ];

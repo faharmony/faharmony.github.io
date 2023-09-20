@@ -10,12 +10,16 @@ import {
   useModuleStateSelector,
   useDispatch,
 } from "../state";
+import { useHistory, useRouteMatch } from "@faharmony/router";
 
 export const Redux = () => {
   const { t } = useModule();
   const dispatch = useDispatch();
   const state2 = useModuleStateSelector((state) => state.loading);
   const state = useModuleState();
+  const history = useHistory();
+  const { path } = useRouteMatch();
+
   return (
     <Box direction="column">
       <Box justifyContent="flex-start">
@@ -32,6 +36,10 @@ export const Redux = () => {
             value="Toggle"
             onClick={() => dispatch(ModuleActions.setLoading(!state.loading))}
           />
+          <Button
+            value={"Open custom path"}
+            onClick={() => history.push(path + "/pages")}
+          ></Button>
         </Box>
         {state.loading && <RingLoader />}
         <Text value={t("loading")} />
