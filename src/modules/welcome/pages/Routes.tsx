@@ -44,7 +44,7 @@ export const CustomPageList = () => {
         <Box width="auto" direction="column">
           <Button
             value={"Page 1"}
-            onClick={() => history.push(path + "/page2")}
+            onClick={() => history.push(path + "/page1")}
           ></Button>
           <Button
             value={"Page 2"}
