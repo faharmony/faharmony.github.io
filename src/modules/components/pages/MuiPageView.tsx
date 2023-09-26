@@ -40,7 +40,7 @@ const Page = () => {
             }
           : false
       }
-      heading="SummaryView"
+      heading="Shareholders registry"
       actions={
         <>
           <Button
