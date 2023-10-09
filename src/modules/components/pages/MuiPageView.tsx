@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { DataGridPremium, GridColDef } from "@mui/x-data-grid-premium";
+import { DataGrid, GridToolbar } from "@mui/x-data-grid";
+import { useDemoData } from "@mui/x-data-grid-generator";
+
 import {
   Checkbox,
   FormControl,
@@ -12,6 +14,11 @@ import {
   Button,
   IMuiPageViewProps,
   MuiPageView,
+  SideView,
+  Chip,
+  Box,
+  TextField,
+  InputAdornment,
 } from "@faharmony/mui";
 
 import { Sync } from "@faharmony/mui/icons-material";
@@ -24,74 +31,84 @@ const Page = () => {
   const [fullWIndow, setFullWIndow] = useState(false);
   const [sticky, setSticky] = useState(true);
   const [variant, setVariant] = useState("secondary");
-
+  const [sideView, setSideView] = useState(false);
   return (
-    <MuiPageView
-      headerVariant={variant as IMuiPageViewProps["headerVariant"]}
-      fullWindow={fullWIndow}
-      stickyHeader={sticky}
-      backButton={
-        showBackBtn
-          ? {
-              backButtonAdditionalActions: () => {
-                console.log("Back button clicked", showBackBtn);
-              },
-              label: "Go back",
-            }
-          : false
-      }
-      heading="Shareholders registry"
-      actions={
-        <>
-          <Button
-            variant="contained"
-            sx={{ mr: 2 }}
-            onClick={() =>
-              setVariant(variant === "secondary" ? "primary" : "secondary")
-            }
-          >
-            Switch variant
-          </Button>
+    <>
+      <MuiPageView
+        id={"testPageView"}
+        headerVariant={variant as IMuiPageViewProps["headerVariant"]}
+        fullWindow={fullWIndow}
+        stickyHeader={sticky}
+        backButton={
+          showBackBtn
+            ? {
+                backButtonAdditionalActions: () => {
+                  console.log("Back button clicked", showBackBtn);
+                },
+                label: "Go back",
+              }
+            : false
+        }
+        heading="Shareholders registry"
+        actions={
+          <>
+            <Button
+              variant="contained"
+              sx={{ mr: 2 }}
+              onClick={() =>
+                setVariant(variant === "secondary" ? "primary" : "secondary")
+              }
+            >
+              Switch variant
+            </Button>
 
-          <Button
-            variant="contained"
-            sx={{ mr: 2 }}
-            onClick={() => setSticky(!sticky)}
-          >
-            Toggle sticky header
-          </Button>
+            <Button
+              variant="contained"
+              sx={{ mr: 2 }}
+              onClick={() => setSticky(!sticky)}
+            >
+              Toggle sticky header
+            </Button>
 
-          <Button
-            variant="contained"
-            sx={{ mr: 2 }}
-            onClick={() => setShowToolbar(!showToolBar)}
-          >
-            {showToolBar ? "Hide tool bar" : "Show tool bar"}
-          </Button>
-          <Button
-            variant="contained"
-            sx={{ mr: 2 }}
-            onClick={() => setShowBackBtn(!showBackBtn)}
-          >
-            {showBackBtn ? "Hide back button" : "Show back button"}
-          </Button>
-          <Button
-            variant="contained"
-            sx={{ mr: 2 }}
-            onClick={() => setFullWIndow(!fullWIndow)}
-          >
-            {"Toggle full window"}
-          </Button>
-          <IconButton>
-            <Sync />
-          </IconButton>
-        </>
-      }
-      toolbarContent={showToolBar ? <Toolbar /> : null}
-      sxProps={{ p: 0 }}
-    >
-      <Content />
-    </MuiPageView>
+            <Button
+              variant="contained"
+              sx={{ mr: 2 }}
+              onClick={() => setShowToolbar(!showToolBar)}
+            >
+              {showToolBar ? "Hide tool bar" : "Show tool bar"}
+            </Button>
+            <Button
+              variant="contained"
+              sx={{ mr: 2 }}
+              onClick={() => setShowBackBtn(!showBackBtn)}
+            >
+              {showBackBtn ? "Hide back button" : "Show back button"}
+            </Button>
+            <Button
+              variant="contained"
+              sx={{ mr: 2 }}
+              onClick={() => setFullWIndow(!fullWIndow)}
+            >
+              {"Toggle full window"}
+            </Button>
+            <IconButton>
+              <Sync />
+            </IconButton>
+          </>
+        }
+        toolbarContent={showToolBar ? <Toolbar /> : null}
+        sxProps={{ p: 0 }}
+      >
+        <Content setSideView={setSideView} />
+      </MuiPageView>
+      <SideDrawer
+        open={sideView}
+        onClose={() => {
+          console.log("Close");
+          setSideView(false);
+        }}
+      ></SideDrawer>
+    </>
   );
 };
 
@@ -128,49 +145,74 @@ const Toolbar = () => {
   );
 };
 
-const Content = () => {
-  const columns: GridColDef[] = [
-    { field: "id", headerName: "ID", width: 70 },
-    { field: "firstName", headerName: "First name", width: 130 },
-    { field: "lastName", headerName: "Last name", width: 130 },
-    {
-      field: "number",
-      headerName: "Number",
-      width: 160,
-    },
-    {
-      field: "units",
-      headerName: "Number",
-      width: 160,
-    },
-    {
-      field: "ownership",
-      headerName: "Number",
-      width: 160,
-    },
-  ];
-
-  const rows = [...Array(20)].map((row, index) => {
-    return {
-      id: index + 1,
-      firstName: "Firstname " + (index + 1),
-      lastName: "Lastname " + (index + 1),
-      number: 12 + index,
-      units: index * 12,
-      ownership: (index + 1) / 12,
-    };
+const Content = (props: { setSideView: any }) => {
+  const { data } = useDemoData({
+    dataSet: "Commodity",
+    rowLength: 100,
+    maxColumns: 6,
   });
 
   return (
-    <DataGridPremium
-      rows={rows}
-      columns={columns}
-      initialState={{
-        pagination: {
-          paginationModel: { page: 0, pageSize: 5 },
-        },
+    <DataGrid
+      {...data}
+      slots={{
+        toolbar: GridToolbar,
       }}
-      pageSizeOptions={[5, 10]}
+      onRowClick={() => props.setSideView(true)}
     />
+  );
+};
+
+const SideDrawer = (props: { open: boolean; onClose: any }) => {
+  const [toolBarPos, setToolBarPos] = useState<"left" | "bottom">("left");
+  const [width, setWidth] = useState<string>("50");
+
+  return (
+    <SideView
+      width={width + "%"}
+      id={"testSideView"}
+      title={"Detailed View"}
+      additionalTitleContent={
+        <Chip label="success" color="success" size="small" />
+      }
+      subTitle="Subtitle"
+      open={props.open}
+      onClose={props.onClose}
+      toolBarPosition={toolBarPos}
+      toolbar={
+        <Box
+          display={"flex"}
+          justifyContent={
+            toolBarPos !== "left" ? "space-between" : "space-evenly"
+          }
+        >
+          {" "}
+          <TextField
+            label="Set width"
+            id="outlined-start-adornment"
+            onChange={(e) => setWidth(e.target.value)}
+            size="small"
+            value={width}
+            type={"number"}
+            InputProps={{
+              endAdornment: <InputAdornment position="end">%</InputAdornment>,
+            }}
+          />
+          <Button
+            variant="contained"
+            sx={{ mr: 2, ml: 2 }}
+            onClick={() =>
+              toolBarPos === "left"
+                ? setToolBarPos("bottom")
+                : setToolBarPos("left")
+            }
+          >
+            Switch toolbar position
+          </Button>
+        </Box>
+      }
+    >
+      <Box>Additional contents </Box>
+    </SideView>
   );
 };
