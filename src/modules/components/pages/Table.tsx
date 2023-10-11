@@ -280,7 +280,7 @@ const TableView = () => {
   });
 
   const handleRowClick = (rowObject: IDataProps) => console.log(rowObject);
-  const handleRowDblClick = (rowObject: IDataProps) => alert(rowObject);
+  const handleRowDblClick = (rowObject: IDataProps) => alert(rowObject.name);
 
   const singleRowActions = (rowObject: IDataProps) => [
     {
