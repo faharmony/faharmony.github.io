@@ -182,7 +182,6 @@ const UserFormMassiveComboboxField: FC = () => {
           required
           placeholder="Select option..."
           options={options}
-          isMulti={true}
         />
       </FormControl>
     </Box>
