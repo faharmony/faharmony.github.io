@@ -25,6 +25,7 @@ import TextFieldExample from "./TextField";
 import TableExample from "./Table";
 import ListExample from "./List";
 import TooltipExample from "./Tooltip";
+import CronSchedulerExample from "./CronScheduler";
 
 // items skipped for now:
 // Button Group
@@ -94,6 +95,12 @@ export default [
     title: "Dialog",
     component: <DialogExample />,
     docs: "https://material-ui.com/components/dialogs/",
+  },
+  {
+    id: "CronScheduler",
+    title: "CRON Scheduler",
+    component: <CronSchedulerExample />,
+    docs: "https://fasolutions.jira.com/wiki/spaces/FP/pages/4245749819/CronScheduler+Component",
   },
   {
     id: "FloatingActionButton",
