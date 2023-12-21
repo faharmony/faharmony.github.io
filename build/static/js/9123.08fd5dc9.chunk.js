@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkplayground=self.webpackChunkplayground||[]).push([[9123],{59123:function(n,r,a){a.r(r),a.d(r,{colors:function(){return o}});var o={brand:"#AE001A"};r.default={loading:!0,isConfigDrawerOpen:!0,config:{size:200,color:{primary:o.brand,secondary:""},text:"",variant:"all",icon:"all"}}}}]);
-//# sourceMappingURL=9123.08fd5dc9.chunk.js.map

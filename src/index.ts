@@ -72,6 +72,8 @@ const appConfig: IAppConfig = {
   actions: appActions,
   roles: appRoles,
   icon: appIcon,
+  hideGlobalBar: true,
+  hideModuleNavigation: false,
 };
 
 (async () => {

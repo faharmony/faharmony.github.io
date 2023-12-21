@@ -99,7 +99,11 @@ const FormNode = () => {
           </FormControl>
           <Box>
             <FormControl label="Toggle (enabled)">
-              <Toggle name="toggle" ref={register} label="Hello world" />
+              <Toggle
+                name="toggle"
+                registerRef={register("realDate")}
+                label="Hello world"
+              />
             </FormControl>
             <FormControl label="Toggle (disabled)">
               <Box>
@@ -111,10 +115,10 @@ const FormNode = () => {
           <FormControl label="NumberField">
             <TextField
               name="number"
-              ref={register}
+              registerRef={register("number")}
               prefixText="EUR"
               isClearable
-              onInputClear={() => setValue("number", "")}
+              onInputClear={() => setValue("number", "" as any)}
             />
           </FormControl>
           <Divider />

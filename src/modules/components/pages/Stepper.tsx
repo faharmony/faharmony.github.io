@@ -13,7 +13,6 @@ import {
   useForm,
   useFormContext,
   SubmitHandler,
-  resetFormValues,
 } from "@faharmony/form";
 import { Box } from "@faharmony/theme";
 import { addToast } from "@faharmony/core";
@@ -21,7 +20,7 @@ import { addToast } from "@faharmony/core";
 interface UserFormInputs {
   firstName: string;
   lastName: string;
-  address?: {};
+  address?: { [key: string]: string };
   phone?: string;
   email?: string;
   username: string | undefined;
@@ -38,7 +37,10 @@ const userFormDefaultValues: Partial<UserFormInputs> = {
 };
 
 const UserFirstNameField: FC = () => {
-  const { register, errors } = useFormContext<UserFormInputs>();
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext<UserFormInputs>();
   return (
     <Box direction="column">
       <FormControl
@@ -51,7 +53,7 @@ const UserFirstNameField: FC = () => {
           name="firstName"
           placeholder="Enter full name"
           error={!!errors.firstName}
-          ref={register({
+          registerRef={register("firstName", {
             required: "Firstname is required",
             minLength: { value: 3, message: "At least 3 characters required." },
           })}
@@ -62,7 +64,10 @@ const UserFirstNameField: FC = () => {
 };
 
 const UserLastNameField: FC = () => {
-  const { register, errors } = useFormContext<UserFormInputs>();
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext<UserFormInputs>();
   return (
     <Box direction="column">
       <FormControl
@@ -75,7 +80,7 @@ const UserLastNameField: FC = () => {
           name="lastName"
           placeholder="Enter lastname"
           error={!!errors.lastName}
-          ref={register({
+          registerRef={register("lastName", {
             required: "Lastname is required",
             minLength: { value: 3, message: "At least 3 characters required." },
           })}
@@ -86,18 +91,21 @@ const UserLastNameField: FC = () => {
 };
 
 const AddressField = ({ i }: { i: number }) => {
-  const { register, errors } = useFormContext<UserFormInputs>();
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext<UserFormInputs>();
   return (
     <Box direction="column">
       <FormControl
         label={"Address " + i}
-        errorText={errors.address ? errors.address[i].message : ""}
+        errorText={errors.address ? errors.address?.[i]?.message : ""}
       >
         <TextField
           name={"address." + i}
           placeholder={"Enter address line " + i}
           error={errors.address ? !!errors.address[i] : false}
-          ref={register}
+          registerRef={register(`address.${i}`)}
         />
       </FormControl>
     </Box>
@@ -105,7 +113,10 @@ const AddressField = ({ i }: { i: number }) => {
 };
 
 const PhoneField = () => {
-  const { register, errors } = useFormContext<UserFormInputs>();
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext<UserFormInputs>();
   return (
     <Box direction="column">
       <FormControl label="Phone" errorText={errors.phone?.message}>
@@ -113,7 +124,7 @@ const PhoneField = () => {
           name={"phone"}
           placeholder="Enter phone number"
           error={!!errors.phone}
-          ref={register({
+          registerRef={register("phone", {
             pattern: {
               value: /^\d{10}$/,
               message: "Only 10 digits phone number is allowed ",
@@ -126,7 +137,10 @@ const PhoneField = () => {
 };
 
 const EmailField = () => {
-  const { register, errors } = useFormContext<UserFormInputs>();
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext<UserFormInputs>();
   return (
     <Box direction="column">
       <FormControl label="Email" errorText={errors.email?.message}>
@@ -134,7 +148,7 @@ const EmailField = () => {
           name={"email"}
           placeholder="Enter email"
           error={!!errors.email}
-          ref={register({
+          registerRef={register("email", {
             pattern: {
               value: /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/,
               message: "Invalid email",
@@ -147,7 +161,10 @@ const EmailField = () => {
 };
 
 const UserFormUsernameField: FC = () => {
-  const { register, errors } = useFormContext<UserFormInputs>();
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext<UserFormInputs>();
   return (
     <Box direction="column">
       <FormControl
@@ -160,7 +177,7 @@ const UserFormUsernameField: FC = () => {
           name="username"
           placeholder="Enter username"
           error={!!errors.username}
-          ref={register({
+          registerRef={register("username", {
             required: "Username is required",
             minLength: { value: 4, message: "At least 4 characters required." },
           })}
@@ -171,7 +188,10 @@ const UserFormUsernameField: FC = () => {
 };
 
 const UserFormPasswordField: FC = () => {
-  const { register, errors } = useFormContext<UserFormInputs>();
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext<UserFormInputs>();
   return (
     <Box direction="column">
       <FormControl
@@ -184,7 +204,7 @@ const UserFormPasswordField: FC = () => {
           name="password"
           placeholder="Enter password"
           error={!!errors.password}
-          ref={register({
+          registerRef={register("password", {
             required: "Passsword is required",
             minLength: { value: 8, message: "At least 8 characters required." },
           })}
@@ -263,7 +283,7 @@ const Page = () => {
     mode: "onBlur",
   });
 
-  const { control } = formMethods;
+  const { reset } = formMethods;
 
   const submitButtonRef = useRef<IStepButtonRef>(null);
   const backButtonRef = useRef<IStepButtonRef>(null);
@@ -294,7 +314,7 @@ const Page = () => {
         variant: "positive",
         persist: false,
       });
-      resetFormValues(control);
+      reset();
 
       disableButtons(false);
     }, 5000);

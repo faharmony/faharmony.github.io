@@ -59,7 +59,12 @@ const FormNode = () => {
     defaultValues,
     criteriaMode: "all",
   });
-  const { register, control, handleSubmit, errors } = formMethods;
+  const {
+    register,
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = formMethods;
   const onSubmit = handleSubmit(console.log);
 
   return (
@@ -72,7 +77,7 @@ const FormNode = () => {
           required
         >
           <TextField
-            ref={register({
+            registerRef={register("username", {
               required: "Username required",
               minLength: { value: 4, message: "More than 3 characters." },
             })}
@@ -88,7 +93,7 @@ const FormNode = () => {
         >
           <TextField
             name="password"
-            ref={register({ required: "Password required" })}
+            registerRef={register("password",{ required: "Password required" })}
             placeholder="Enter password..."
             type="password"
             error={!!errors.password}
@@ -125,7 +130,7 @@ const FormNode = () => {
           <RadioGroup
             name="env2"
             options={[...envOptions]}
-            ref={register}
+            registerRef={register("env2")}
             direction="row"
           />
         </FormControl>
@@ -135,7 +140,7 @@ const FormNode = () => {
 
         <Divider />
         <Box justifyContent="space-between">
-          <Checkbox ref={register} name="remember" label="Keep me logged in" />
+          <Checkbox registerRef={register("remember")} name="remember" label="Keep me logged in" />
           <Box width="auto">
             <Button
               value="Reset"

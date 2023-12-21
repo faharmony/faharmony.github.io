@@ -46,21 +46,27 @@ const userFormDefaultValues: Partial<UserFormInputs> = {
 };
 
 const UserFormFullNameField: FC = () => {
-  const { register, errors } = useFormContext<UserFormInputs>();
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext<UserFormInputs>();
   return (
     <FormControl label="Full name" errorText={errors.fullName?.message}>
       <TextField
         name="fullName"
         placeholder="Enter full name"
         error={!!errors.fullName}
-        ref={register}
+        registerRef={register("fullName")}
       />
     </FormControl>
   );
 };
 
 const UserFormUsernameField: FC = () => {
-  const { register, errors } = useFormContext<UserFormInputs>();
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext<UserFormInputs>();
   return (
     <FormControl
       label="Username"
@@ -72,7 +78,7 @@ const UserFormUsernameField: FC = () => {
         name="username"
         placeholder="Enter username"
         error={!!errors.username}
-        ref={register({
+        registerRef={register("username", {
           required: "Username is required",
           minLength: { value: 4, message: "At least 4 characters required." },
         })}
@@ -82,7 +88,10 @@ const UserFormUsernameField: FC = () => {
 };
 
 const UserFormUsernameFieldWithLongLabel: FC = () => {
-  const { register, errors } = useFormContext<UserFormInputs>();
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext<UserFormInputs>();
   return (
     <FormControl
       label="Long label for a long field (Testing positioning of help and asterick )"
@@ -94,7 +103,7 @@ const UserFormUsernameFieldWithLongLabel: FC = () => {
         name="username"
         placeholder="Enter username"
         error={!!errors.username}
-        ref={register({
+        registerRef={register("username", {
           required: "Username is required",
           minLength: { value: 4, message: "At least 4 characters required." },
         })}
@@ -104,7 +113,10 @@ const UserFormUsernameFieldWithLongLabel: FC = () => {
 };
 
 const UserFormPasswordField: FC = () => {
-  const { register, errors } = useFormContext<UserFormInputs>();
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext<UserFormInputs>();
   const passwordPatternRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
   const passwordPatternMessage =
     "Password should be minimum 8 characters long and contain at least one uppercase letter, one lowercase letter and one number.";
@@ -120,7 +132,7 @@ const UserFormPasswordField: FC = () => {
         type="password"
         placeholder="Enter password"
         error={!!errors.password}
-        ref={register({
+        registerRef={register("password", {
           required: "Password is required",
           pattern: {
             value: passwordPatternRegex,
@@ -210,13 +222,16 @@ const UserFormDarkModeField: FC = () => {
   const { register } = useFormContext<UserFormInputs>();
   return (
     <FormControl label="Prefer dark mode?">
-      <Toggle name="darkMode" ref={register} />
+      <Toggle name="darkMode" registerRef={register("darkMode")} />
     </FormControl>
   );
 };
 
 const UserFormTermsField: FC = () => {
-  const { register, errors } = useFormContext<UserFormInputs>();
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext<UserFormInputs>();
   return (
     <>
       <FormControl
@@ -226,7 +241,7 @@ const UserFormTermsField: FC = () => {
         <Checkbox
           name="terms"
           label="Accept the terms and conditions."
-          ref={register({
+          registerRef={register("terms", {
             required: "It is required to accept the terms and condition",
           })}
         />
@@ -236,7 +251,7 @@ const UserFormTermsField: FC = () => {
           name="privacy"
           label="Accept the privacy policy."
           helpText="Test"
-          ref={register({
+          registerRef={register("privacy", {
             required: "It is required to accept the privacy policy",
           })}
         />
