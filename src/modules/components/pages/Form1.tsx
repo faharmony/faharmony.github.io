@@ -93,7 +93,9 @@ const FormNode = () => {
         >
           <TextField
             name="password"
-            registerRef={register("password",{ required: "Password required" })}
+            registerRef={register("password", {
+              required: "Password required",
+            })}
             placeholder="Enter password..."
             type="password"
             error={!!errors.password}
@@ -135,12 +137,21 @@ const FormNode = () => {
           />
         </FormControl>
         <FormControl label="Number">
-          <TextField placeholder="0.00" error={!!errors.number} name="number" />
+          <TextField
+            placeholder="0.00"
+            error={!!errors.number}
+            name="number"
+            registerRef={register("number")}
+          />
         </FormControl>
 
         <Divider />
         <Box justifyContent="space-between">
-          <Checkbox registerRef={register("remember")} name="remember" label="Keep me logged in" />
+          <Checkbox
+            registerRef={register("remember")}
+            name="remember"
+            label="Keep me logged in"
+          />
           <Box width="auto">
             <Button
               value="Reset"

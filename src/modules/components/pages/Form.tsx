@@ -11,6 +11,7 @@ import {
   useForm,
   useFormContext,
   useFormDatePickerProps,
+  resetFormValues,
 } from "@faharmony/form";
 import { Box } from "@faharmony/theme";
 import { formatDate } from "@faharmony/locale";
@@ -261,7 +262,7 @@ const UserFormTermsField: FC = () => {
 };
 
 const UserFormButtons: FC = () => {
-  const { formState } = useFormContext<UserFormInputs>();
+  const { formState, control } = useFormContext<UserFormInputs>();
   const { isSubmitting, isDirty } = formState;
   return (
     <Box direction="row-reverse">
@@ -275,6 +276,7 @@ const UserFormButtons: FC = () => {
         type="reset"
         variant="secondary"
         value="Reset form"
+        onClick={() => resetFormValues(control)}
         disabled={!isDirty}
       />
     </Box>
