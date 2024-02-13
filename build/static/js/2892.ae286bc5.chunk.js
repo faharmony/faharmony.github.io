@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkplayground=self.webpackChunkplayground||[]).push([[2892],{32892:(p,e,s)=>{s.r(e),s.d(e,{default:()=>l});var h=s(43024),a=s(59896),d=s(95576);const l=()=>(0,d.jsxs)(h.kv,{style:{padding:"20px",flexWrap:"wrap"},children:[(0,d.jsx)(a.W0,{width:"400px",height:"20px"}),(0,d.jsx)(a.W0,{width:"60px",height:"60px",circle:!0})]})}}]);
+//# sourceMappingURL=2892.ae286bc5.chunk.js.map
