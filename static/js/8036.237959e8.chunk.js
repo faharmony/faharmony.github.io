@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkplayground=self.webpackChunkplayground||[]).push([[8036],{8036:(n,a,e)=>{e.r(a),e.d(a,{default:()=>p});var r=e(43024),l=e(33928),o=e(59896),c=e(88e3),d=e(95576);const i={heading:"Apple Inc.",body:"Market price date cannot be older than today.",icon:c.faExclamationTriangle,iconColor:r.gn.color.text.warning},t=Array(10).fill(i),p=()=>(0,d.jsx)(l.gd,{heading:"Card",children:(0,d.jsx)(r.kv,{direction:"column",children:t.map(((n,a)=>(0,d.jsx)(o.M1,{...n},a)))})})}}]);
+//# sourceMappingURL=8036.237959e8.chunk.js.map

@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkplayground=self.webpackChunkplayground||[]).push([[158],{158:(e,s,t)=>{t.r(s),t.d(s,{default:()=>p});var l=t(6380),a=t(19278),n=t(37878);const p=()=>(0,n.jsx)(l.B4,{heading:"Help",children:(0,n.jsx)(a.WW,{text:"This is tooltips text"})})}}]);
-//# sourceMappingURL=158.3355bc3d.chunk.js.map

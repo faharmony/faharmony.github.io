@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkplayground=self.webpackChunkplayground||[]).push([[2636],{22636:(e,a,l)=>{l.r(a),l.d(a,{default:()=>d});var r=l(33928),n=l(97812),s=l(95576);const d=()=>(0,s.jsx)(r.gd,{heading:"GraphiQl",children:(0,s.jsx)(n.Ut,{enableExplorer:!1})})}}]);
+//# sourceMappingURL=2636.02132a1b.chunk.js.map
