@@ -34,7 +34,7 @@ import CronSchedulerExample from "./CronScheduler";
 // Drawer
 
 // Alphabetically sorted list of all Material-UI component examples
-export default [
+const materialUIComponents = [
   {
     id: "Accordion",
     title: "Accordion",
@@ -199,3 +199,5 @@ export default [
     docs: "https://material-ui.com/components/typography/",
   },
 ];
+
+export default materialUIComponents;

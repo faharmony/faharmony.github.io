@@ -1,3 +1,66 @@
 {
-  "moduleName": "Components"
+  "moduleName": "Components",
+  "components": {
+    "gridPreferenceSelector": {
+      "viewSelectorTitle": "Saved views",
+      "defaultButton": {
+        "tooltipActive": "Default",
+        "tooltip": "Set as default"
+      },
+      "saveButton": {
+        "tooltip": "Save view"
+      },
+      "deleteButton": {
+        "tooltip": "Delete view"
+      },
+      "restoreButton": {
+        "tooltip": "Restore view"
+      },
+      "toggleDrawerButton": {
+        "tooltip": "Manage views"
+      },
+      "renameButton": {
+        "tooltip": "Rename"
+      },
+      "renameAcceptButton": {
+        "tooltip": "Accept"
+      },
+      "renameCloseButton": {
+        "tooltip": "Close"
+      },
+      "settingsButton": {
+        "tooltip": "Manage views"
+      },
+      "drawer": {
+        "grid": {
+          "header": {
+            "viewName": "View name",
+            "actions": "Actions"
+          }
+        }
+      },
+      "autocomplete":{
+        "title": "Saved views"
+      },
+      "saveDialog": {
+        "title": "Save as a new view",
+        "title1": "Save view",
+        "textFieldHelperText": "Change the name to save as a new view",
+        "textFieldLabel": "View name",
+        "confirmButton": { "label": "Save" },
+        "cancelButton": { "label": "Cancel" }
+      },
+      "deleteDialog": {
+        "title": "Delete",
+        "content": "Do you want to delete the view",
+        "confirmButton": {
+          "label": "Delete"
+        },
+        "cancelButton": { "label": "Cancel" }
+      }
+    }
+  },
+  "messages": {
+    "updatePreferenceError": "Failed to update preferences"
+  }
 }

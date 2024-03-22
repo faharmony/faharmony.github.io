@@ -50,4 +50,5 @@ export const components = [
   "Tooltip",
   "RouterTest",
   "MuiPageView",
+  "MuiGridPreferenceSelector",
 ];
