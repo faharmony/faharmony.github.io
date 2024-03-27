@@ -25,6 +25,7 @@ const MuiGridPreferenceSelector = () => {
     defaultPreference,
     hasModifiedSelectedPreference,
     loading: gridPreferencesLoading,
+    submitting,
     selectedGridPreference,
     onGridStateChange,
     onDeletePreference,
@@ -45,6 +46,8 @@ const MuiGridPreferenceSelector = () => {
         </Typography>
       </Alert>
       <GridPreferenceSelector
+        preferencesLoading={gridPreferencesLoading}
+        submitting={submitting}
         selectedGridPreference={selectedGridPreference}
         defaultPreference={defaultPreference}
         selectablePreferences={selectablePreferences}
