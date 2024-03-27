@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkplayground=self.webpackChunkplayground||[]).push([[4837],{34837:(e,n,o)=>{o.r(n),o.d(n,{default:()=>s});var l=o(56062),a=o(77977),i=o(81582),t=o(6507);const s=()=>(0,t.jsx)(l.hv,{heading:"Info Box",children:(0,t.jsx)(i.az,{direction:"column",children:["negative","positive","warning","info","note","secondary"].map((e=>(0,t.jsx)(a.w4,{field:"InfoBox Title",helpText:"Infobox help",color:e,value:"Simple Information box content. It can be a jsx element as  well "})))})})}}]);
+//# sourceMappingURL=4837.bc17e945.chunk.js.map

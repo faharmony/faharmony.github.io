@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkplayground=self.webpackChunkplayground||[]).push([[4407],{24407:(a,t,d)=>{d.r(t),d.d(t,{setLoading:()=>s,startLoading:()=>l,stopLoading:()=>n});var o=d(15920),i=d(89965);const l=a=>{a.loading=!0,(0,o.sz)({id:(0,i.uq)(),title:"start loading"})},n=a=>{a.loading=!1,(0,o.sz)({id:(0,i.uq)(),title:"stop loading"})},s=(a,t)=>{let{payload:d}=t;a.loading=d}}}]);
-//# sourceMappingURL=4407.1a6f1f9b.chunk.js.map

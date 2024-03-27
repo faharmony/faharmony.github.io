@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkplayground=self.webpackChunkplayground||[]).push([[1188],{1188:(e,s,n)=>{n.r(s),n.d(s,{sampleTrigger:()=>p});const p=new(n(89965).mf)}}]);
-//# sourceMappingURL=1188.f4d01dab.chunk.js.map
