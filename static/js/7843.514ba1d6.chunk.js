@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkplayground=self.webpackChunkplayground||[]).push([[7843],{67843:(a,n,r)=>{r.r(n),r.d(n,{colors:()=>l,default:()=>o});const l={brand:"#AE001A"},o={loading:!0,isConfigDrawerOpen:!0,config:{size:200,color:{primary:l.brand,secondary:""},text:"",variant:"all",icon:"all"}}}}]);
+//# sourceMappingURL=7843.514ba1d6.chunk.js.map
